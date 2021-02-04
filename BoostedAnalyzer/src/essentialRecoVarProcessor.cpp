@@ -16,7 +16,8 @@ essentialRecoVarProcessor::~essentialRecoVarProcessor() {}
 void essentialRecoVarProcessor::Init(const InputCollections &input, VariableContainer &vars)
 {
     // which btagger to use
-    btagger = "DeepJet";
+//    btagger = "DeepJet";
+    btagger = "DeepCSV"; // added by Wei
 
     // set CSVWp 
     pointerToRecoVars->SetWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, btagger));

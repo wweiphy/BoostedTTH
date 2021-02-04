@@ -108,6 +108,7 @@
 #include "BoostedTTH/BoostedAnalyzer/interface/Synchronizer.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/DiLeptonVarProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/TriggerVarProcessor.hpp"
+#include "BoostedTTH/BoostedAnalyzer/interface/TriggerInfo.hpp" // added by Wei
 #include "BoostedTTH/BoostedAnalyzer/interface/ReconstructionMEvarProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/TTbarReconstructionVarProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/BJetnessProcessor.hpp"
@@ -129,7 +130,7 @@ public:
     explicit BoostedAnalyzer(const edm::ParameterSet&);
     ~BoostedAnalyzer();
 
-    static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+    static void fillDescriptions(edm::ConfigurationDescriptions& descriptions); // line 1127 in this file defined the fucntion
 
 
 private:
@@ -140,14 +141,14 @@ private:
     virtual void endRun(edm::Run const& iRun, edm::EventSetup const& iSetup) override;
     virtual void beginLuminosityBlock(edm::LuminosityBlock const& iBlock, edm::EventSetup const& iSetup) override;
     
-    float GetTopPtWeight(const float& toppt1, const float& toppt2);
+    float GetTopPtWeight(const float& toppt1, const float& toppt2); // line 914 in this file defined the function
     
-    std::map<string,float> GetWeights(const GenEventInfoProduct& genEventInfo, const LHEEventProduct&  lheInfo, const EventInfo& eventInfo, const reco::VertexCollection& selectedPVs, const std::vector<pat::Electron>& selectedElectrons, const std::vector<pat::Muon>& selectedMuons, const GenTopEvent& genTopEvt, const double& prefiringweight, const double& prefiringweightup, const double& prefiringweightdown, const Systematics::Type& systype=Systematics::NA );
+    std::map<string,float> GetWeights(const GenEventInfoProduct& genEventInfo, const LHEEventProduct&  lheInfo, const EventInfo& eventInfo, const reco::VertexCollection& selectedPVs, const std::vector<pat::Electron>& selectedElectrons, const std::vector<pat::Muon>& selectedMuons, const GenTopEvent& genTopEvt, const double& prefiringweight, const double& prefiringweightup, const double& prefiringweightdown, const Systematics::Type& systype=Systematics::NA ); // line 920 in this file defined the function
     
-    std::map<string,float> GetCSVWeights(const std::vector<pat::Jet>& selectedJets, const Systematics::Type& systype=Systematics::NA);
+    std::map<string,float> GetCSVWeights(const std::vector<pat::Jet>& selectedJets, const Systematics::Type& systype=Systematics::NA); // line 990 in this file defined the function
     
-    static std::string outfileName(const std::string& basename,const Systematics::Type& sysType);
-    static std::string systName(const Systematics::Type& sysType);
+    static std::string outfileName(const std::string& basename,const Systematics::Type& sysType); // line 1049 in this file defined the function
+    static std::string systName(const Systematics::Type& sysType); // line 1044 in this file defined the function
 
     // -------------------------------------------------------------------
     // --------------------------- member data ---------------------------
@@ -161,17 +162,17 @@ private:
     //calculate the scalefactor for leptons
     LeptonSFHelper leptonSFhelper;
     // reweight the number of primary vertices distribution
-    PUWeights puWeights;
+    PUWeights puWeights; // BoostedTTH/BoostedAnalyzer/interface/PUWeights.hpp
     /** Class that tests objects and event selections */
-    Synchronizer synchronizer;
+    Synchronizer synchronizer; // BoostedTTH/BoostedAnalyzer/interface/Synchronizer.hpp
     /** class to extract generator weights */
-    GenWeights genweights;
+    GenWeights genweights; // BoostedTTH/BoostedAnalyzer/interface/GenWeights.hpp
     /** produces MC truth information for ttbar and ttH samples (genTopEvent)*/
-    GenTopEventProducer genTopEvtProd;
+    GenTopEventProducer genTopEvtProd; // BoostedTTH/BoostedAnalyzer/interface/GenTopEvent.hpp
     /** produces trigger information */
-    TriggerInfoProducer triggerInfoProd;
+    TriggerInfoProducer triggerInfoProd; // BoostedTTH/BoostedAnalyzer/interface/TriggerInfo.hpp
     /** produces filter information */
-    FilterInfoProducer filterInfoProd;
+    FilterInfoProducer filterInfoProd; // BoostedTTH/BoostedAnalyzer/interface/FilterInfo.hpp
 
     //resource monitor
     std::unique_ptr<ResourceMonitor> ResMon = nullptr;
@@ -383,7 +384,7 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
     }
     
     // initialize helper classes
-    helper.SetUp("2015_74x", isData ? -1 : 1, analysisType::LJ, isData);
+    helper.SetUp("2015_74x", isData ? -1 : 1, analysisType::LJ, isData); // ??
 
     // initialize CSV reweighter
     if( iConfig.existsAs<edm::ParameterSet>("bTagSFs",true) ) {
@@ -406,7 +407,7 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
     // initialize cutflows
     for (size_t i=0; i<jetSystematics.size();i++){
         cutflows.emplace_back();
-        cutflows.back().Init();
+        cutflows.back().Init(); // https://github.com/wweiphy/BoostedTTH/blob/Legacy_2016_2017_2018_Devel/BoostedAnalyzer/src/Cutflow.cpp
     }
     
 
@@ -445,12 +446,12 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
         selections.push_back(std::move(selection));
 	// connect added selection to cutflow
 	for (auto &c : cutflows){
-	    selections.back()->InitCutflow(c);
+	    selections.back()->InitCutflow(c); // ??
 	}
 	// dump some event info after selection step
     }
     // find the position of the JetTagSelection to check later if the failed selection is the JetTagSelection or not
-    jet_tag_pos = find (selectionNames.begin(), selectionNames.end(), "JetTagSelection") - selectionNames.begin();
+    jet_tag_pos = find (selectionNames.begin(), selectionNames.end(), "JetTagSelection") - selectionNames.begin(); // ??
     
     // initialize synchronizer
     if(dumpSyncExe){
@@ -463,7 +464,7 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
             cout << "creating tree writer " << outfileNames[i] << endl;
             std::unique_ptr<TreeWriter> treewriter(new TreeWriter());
             treewriters.push_back(std::move(treewriter));
-            treewriters.back()->Init(outfileNames[i]);
+            treewriters.back()->Init(outfileNames[i]); // https://github.com/wweiphy/BoostedTTH/blob/Legacy_2016_2017_2018_Devel/BoostedAnalyzer/src/TreeWriter.cpp
         }
     }
     else {
@@ -855,7 +856,7 @@ void BoostedAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& i
 					  weights,
 					  iEvent,
 					  iSetup,
-                                          jetSystematics.at(isys),
+                      jetSystematics.at(isys),
                       selectionTags,
                       era
         );
@@ -1008,7 +1009,9 @@ std::map<string,float> BoostedAnalyzer::GetCSVWeights(const std::vector<pat::Jet
     for(const auto& itJet : selectedJets){
         jetPts.push_back(itJet.pt());
         jetEtas.push_back(itJet.eta());
-        jetCSVs.push_back(CSVHelper::GetJetCSV(itJet,"DeepJet"));
+//        jetCSVs.push_back(CSVHelper::GetJetCSV(itJet,"DeepJet"));
+        jetCSVs.push_back(CSVHelper::GetJetCSV(itJet,"DeepCSV"));
+//        added by Wei
         jetFlavors.push_back(itJet.hadronFlavour());
     }
     

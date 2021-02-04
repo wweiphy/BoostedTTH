@@ -114,7 +114,8 @@ void BasicVarProcessor::Process(const InputCollections& input,VariableContainer&
   vars.FillIntVar("Evt_Lumi",lumi_section);
 
 
-  std::string btagger="DeepJet";
+//  std::string btagger="DeepJet";
+  std::string btagger="DeepCSV"; // added by Wei
   std::vector<pat::Jet> selectedTaggedJets;
   std::vector<pat::Jet> selectedTaggedJetsT;
   std::vector<pat::Jet> selectedTaggedJetsL;

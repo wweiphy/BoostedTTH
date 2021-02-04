@@ -125,11 +125,14 @@ BTagSFs80X = cms.PSet(
 
 # The 94X DeepCSV SF
 BTagSFs94XDeepCSV = cms.PSet(
-    fileNameHF = cms.string("MiniAOD/MiniAODHelper/data/sfs_deepcsv_2017_hf.root"),
+#    fileNameHF = cms.string("MiniAOD/MiniAODHelper/data/sfs_deepcsv_2017_hf.root"),
+    fileNameHF = cms.string("MiniAOD/MiniAODHelper/data/deepCSV_sfs_hf.root"),
+#    added by Wei: ask Sebastian about it
     nHFPtBins = cms.int32(5),
     nLFPtBins = cms.int32(4),
     nLFEtaBins = cms.int32(3),
-    fileNameLF = cms.string("MiniAOD/MiniAODHelper/data/sfs_deepcsv_2017_lf.root")
+#    fileNameLF = cms.string("MiniAOD/MiniAODHelper/data/sfs_deepcsv_2017_lf.root"),
+    fileNameLF = cms.string("MiniAOD/MiniAODHelper/data/deepCSV_sfs_lf.root")
 )
 
 # The 94X DeepJet SF

@@ -19,7 +19,8 @@ void essentialMVAVarProcessor::Init(const InputCollections &input, VariableConta
     pointerToMVAvars.reset(new MVAvars(input.era.c_str()));
 
     // which btagger to use
-    btagger = "DeepJet";
+//    btagger = "DeepJet";
+    btagger = "DeepCSV"; // added by Wei
 
     // set CSVWp 
     pointerToMVAvars->SetWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, btagger));

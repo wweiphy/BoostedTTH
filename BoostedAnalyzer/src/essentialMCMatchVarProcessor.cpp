@@ -156,7 +156,8 @@ void essentialMCMatchVarProcessor::Process(const InputCollections& input,Variabl
   int nGoodTagsM=0;
   int nMisTagsM=0;
   for(auto j=input.selectedJets.begin(); j!=input.selectedJets.end(); j++){
-      if (!(CSVHelper::PassesCSV(*j,"DeepJet", CSVHelper::CSVwp::Medium, input.era))) continue;
+//      if (!(CSVHelper::PassesCSV(*j,"DeepJet", CSVHelper::CSVwp::Medium, input.era))) continue;
+      if (!(CSVHelper::PassesCSV(*j,"DeepCSV", CSVHelper::CSVwp::Medium, input.era))) continue; // added by Wei
       if(abs(j->hadronFlavour())==5) nGoodTagsM++;
       if(abs(j->hadronFlavour())!=5) nMisTagsM++;
   }  
@@ -592,7 +593,8 @@ bool dfirst=true;
         }
 
       const char *workingPoint = "M";
-      if(!(jet_was_matched) && CSVHelper::PassesCSV(*genj,"DeepJet",CSVHelper::CSVwp::Medium,input.era) && iBB > 0) {
+//      if(!(jet_was_matched) && CSVHelper::PassesCSV(*genj,"DeepJet",CSVHelper::CSVwp::Medium,input.era) && iBB > 0) {
+        if(!(jet_was_matched) && CSVHelper::PassesCSV(*genj,"DeepCSV",CSVHelper::CSVwp::Medium,input.era) && iBB > 0) { // added by Wei
         // additional unmatched b-jets
         if( first_add_jet ) {
           // has_b

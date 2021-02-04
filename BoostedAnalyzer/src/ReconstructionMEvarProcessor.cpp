@@ -105,8 +105,10 @@ void ReconstructionMEvarProcessor::Process(const InputCollections& input,Variabl
     vector<float> jetcsvs;
     int ntags=0;
     for(auto j=input.selectedJets.begin(); j!=input.selectedJets.end(); j++){
-	jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepJet"));
-	if(CSVHelper::PassesCSV(*j, "DeepJet", CSVHelper::CSVwp::Medium,input.era)) ntags++;
+//	jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepJet"));
+    jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepCSV")); // added by Wei
+//	if(CSVHelper::PassesCSV(*j, "DeepJet", CSVHelper::CSVwp::Medium,input.era)) ntags++;
+    if(CSVHelper::PassesCSV(*j, "DeepCSV", CSVHelper::CSVwp::Medium,input.era)) ntags++; // added by Wei
     }
     if(ntags<2) return;
     if(input.selectedElectrons.size()+input.selectedMuons.size()<1) return;

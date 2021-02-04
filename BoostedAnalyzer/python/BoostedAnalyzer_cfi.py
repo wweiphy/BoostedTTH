@@ -24,8 +24,10 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
     dataEra = cms.string("2017"),
 
     # b-tag SF, defined in Weights_cff
-    bTagSFs = BTagSFs94XDeepJet2017,
+#    bTagSFs = BTagSFs94XDeepJet2017,
 
+    bTagSFs = BTagSFs94XDeepCSV, # added by Wei
+    
     # PU weights, defined in Weights_cff
     nominalPUWeight = NominalPUWeight2017,
     additionalPUWeights = AdditionalPUWeights2017,
@@ -68,7 +70,8 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
 BoostedAnalyzer2016 = BoostedAnalyzer2017.clone(
     LeptonSelection = LeptonSelectionMC2016,    
     dataEra = cms.string("2016"),
-    bTagSFs = BTagSFs94XDeepJet2016,
+#    bTagSFs = BTagSFs94XDeepJet2016,
+    bTagSFs = BTagSFs94XDeepCSV, # added by Wei
     leptonTriggerSFInfos = TriggerSFs2016,
     nominalPUWeight = NominalPUWeight2016,
     additionalPUWeights = AdditionalPUWeights2016,
@@ -80,7 +83,8 @@ BoostedAnalyzer2016 = BoostedAnalyzer2017.clone(
 BoostedAnalyzer2018 = BoostedAnalyzer2017.clone(
     LeptonSelection = LeptonSelectionMC2018,
     dataEra = cms.string("2018"),
-    bTagSFs = BTagSFs94XDeepJet2018,
+#    bTagSFs = BTagSFs94XDeepJet2018,
+    bTagSFs = BTagSFs94XDeepCSV, # added by Wei
     leptonTriggerSFInfos = TriggerSFs2018,
     nominalPUWeight = NominalPUWeight2018,
     additionalPUWeights = AdditionalPUWeights2018,

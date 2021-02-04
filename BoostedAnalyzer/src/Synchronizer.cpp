@@ -60,7 +60,8 @@ void Synchronizer::DumpSyncExe(const InputCollections& input,
     std::vector<int> dumpAlwaysEvents)
 {
 
-    pointerToMVAvars->SetWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
+    pointerToMVAvars->SetWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepCSV")); // added by Wei
+//    pointerToMVAvars->SetWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
 
     edm::Handle<std::vector<pat::Muon>> h_rawMu;
     input.iEvent.getByToken(rawMuToken, h_rawMu);
@@ -356,7 +357,8 @@ void Synchronizer::DumpSyncExe(const InputCollections& input,
     std::vector<double> jetcsvs;
 
     for (auto j = input.selectedJets.begin(); j != input.selectedJets.end(); j++) {
-        jetcsvs.push_back(CSVHelper::GetJetCSV(*j, "DeepJet"));
+        jetcsvs.push_back(CSVHelper::GetJetCSV(*j, "DeepCSV")); // added by Wei
+//        jetcsvs.push_back(CSVHelper::GetJetCSV(*j, "DeepJet"));
     }
     // cout << event << endl;
     // if (event == 6249439 or event == 7886581) {
@@ -410,7 +412,8 @@ void Synchronizer::DumpSyncExe(const InputCollections& input,
         jet1_pt = input.selectedJets.at(0).pt();
         jet1_eta = input.selectedJets.at(0).eta();
         jet1_phi = input.selectedJets.at(0).phi();
-        jet1_csv = CSVHelper::GetJetCSV(input.selectedJets.at(0), "DeepJet");
+//        jet1_csv = CSVHelper::GetJetCSV(input.selectedJets.at(0), "DeepJet");
+        jet1_csv = CSVHelper::GetJetCSV(input.selectedJets.at(0), "DeepCSV"); //added by Wei
         if (input.selectedJets.at(0).hasUserInt("deterministicSeed"))
             jet1_seed = (uint32_t)input.selectedJets.at(0).userInt("deterministicSeed");
         if (input.selectedJets.at(0).hasUserInt("pileupJetId:fullId"))
@@ -440,7 +443,8 @@ void Synchronizer::DumpSyncExe(const InputCollections& input,
         jet2_pt = input.selectedJets.at(1).pt();
         jet2_eta = input.selectedJets.at(1).eta();
         jet2_phi = input.selectedJets.at(1).phi();
-        jet2_csv = CSVHelper::GetJetCSV(input.selectedJets.at(1), "DeepJet");
+        jet2_csv = CSVHelper::GetJetCSV(input.selectedJets.at(1), "DeepCSV"); // added by Wei
+//        jet2_csv = CSVHelper::GetJetCSV(input.selectedJets.at(1), "DeepJet");
         if (input.selectedJets.at(1).hasUserInt("deterministicSeed"))
             jet2_seed = (uint32_t)input.selectedJets.at(1).userInt("deterministicSeed");
         if (input.selectedJets.at(1).hasUserInt("pileupJetId:fullId"))
@@ -466,27 +470,32 @@ void Synchronizer::DumpSyncExe(const InputCollections& input,
     if (input.selectedJetsLoose.size() > 2) {
         jet3_pt = input.selectedJetsLoose.at(2).pt();
         jet3_eta = input.selectedJetsLoose.at(2).eta();
-        jet3_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(2), "DeepJet");
+        jet3_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(2), "DeepCSV"); // added by Wei
+//        jet3_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(2), "DeepJet");
     }
     if (input.selectedJetsLoose.size() > 3) {
         jet4_pt = input.selectedJetsLoose.at(3).pt();
         jet4_eta = input.selectedJetsLoose.at(3).eta();
-        jet4_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(3), "DeepJet");
+        jet4_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(3), "DeepCSV"); // added by Wei
+//        jet4_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(3), "DeepJet");
     }
     if (input.selectedJetsLoose.size() > 4) {
         jet5_pt = input.selectedJetsLoose.at(4).pt();
         jet5_eta = input.selectedJetsLoose.at(4).eta();
-        jet5_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(4), "DeepJet");
+//        jet5_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(4), "DeepJet");
+        jet5_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(4), "DeepCSV"); // added by Wei
     }
     if (input.selectedJetsLoose.size() > 5) {
         jet6_pt = input.selectedJetsLoose.at(5).pt();
         jet6_eta = input.selectedJetsLoose.at(5).eta();
-        jet6_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(5), "DeepJet");
+//        jet6_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(5), "DeepJet");
+        jet6_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(5), "DeepCSV"); // added by Wei
     }
     if (input.selectedJetsLoose.size() > 6) {
         jet7_pt = input.selectedJetsLoose.at(6).pt();
         jet7_eta = input.selectedJetsLoose.at(6).eta();
-        jet7_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(6), "DeepJet");
+//        jet7_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(6), "DeepJet");
+        jet7_csv = CSVHelper::GetJetCSV(input.selectedJetsLoose.at(6), "DeepCSV");// added by Wei
     }
     n_leps_tight = input.selectedMuons.size() + input.selectedElectrons.size();
     n_leps_dl = input.selectedMuonsDL.size() + input.selectedElectronsDL.size();
@@ -532,14 +541,16 @@ void Synchronizer::DumpSyncExe(const InputCollections& input,
         n_jets = int(input.selectedJetsLoose.size());
         n_btags = 0;
         for (auto jet = input.selectedJetsLoose.begin(); jet != input.selectedJetsLoose.end(); jet++) {
-            if (CSVHelper::PassesCSV(*jet, "DeepJet", CSVHelper::CSVwp::Medium, input.era))
+//            if (CSVHelper::PassesCSV(*jet, "DeepJet", CSVHelper::CSVwp::Medium, input.era))
+            if (CSVHelper::PassesCSV(*jet, "DeepCSV", CSVHelper::CSVwp::Medium, input.era)) // added by Wei
                 n_btags++;
         }
     } else {
         n_jets = int(input.selectedJets.size());
         n_btags = 0;
         for (auto jet = input.selectedJets.begin(); jet != input.selectedJets.end(); jet++) {
-            if (CSVHelper::PassesCSV(*jet, "DeepJet", CSVHelper::CSVwp::Medium, input.era))
+//            if (CSVHelper::PassesCSV(*jet, "DeepJet", CSVHelper::CSVwp::Medium, input.era))
+            if (CSVHelper::PassesCSV(*jet, "DeepCSV", CSVHelper::CSVwp::Medium, input.era)) // added by Wei
                 n_btags++;
         }
     }

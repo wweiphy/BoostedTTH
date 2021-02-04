@@ -176,7 +176,8 @@ void MVAVarProcessor::Init(const InputCollections& input,VariableContainer& vars
 void MVAVarProcessor::Process(const InputCollections& input,VariableContainer& vars){
   if(!initialized) cerr << "tree processor not initialized" << endl;
 
-  const char* btagger="DeepJet";
+//  const char* btagger="DeepJet";
+    const char* btagger="DeepCSV"; // added by wei
   std::vector<pat::Jet> selectedTaggedJets;
   std::vector<pat::Jet> selectedTaggedJetsT;
   std::vector<pat::Jet> selectedTaggedJetsL;
@@ -769,7 +770,8 @@ void MVAVarProcessor::Process(const InputCollections& input,VariableContainer& v
   vector<double> jetcsvs;
   for(uint i=0; i<input.selectedJets.size(); i++){
       jettvecs.push_back(BoostedUtils::GetTLorentzVector(input.selectedJets[i].p4()));
-      jetcsvs.push_back(CSVHelper::GetJetCSV(input.selectedJets[i],"DeepJet"));
+//      jetcsvs.push_back(CSVHelper::GetJetCSV(input.selectedJets[i],"DeepJet"));
+      jetcsvs.push_back(CSVHelper::GetJetCSV(input.selectedJets[i],"DeepCSV")); // added by Wei
   }
   
   std::vector<unsigned int> out_best_perm;

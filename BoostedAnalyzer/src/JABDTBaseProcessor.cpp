@@ -59,8 +59,11 @@ void JABDTBaseProcessor::Process(const InputCollections& input,VariableContainer
   }
   if(input.selectedMuons.size()+input.selectedElectrons.size()!=1) return;
 
-  pointerToEvenHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
-  pointerToOddHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
+//  pointerToEvenHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
+//  pointerToOddHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
+    
+    pointerToEvenHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepCSV")); // added by Wei
+    pointerToOddHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepCSV")); // added by Wei
 
   vector<TLorentzVector> lepvecs=BoostedUtils::GetTLorentzVectors(BoostedUtils::GetLepVecs(input.selectedElectrons,input.selectedMuons));
   vector<TLorentzVector> jetvecs=BoostedUtils::GetTLorentzVectors(BoostedUtils::GetJetVecs(input.selectedJets));
@@ -69,10 +72,12 @@ void JABDTBaseProcessor::Process(const InputCollections& input,VariableContainer
   vector<double> jetcsvs;
   vector<double> loose_jetcsvs;
   for(auto j=input.selectedJets.begin(); j!=input.selectedJets.end(); j++){
-      jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepJet"));
+      jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepCSV")); //added by Wei
+//      jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepJet"));
   }
   for(auto j=input.selectedJetsLoose.begin(); j!=input.selectedJetsLoose.end(); j++){
-      loose_jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepJet"));
+      loose_jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepCSV")); // added by wei
+//      loose_jetcsvs.push_back(CSVHelper::GetJetCSV(*j,"DeepJet"));
   }
   //do cross evaluation
   std::map<std::string, float> bestestimate;

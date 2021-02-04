@@ -93,7 +93,8 @@ void TTBBStudienProcessor::processTopDR(const InputCollections& input, VariableC
     std::vector<pat::Jet> selectedTaggedJets;
     std::vector<pat::Jet> selectedUntaggedJets;
     for(std::vector<pat::Jet>::const_iterator itJet = input.selectedJets.begin(); itJet != input.selectedJets.end(); ++itJet){
-        if(CSVHelper::PassesCSV(*itJet, "DeepJet", CSVHelper::CSVwp::Medium,input.era)) selectedTaggedJets.push_back(*itJet);
+//        if(CSVHelper::PassesCSV(*itJet, "DeepJet", CSVHelper::CSVwp::Medium,input.era)) selectedTaggedJets.push_back(*itJet);
+        if(CSVHelper::PassesCSV(*itJet, "DeepCSV", CSVHelper::CSVwp::Medium,input.era)) selectedTaggedJets.push_back(*itJet); // added by Wei
         else selectedUntaggedJets.push_back(*itJet);
     }
 
@@ -282,7 +283,8 @@ void TTBBStudienProcessor::initAmountTags(const InputCollections& input, Variabl
 void TTBBStudienProcessor::processAmountTags(const InputCollections& input, VariableContainer& vars) {
     int nTotalTags = 0, nGoodTags=0, nMisTags=0;
     for(auto j=input.selectedJets.begin(); j!=input.selectedJets.end(); j++){
-      if (!(CSVHelper::PassesCSV(*j, "DeepJet", CSVHelper::CSVwp::Medium,input.era))) continue;
+//      if (!(CSVHelper::PassesCSV(*j, "DeepJet", CSVHelper::CSVwp::Medium,input.era))) continue;
+        if (!(CSVHelper::PassesCSV(*j, "DeepCSV", CSVHelper::CSVwp::Medium,input.era))) continue; // added by Wei
       nTotalTags++;
       if(abs(j->hadronFlavour())==5) nGoodTags++;
       if(abs(j->hadronFlavour())!=5) nMisTags++;

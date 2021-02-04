@@ -118,7 +118,8 @@ void SlimmedNtuples::Process(const std::vector<InputCollections>& input,Variable
     vars.FillVars( "jet_csv" , iJet , CSVHelper::GetJetCSV(jet,"CSVv2") );
     vars.FillVars( "jet_deepcsv" , iJet , CSVHelper::GetJetCSV(jet,"DeepCSV") );
     vars.FillVars( "jet_deepjet" , iJet , CSVHelper::GetJetCSV(jet,"DeepJet") );
-    if(CSVHelper::PassesCSV(jet,"DeepJet",CSVHelper::CSVwp::Medium,input_nom.era)) iBtag++;
+//    if(CSVHelper::PassesCSV(jet,"DeepJet",CSVHelper::CSVwp::Medium,input_nom.era)) iBtag++;
+    if(CSVHelper::PassesCSV(jet,"DeepCSV",CSVHelper::CSVwp::Medium,input_nom.era)) iBtag++; // added by Wei
     // save the product of the nominal jec, meaning JESnominal*JERnominal
     vars.FillVars( "jet_corr" , iJet , jes_nom*jer_nom );
     vars.FillVars( "jet_corr_JER" , iJet , jer_nom );
