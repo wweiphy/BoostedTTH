@@ -147,6 +147,9 @@ void essentialMCMatchVarProcessor::Process(const InputCollections& input,Variabl
   if(input.sampleType == SampleType::ttb) iBB = 1;
   if(input.sampleType == SampleType::tt2b) iBB = 2;
   if(input.sampleType == SampleType::ttcc) iCC = 1;
+    
+  if(input.sampleType == SampleType::ttbbb) iBB = 4; // added by Wei
+  if(input.sampleType == SampleType::tt4b) iBB = 5; // added by Wei
   
   vars.FillVar( "GenEvt_I_TTPlusCC",iCC );
   vars.FillVar( "GenEvt_I_TTPlusBB",iBB );
