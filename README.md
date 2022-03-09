@@ -39,6 +39,13 @@ Do for example:
 
     # needed to run ecalBadCalibReducedMINIAODFilter
     git cms-addpkg RecoMET/METFilters
+    
+    # needed to include tt+4b and tt+bbb categorization
+    git cms-addpkg TopQuarkAnalysis/TopTools
+    git remote add wwei git@github.com:wweiphy/cmssw.git
+    git fetch wwei
+    git checkout wwei/ttHH_with_tt4b
+    or you can add the changes in your own cmssw repository: https://github.com/wweiphy/cmssw/commit/e305554a08d0dd22b43135db34a931104d44108a
 
     # needed to rerun DeepJet
     git cms-addpkg RecoBTag/TensorFlow
