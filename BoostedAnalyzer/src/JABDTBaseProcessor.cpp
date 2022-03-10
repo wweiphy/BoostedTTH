@@ -61,6 +61,8 @@ void JABDTBaseProcessor::Process(const InputCollections& input,VariableContainer
 
   pointerToEvenHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
   pointerToOddHypothesisCombinatorics->SetBtagWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, "DeepJet"));
+  pointerToEvenHypothesisCombinatorics->SetBtagLooseWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Loose, "DeepJet"));
+  pointerToOddHypothesisCombinatorics->SetBtagLooseWP( CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Loose, "DeepJet"));
 
   vector<TLorentzVector> lepvecs=BoostedUtils::GetTLorentzVectors(BoostedUtils::GetLepVecs(input.selectedElectrons,input.selectedMuons));
   vector<TLorentzVector> jetvecs=BoostedUtils::GetTLorentzVectors(BoostedUtils::GetJetVecs(input.selectedJets));
@@ -78,7 +80,7 @@ void JABDTBaseProcessor::Process(const InputCollections& input,VariableContainer
   std::map<std::string, float> bestestimate;
   long evt_id = input.eventInfo.evt;
   if(evt_id % 2 == 0){
-   bestestimate= pointerToOddHypothesisCombinatorics->GetBestPermutation(lepvecs, loose_jetvecs, loose_jetcsvs, metP4);
+   bestestimate= pointerToOddHypothesisCombinatorics->GetBestPermutation(lepvecs, loose_jetvecs, loose_jetcsvs, metP4); // classifier/hypothesiscombinatorics
   }
   else{
     bestestimate= pointerToEvenHypothesisCombinatorics->GetBestPermutation(lepvecs, loose_jetvecs, loose_jetcsvs, metP4);

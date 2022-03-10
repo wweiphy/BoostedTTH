@@ -97,6 +97,7 @@
 #include "BoostedTTH/BoostedAnalyzer/interface/JABDTthqProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/JABDTthwProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/JABDTtthProcessor.hpp"
+#include "BoostedTTH/BoostedAnalyzer/interface/JABDTthhProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/essentialRecoVarProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/essentialMCMatchVarProcessor.hpp"
 #include "BoostedTTH/BoostedAnalyzer/interface/BoostedJetVarProcessor.hpp"
@@ -514,6 +515,9 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
     if(std::find(processorNames.begin(),processorNames.end(),"JABDTtthProcessor")!=processorNames.end()) {
         treewriter->AddTreeProcessor(new JABDTtthProcessor(iConfig),"JABDTtthProcessor");
     }
+    if(std::find(processorNames.begin(),processorNames.end(),"JABDTthhProcessor")!=processorNames.end()) {
+        treewriter->AddTreeProcessor(new JABDTthhProcessor(iConfig),"JABDTthhProcessor");
+    }
 
     //if(std::find(processorNames.begin(),processorNames.end(),"BoostedJetVarProcessor")!=processorNames.end()) {
     //    treewriter->AddTreeProcessor(new BoostedJetVarProcessor(&helper),"BoostedJetVarProcessor");
@@ -807,17 +811,26 @@ void BoostedAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& i
     }
     GenTopEvent genTopEvt=genTopEvtProd.Produce(iEvent,useGenHadronMatch,!(!isData&&(foundT||foundTbar)));
     int ttid = genTopEvt.IsFilled()? genTopEvt.GetTTxIdFromProducer() : -1;
+//    https://github.com/leonidasprado/cmssw/blob/cmssw_leonidas/TopQuarkAnalysis/TopTools/plugins/GenTtbarCategorizer.cc#L314
+    
+//    int ttid = genTopEvt.IsFilled()? genTopEvt.GetTTxId(true) : -1;
+//    BoostedTTH/BoostedAnalyzer/interface/GenTopEvent.hpp
 
     SampleType sampleType= SampleType::nonttbkg;
     if(isData) sampleType = SampleType::data;
     else if(foundT&&foundTbar&&foundHiggs) sampleType = SampleType::tth;
     else if(foundT&&foundTbar){
-	sampleType =SampleType::ttl;
-	if(ttid==51) sampleType = SampleType::ttb;
-	else if(ttid==52) sampleType = SampleType::tt2b;
-	else if(ttid==53||ttid==54||ttid==55) sampleType = SampleType::ttbb;
-	else if(ttid==41||ttid==42) sampleType = SampleType::ttcc;
-	else if(ttid==43||ttid==44||ttid==45) sampleType = SampleType::ttcc;
+        sampleType =SampleType::ttl;
+        if(ttid==51) sampleType = SampleType::ttb;
+        else if(ttid==52) sampleType = SampleType::tt2b;
+        else if(ttid==53||ttid==54||ttid==55) sampleType = SampleType::ttbb;
+        else if(ttid==41||ttid==42) sampleType = SampleType::ttcc;
+        else if(ttid==43||ttid==44||ttid==45) sampleType = SampleType::ttcc;
+        else if(ttid==63||ttid==64||ttid==65) sampleType = SampleType::ttbbb;
+        else if(ttid==73||ttid==74||ttid==75) sampleType = SampleType::tt4b;
+        
+        // numbers are got from GenTopEvent.cpp L1425-L1461
+        
     }
     else if(((foundT&&!foundTbar)||(!foundT&&foundTbar))&&foundHiggs) sampleType = SampleType::thq;
     

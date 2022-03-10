@@ -6,7 +6,9 @@ essentialRecoVarProcessor::essentialRecoVarProcessor()
 {
     // ReconstructedVars(bool ttH, bool ttZ)
     // arguments activate chi2based ttH and ttZ reconstruction, also HiggOnly and ZOnly
-    pointerToRecoVars.reset(new ReconstructedVars(false, false, true, false));
+    pointerToRecoVars.reset(new ReconstructedVars(false, true, true, true, true));
+    // ReconstructedVars::ReconstructedVars(bool ttH, bool ttZ, bool Higgs, bool Z, bool ZH)
+    // bool Higgs = True
 }
 
 essentialRecoVarProcessor::~essentialRecoVarProcessor() {}
@@ -20,6 +22,8 @@ void essentialRecoVarProcessor::Init(const InputCollections &input, VariableCont
 
     // set CSVWp 
     pointerToRecoVars->SetWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Medium, btagger));
+    
+    pointerToRecoVars->SetLooseWP(CSVHelper::GetWP(input.era, CSVHelper::CSVwp::Loose, btagger));
 
     // initialize vars from common classifier
     map<string, double> varMap = pointerToRecoVars->GetVariables();
@@ -43,7 +47,7 @@ void essentialRecoVarProcessor::Process(const InputCollections &input, VariableC
     // jet vecs
     std::vector<math::XYZTLorentzVector> jetvecs = BoostedUtils::GetJetVecs(input.selectedJets);
     vector<TLorentzVector> jetvecsTL = BoostedUtils::GetTLorentzVectors(jetvecs);
-
+    
     // lep vecs
     vector<TLorentzVector> lepvecs = BoostedUtils::GetTLorentzVectors(BoostedUtils::GetLepVecs(input.selectedElectrons, input.selectedMuons));
 

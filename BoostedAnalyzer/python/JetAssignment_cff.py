@@ -26,6 +26,10 @@ JetAssignment2017 = cms.PSet(
     ttH_even_weightpath = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/even_ttH/JAreco_expert_BDT.weights.xml"),
     ttH_odd_weightpath = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/odd_ttH/JAreco_expert_BDT.weights.xml"),
     ttH_varlist = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/even_ttH/variables.csv"),
+    
+    tHH_even_weightpath = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/even_tHH/JAreco_expert_BDT.weights.xml"),
+    tHH_odd_weightpath = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/odd_tHH/JAreco_expert_BDT.weights.xml"),
+    tHH_varlist = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/even_tHH/variables.csv"),
 
     thq_even_weightpath = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/even_tHq/JAreco_expert_BDT.weights.xml"),
     thq_odd_weightpath = cms.string("BoostedTTH/BoostedAnalyzer/data/bdtweights/2017/odd_tHq/JAreco_expert_BDT.weights.xml"),

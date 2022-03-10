@@ -180,8 +180,8 @@ void AK8JetProcessor::Process(const InputCollections& input, VariableContainer& 
     blep = input.genTopEvt.GetAllTopLepDecayQuarks();
     lep = input.genTopEvt.GetAllLeptons();
     nu = input.genTopEvt.GetAllNeutrinos();
-    higgs = input.genTopEvt.GetHiggs();
-    higgs_bs = input.genTopEvt.GetHiggsDecayProducts();
+    higgs = input.genTopEvt.GetHiggs1();
+    higgs_bs = input.genTopEvt.GetHiggs1DecayProducts();
   }
 
   reco::GenParticle b1;

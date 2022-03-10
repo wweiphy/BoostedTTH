@@ -147,6 +147,9 @@ void essentialMCMatchVarProcessor::Process(const InputCollections& input,Variabl
   if(input.sampleType == SampleType::ttb) iBB = 1;
   if(input.sampleType == SampleType::tt2b) iBB = 2;
   if(input.sampleType == SampleType::ttcc) iCC = 1;
+    
+  if(input.sampleType == SampleType::ttbbb) iBB = 4; // add tt+bbb
+  if(input.sampleType == SampleType::tt4b) iBB = 5; // added tt+4b
   
   vars.FillVar( "GenEvt_I_TTPlusCC",iCC );
   vars.FillVar( "GenEvt_I_TTPlusBB",iBB );
@@ -187,8 +190,8 @@ void essentialMCMatchVarProcessor::Process(const InputCollections& input,Variabl
     blep=input.genTopEvt.GetAllTopLepDecayQuarks();
     lep=input.genTopEvt.GetAllLeptons();
     nu=input.genTopEvt.GetAllNeutrinos();
-    higgs=input.genTopEvt.GetHiggs();
-    bhiggs_quarkss=input.genTopEvt.GetHiggsDecayProducts();
+    higgs=input.genTopEvt.GetHiggs1();
+    bhiggs_quarkss=input.genTopEvt.GetHiggs1DecayProducts();
   }
 
   reco::GenParticle b1;
@@ -366,7 +369,7 @@ bool dfirst=true;
     //if(blep_quark.size() > 1){ std::cout<<"MORE THAN ONE B FROM LEPTOP"<<std::endl; }
 
     //b quarks from higgs
-    std::vector<reco::GenParticle> bhiggs_quarks = input.genTopEvt.GetHiggsDecayProducts();
+    std::vector<reco::GenParticle> bhiggs_quarks = input.genTopEvt.GetHiggs1DecayProducts();
     //if(!(bhiggs_quarks.size() == 2) && !(bhiggs_quarks.size() == 0))
       //{std::cout<<"NOT ZERO OR TWO B QUARKS FROM HIGGS"<<std::endl; }
     

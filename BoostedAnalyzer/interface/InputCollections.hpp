@@ -19,7 +19,7 @@
 #include "MiniAOD/MiniAODHelper/interface/MiniAODHelper.h"
 
 
-enum SampleType{data,tth,ttl,ttbb,ttb,tt2b,ttcc,ttc,nonttbkg,thq};
+enum SampleType{data,tth,ttl,ttbb,ttb,tt2b,ttcc,ttc,nonttbkg,thq,ttbbb,tt4b};
 namespace HiggsDecay{enum HiggsDecay{NA,bb,nonbb};};
 
 

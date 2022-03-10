@@ -475,6 +475,8 @@ void GenTopEvent::FillTTdecay(const std::vector<reco::GenParticle>& prunedGenPar
     foundH = false;
     foundZ = false;
     ttXid = ttXid_;
+    int higgs_number = 0;
+    int z_number = 0;
     // loop over all the gen particles
     for (const auto& p : prunedGenParticles) {
         // find the top quark/antiquark and its decay quark
@@ -570,10 +572,15 @@ void GenTopEvent::FillTTdecay(const std::vector<reco::GenParticle>& prunedGenPar
                     lastH = false;
             }
             if (lastH) {
-                higgs = p;
+                higgs_number++;
+                if(higgs_number == 1) higgs1=p;
+                if(higgs_number == 2) higgs2=p;
+//                higgs = p;
                 for (uint i = 0; i < p.numberOfDaughters(); i++) {
-                    if (p.pdgId() == 25 && abs(p.daughter(i)->pdgId()) != 25) {
-                        higgs_decay_products.push_back(*(reco::GenParticle*)p.daughter(i));
+                    if (p.pdgId() == 25 && abs(p.daughter(i)->pdgId()) != 25 && higgs_number == 1) {
+                        higgs1_decay_products.push_back(*(reco::GenParticle*)p.daughter(i));
+                    }else if (p.pdgId() == 25 && abs(p.daughter(i)->pdgId()) != 25 && higgs_number == 2) {
+                        higgs2_decay_products.push_back(*(reco::GenParticle*)p.daughter(i));
                     }
                 }
             }
@@ -587,10 +594,15 @@ void GenTopEvent::FillTTdecay(const std::vector<reco::GenParticle>& prunedGenPar
                     lastZ = false;
             }
             if (lastZ) {
-                Z = p;
+                z_number++;
+                if(z_number == 1) Z1=p;
+                if(z_number == 2) Z2=p;
+//                Z = p;
                 for (uint i = 0; i < p.numberOfDaughters(); i++) {
-                    if (p.pdgId() == 23 && abs(p.daughter(i)->pdgId()) != 23) {
-                        Z_decay_products.push_back(*(reco::GenParticle*)p.daughter(i));               
+                    if (abs(p.pdgId()) == 23 && abs(p.daughter(i)->pdgId()) != 23 && z_number == 1) {
+                        Z1_decay_products.push_back(*(reco::GenParticle*)p.daughter(i));
+                    }else if(abs(p.pdgId()) == 23 && abs(p.daughter(i)->pdgId()) != 23 && z_number == 2) {
+                        Z2_decay_products.push_back(*(reco::GenParticle*)p.daughter(i));
                     }
                 }
             }
@@ -648,9 +660,9 @@ void GenTopEvent::Print() const
     std::cout << "top decay quark" << std::endl;
     PrintParticle(GetTopDecayQuark());
     std::cout << "higgs" << std::endl;
-    PrintParticle(GetHiggs());
+    PrintParticle(GetHiggs1());
     std::cout << "higgs decay products" << std::endl;
-    PrintParticles(GetHiggsDecayProducts());
+    PrintParticles(GetHiggs1DecayProducts());
     std::cout << "topbar" << std::endl;
     PrintParticle(GetTopBar());
     std::cout << "topbar decay quark" << std::endl;
@@ -734,19 +746,33 @@ void GenTopEvent::PrintParticles(std::vector<reco::GenParticle> ps) const
         PrintParticle(*p);
     }
 }
-reco::GenParticle GenTopEvent::GetHiggs() const
+reco::GenParticle GenTopEvent::GetHiggs1() const
 {
     assert(isFilled);
     if (!isFilled)
         std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
-    return higgs;
+    return higgs1;
 }
-reco::GenParticle GenTopEvent::GetZ() const
+reco::GenParticle GenTopEvent::GetHiggs2() const
 {
     assert(isFilled);
     if (!isFilled)
         std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
-    return Z;
+    return higgs2;
+}
+reco::GenParticle GenTopEvent::GetZ1() const
+{
+    assert(isFilled);
+    if (!isFilled)
+        std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
+    return Z1;
+}
+reco::GenParticle GenTopEvent::GetZ2() const
+{
+    assert(isFilled);
+    if (!isFilled)
+        std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
+    return Z2;
 }
 reco::GenParticle GenTopEvent::GetTop() const
 {
@@ -945,19 +971,33 @@ std::vector<reco::GenParticle> GenTopEvent::GetWQuarks() const
         return std::vector<reco::GenParticle>();
     }
 }
-std::vector<reco::GenParticle> GenTopEvent::GetHiggsDecayProducts() const
+std::vector<reco::GenParticle> GenTopEvent::GetHiggs1DecayProducts() const
 {
     assert(isFilled);
     if (!isFilled)
         std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
-    return higgs_decay_products;
+    return higgs1_decay_products;
 }
-std::vector<reco::GenParticle> GenTopEvent::GetZDecayProducts() const
+std::vector<reco::GenParticle> GenTopEvent::GetHiggs2DecayProducts() const
 {
     assert(isFilled);
     if (!isFilled)
         std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
-    return Z_decay_products;
+    return higgs2_decay_products;
+}
+std::vector<reco::GenParticle> GenTopEvent::GetZ1DecayProducts() const
+{
+    assert(isFilled);
+    if (!isFilled)
+        std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
+    return Z1_decay_products;
+}
+std::vector<reco::GenParticle> GenTopEvent::GetZ2DecayProducts() const
+{
+    assert(isFilled);
+    if (!isFilled)
+        std::cerr << "Trying to access GenTopEvent but it is not filled" << std::endl;
+    return Z2_decay_products;
 }
 reco::GenParticle GenTopEvent::GetTopDecayQuark() const
 {
@@ -1015,7 +1055,10 @@ std::vector<reco::GenParticle> GenTopEvent::GetQuarks() const
     for (auto p = wminus_decay_products.begin(); p != wminus_decay_products.end(); p++) {
         quarks.push_back(*p);
     }
-    for (auto p = higgs_decay_products.begin(); p != higgs_decay_products.end(); p++) {
+    for (auto p = higgs1_decay_products.begin(); p != higgs1_decay_products.end(); p++) {
+        quarks.push_back(*p);
+    }
+    for (auto p = higgs2_decay_products.begin(); p != higgs2_decay_products.end(); p++) {
         quarks.push_back(*p);
     }
     return quarks;
@@ -1248,7 +1291,7 @@ std::vector<math::XYZTLorentzVector> GenTopEvent::GetAllWAntiQuarkVecs() const
 
 math::XYZTLorentzVector GenTopEvent::GetHiggsVec() const
 {
-    return GetLV(GetHiggs());
+    return GetLV(GetHiggs1());
 }
 math::XYZTLorentzVector GenTopEvent::GetTopVec() const
 {
@@ -1296,7 +1339,7 @@ std::vector<math::XYZTLorentzVector> GenTopEvent::GetQuarkVecs() const
 }
 std::vector<math::XYZTLorentzVector> GenTopEvent::GetHiggsDecayProductVecs() const
 {
-    return GetLVs(GetHiggsDecayProducts());
+    return GetLVs(GetHiggs1DecayProducts());
 }
 math::XYZTLorentzVector GenTopEvent::GetTopDecayQuarkVec() const
 {
@@ -1403,7 +1446,7 @@ int GenTopEvent::GetTTxId(bool countPseudoAdditional) const
                 n_pseudocjets_double++;
         }
     }
-    // consider only the two leading hf jets
+    // consider only the two leading gen hf jets
     for (int i = 0; i < std::min(2, int(additional_b_genjets.size())); i++) {
         if (countPseudoAdditional) {
             if (additional_b_genjet_nb[i] == 1)

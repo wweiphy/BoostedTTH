@@ -3,8 +3,9 @@ import sys
 import os
 
 # To execute test, run
-#  cmsRun boostedAnalysis_cfg.py isData=False outputFile=testrun maxEvents=100 inputFiles=/store/user/mschrode/ttHTobb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/Skim-V1_3j20_1l20/170217_163603/0000/Skim_1.root
 
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_singlecore.py isData=False outputFile=ttH maxEvents=6 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear,JEReta0,JEReta1,JERpt0eta2,JERpt1eta2,JERpt0eta3,JERpt1eta3 dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/group/lpctthrun2/wwei/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/sl_skims_MC_94X_LEG_2017/210824_204207/0000/Skim_9.root
+ 
 # parse command-line arguments
 # https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideCommandLineParsing
 from FWCore.ParameterSet.VarParsing import VarParsing
@@ -159,6 +160,9 @@ process.GlobalTag.globaltag = options.globalTag
 process.load("CondCore.CondDB.CondDB_cfi")
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(False)
+
+#process.options.numberOfThreads=cms.untracked.uint32(8)
+
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.maxEvents)))
 process.source = cms.Source(  "PoolSource",
                               fileNames = cms.untracked.vstring(options.inputFiles),
@@ -171,6 +175,7 @@ process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 
 #Add producer calculating the L1 prefire weights
 # https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe
+process.load("PhysicsTools.PatUtils.L1ECALPrefiringWeightProducer_cff")
 if "2016" in options.dataEra:
     from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
     process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
@@ -475,10 +480,10 @@ process.SelectedJetProducerAK4=process.SelectedJetProducer.clone()
 # selection of the nominal jets
 process.SelectedJetProducerAK4.jets=cms.InputTag('patSmearedJetsAK4',"",process.name_())
 process.SelectedJetProducerAK4.applyCorrection=False
-process.SelectedJetProducerAK4.ptMins=[30,30]
+process.SelectedJetProducerAK4.ptMins=[20,30] # original [30, 30]
 if options.ProduceMemNtuples==True:
     process.SelectedJetProducerAK4.ptMins=[10,30]
-process.SelectedJetProducerAK4.etaMaxs=[4.7,2.4]
+process.SelectedJetProducerAK4.etaMaxs=[4.0,2.4] # original [4.7,2.4]
 process.SelectedJetProducerAK4.collectionNames=["selectedJetsLooseAK4","selectedJetsAK4"]
 process.SelectedJetProducerAK4.systematics=[""]
 process.SelectedJetProducerAK4.PUJetIDMins=["loose","loose"]
@@ -707,8 +712,9 @@ if options.isData:
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
   "JABDTttbarProcessor",
-  "JABDTthqProcessor",
-  "JABDTthwProcessor",
+  "JABDTthhProcessor",
+#  "JABDTthqProcessor",
+#  "JABDTthwProcessor",
   "JABDTtthProcessor",
   #"ReconstructionMEvarProcessor",
   #"AK8JetProcessor"
@@ -722,8 +728,9 @@ else:
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
   "JABDTttbarProcessor",
-  "JABDTthqProcessor",
-  "JABDTthwProcessor",
+  "JABDTthhProcessor",
+#  "JABDTthqProcessor",
+#  "JABDTthwProcessor",
   "JABDTtthProcessor",
   #"ReconstructionMEvarProcessor",
   #"AK8JetProcessor"

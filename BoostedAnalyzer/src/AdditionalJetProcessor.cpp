@@ -134,7 +134,7 @@ void AdditionalJetProcessor::Process(const InputCollections& input,VariableConta
       q2=input.genTopEvt.GetAllWAntiQuarks();
       std::vector<reco::GenParticle>  bhads=input.genTopEvt.GetAllTopHadDecayQuarks();
       std::vector<reco::GenParticle> bleps=input.genTopEvt.GetAllTopLepDecayQuarks();
-      std::vector<reco::GenParticle> bhiggs=input.genTopEvt.GetHiggsDecayProducts();
+      std::vector<reco::GenParticle> bhiggs=input.genTopEvt.GetHiggs1DecayProducts();
       btth.reserve(bhads.size()+bleps.size()+bhiggs.size()) ;
       btth.insert(btth.end(),bhads.begin(),bhads.end());
       btth.insert(btth.end(),bleps.begin(),bleps.end());

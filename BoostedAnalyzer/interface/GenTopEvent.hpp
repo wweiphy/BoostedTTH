@@ -11,10 +11,14 @@ public:
     GenTopEvent();
     ~GenTopEvent();
 
-    reco::GenParticle GetHiggs() const;
-    reco::GenParticle GetZ() const;
-    std::vector<reco::GenParticle> GetHiggsDecayProducts() const;
-    std::vector<reco::GenParticle> GetZDecayProducts() const;
+    reco::GenParticle GetHiggs1() const;
+    reco::GenParticle GetHiggs2() const;
+    reco::GenParticle GetZ1() const;
+    reco::GenParticle GetZ2() const;
+    std::vector<reco::GenParticle> GetHiggs1DecayProducts() const;
+    std::vector<reco::GenParticle> GetHiggs2DecayProducts() const;
+    std::vector<reco::GenParticle> GetZ1DecayProducts() const;
+    std::vector<reco::GenParticle> GetZ2DecayProducts() const;
     bool IsFilled() const;
     bool TTxIsFilled() const;
     reco::GenParticle GetTop() const;
@@ -158,7 +162,8 @@ private:
     void PrintParticle(reco::GenParticle) const;
     void PrintParticles(std::vector<reco::GenParticle>) const;
 
-    reco::GenParticle higgs;
+    reco::GenParticle higgs1;
+    reco::GenParticle higgs2;
     reco::GenParticle top;
     reco::GenParticle hard_top;
     reco::GenParticle topbar;
@@ -169,11 +174,14 @@ private:
     reco::GenParticle topbar_decay_quark;
     std::vector<reco::GenParticle> wplus_decay_products;
     std::vector<reco::GenParticle> wminus_decay_products;
-    std::vector<reco::GenParticle> higgs_decay_products;
+    std::vector<reco::GenParticle> higgs1_decay_products;
+    std::vector<reco::GenParticle> higgs2_decay_products;
 
-    // for ttZ
-    reco::GenParticle Z;
-    std::vector<reco::GenParticle> Z_decay_products;
+    // for ttZZ
+    reco::GenParticle Z1;
+    std::vector<reco::GenParticle> Z1_decay_products;
+    reco::GenParticle Z2;
+    std::vector<reco::GenParticle> Z2_decay_products;
     
     // for THW
     reco::GenParticle w_not_from_top;
