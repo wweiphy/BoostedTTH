@@ -148,13 +148,8 @@ void essentialMCMatchVarProcessor::Process(const InputCollections& input,Variabl
   if(input.sampleType == SampleType::tt2b) iBB = 2;
   if(input.sampleType == SampleType::ttcc) iCC = 1;
     
-<<<<<<< HEAD
   if(input.sampleType == SampleType::ttbbb) iBB = 4; // add tt+bbb
   if(input.sampleType == SampleType::tt4b) iBB = 5; // added tt+4b
-=======
-  if(input.sampleType == SampleType::ttbbb) iBB = 4; // added by Wei
-  if(input.sampleType == SampleType::tt4b) iBB = 5; // added by Wei
->>>>>>> 9a3ff44fd8e6118ec38a24fc8dd8a004e99b7d31
   
   vars.FillVar( "GenEvt_I_TTPlusCC",iCC );
   vars.FillVar( "GenEvt_I_TTPlusBB",iBB );
@@ -394,35 +389,19 @@ bool dfirst=true;
     //if(blep_genjet.size() > 1){ std::cout<<"MORE THAN ONE bJET FROM HADTOP"<<std::endl; }
 
     // b jets from higgs
-//    reco::GenJet bhiggs_genjet1 = input.genTopEvt.GetHiggsBBarGenJet();
-//    reco::GenJet bhiggs_genjet2 = input.genTopEvt.GetHiggsBGenJet();
-      
-    std::vector<reco::GenJet> bbarhiggs_genjet = input.genTopEvt.GetHiggsBBarGenJet();
-    std::vector<reco::GenJet> bhiggs_genjet = input.genTopEvt.GetHiggsBGenJet();
+    reco::GenJet bhiggs_genjet1 = input.genTopEvt.GetHiggsBBarGenJet();
+    reco::GenJet bhiggs_genjet2 = input.genTopEvt.GetHiggsBGenJet();
 
     // jets from W decay
     std::vector<reco::GenJet> hadw_genjets=input.genTopEvt.GetWGenJets();
     //if(!(hadw_genjets.size() == 2)){ std::cout<<"UNEQUAL TWO JETS FROM HADRONIC W"<<std::endl; }
 
-      for(uint i=0; i<bbarhiggs_genjet.size(); i++){
-          vars.FillVar( "GenHiggs_BBar_GenJet_Pt",bbarhiggs_genjet[i].pt() );
-          vars.FillVar( "GenHiggs_BBar_GenJet_Eta",bbarhiggs_genjet[i].eta() );
-          vars.FillVar( "GenHiggs_BBar_GenJet_Phi",bbarhiggs_genjet[i].phi());
-        }
-      
-      for(uint i=0; i<bhiggs_genjet.size(); i++){
-          vars.FillVar( "GenHiggs_B_GenJet_Pt",bhiggs_genjet[i].pt() );
-          vars.FillVar( "GenHiggs_B_GenJet_Eta",bhiggs_genjet[i].eta() );
-          vars.FillVar( "GenHiggs_B_GenJet_Phi",bhiggs_genjet[i].phi());
-        }
-      
-//     vars.FillVar( "GenHiggs_B1_GenJet_Pt",bhiggs_genjet1.pt() );
-//     vars.FillVar( "GenHiggs_B2_GenJet_Pt",bhiggs_genjet2.pt() );
-//     vars.FillVar( "GenHiggs_B1_GenJet_Eta",bhiggs_genjet1.eta() );
-//     vars.FillVar( "GenHiggs_B2_GenJet_Eta",bhiggs_genjet2.eta());
-//     vars.FillVar( "GenHiggs_B1_GenJet_Phi",bhiggs_genjet1.phi());
-//     vars.FillVar( "GenHiggs_B2_GenJet_Phi",bhiggs_genjet2.phi() ); // edited by Wei
-      
+     vars.FillVar( "GenHiggs_B1_GenJet_Pt",bhiggs_genjet1.pt() );
+     vars.FillVar( "GenHiggs_B2_GenJet_Pt",bhiggs_genjet2.pt() );
+     vars.FillVar( "GenHiggs_B1_GenJet_Eta",bhiggs_genjet1.eta() );
+     vars.FillVar( "GenHiggs_B2_GenJet_Eta",bhiggs_genjet2.eta());
+     vars.FillVar( "GenHiggs_B1_GenJet_Phi",bhiggs_genjet1.phi());
+     vars.FillVar( "GenHiggs_B2_GenJet_Phi",bhiggs_genjet2.phi() );
  
 //     vars.FillVar( "GenHiggs_B1_Hadron_Pt",b1_hadron.pt() );
 //     vars.FillVar( "GenHiggs_B2_Hadron_Pt",b2_hadron.pt() );
@@ -601,8 +580,7 @@ bool dfirst=true;
         }
 
       // search for b jets from higgs
-        for(uint i=0; i<bhiggs_genjet.size(); i++){
-      if( std::abs(BoostedUtils::DeltaR(genj->p4(), bhiggs_genjet[i].p4())) < dR_threshold || std::abs(BoostedUtils::DeltaR(genj->p4(), bbarhiggs_genjet[i].p4())) < dR_threshold ){
+      if( std::abs(BoostedUtils::DeltaR(genj->p4(), bhiggs_genjet1.p4())) < dR_threshold || std::abs(BoostedUtils::DeltaR(genj->p4(), bhiggs_genjet2.p4())) < dR_threshold ){
         if( first_higgs_jet ){
           // has_bH
           vars.FillVar("GenHiggs_B_inacceptance_jet",1);
@@ -614,7 +592,6 @@ bool dfirst=true;
           vars.FillVar("GenHiggs_BB_inacceptance_jet",1);
           jet_was_matched = true;
           }
-        }
         }
 
       const char *workingPoint = "M";
