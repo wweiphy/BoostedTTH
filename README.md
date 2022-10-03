@@ -32,13 +32,24 @@ Do for example:
     git cms-merge-topic yrath:deterministicSeeds_102X
 
     # adds function to easily recalculate electron/photon IDs and energy corrections
-    git cms-merge-topic cms-egamma:EgammaPostRecoTools #just adds in an extra file to have a setup function to make things easier
+    # For UL:
+    # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018#Recipe_for_running_scales_and_sm
+    
+    git cms-addpkg RecoEgamma/EgammaTools  ### essentially just checkout the package from CMSSW
+    git clone https://github.com/cms-egamma/EgammaPostRecoTools.git
+    mv EgammaPostRecoTools/python/EgammaPostRecoTools.py RecoEgamma/EgammaTools/python/.
+    git clone https://github.com/cms-data/EgammaAnalysis-ElectronTools.git EgammaAnalysis/ElectronTools/data/
+    git cms-addpkg EgammaAnalysis/ElectronTools
 
     # mitigation of EE noise to MET in 2017 data
-    git cms-merge-topic cms-met:METFixEE2017_949_v2_backport_to_102X
+    # not needed anymore for UL
+    # https://twiki.cern.ch/twiki/bin/view/CMS/JetMET#Quick_links_to_current_recommend
+    # git cms-merge-topic cms-met:METFixEE2017_949_v2_backport_to_102X
 
+    # not needed anymore for UL
+    # https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETOptionalFiltersRun2#2018_2017_data_and_MC_UL
     # needed to run ecalBadCalibReducedMINIAODFilter
-    git cms-addpkg RecoMET/METFilters
+    # git cms-addpkg RecoMET/METFilters
     
     # needed to include tt+4b and tt+bbb categorization
     git cms-addpkg TopQuarkAnalysis/TopTools
@@ -48,25 +59,28 @@ Do for example:
     or you can add the changes in your own cmssw repository: https://github.com/wweiphy/cmssw/commit/e305554a08d0dd22b43135db34a931104d44108a
 
     # needed to rerun DeepJet
-    git cms-addpkg RecoBTag/TensorFlow
-    git cherry-pick 94ceae257f846998c357fcad408986cc8a039152
+    # Not needed for UL
+    # git cms-addpkg RecoBTag/TensorFlow
+    # git cherry-pick 94ceae257f846998c357fcad408986cc8a039152
 
     # install common classifier (currently work in progress)
     mkdir TTH
     cd TTH
     git clone https://gitlab.cern.ch/wewei/CommonClassifier.git CommonClassifier -b ttHH_Run2
-    git clone https://gitlab.cern.ch/algomez/MEIntegratorStandalone.git MEIntegratorStandalone -b 10_2_X
-
-    mkdir -p $CMSSW_BASE/lib/$SCRAM_ARCH/
-    cp -R MEIntegratorStandalone/libs/* $CMSSW_BASE/lib/$SCRAM_ARCH/
-    scram setup lhapdf
-    scram setup MEIntegratorStandalone/deps/gsl.xml
+    # not needed if not using MEM
+    # git clone https://gitlab.cern.ch/algomez/MEIntegratorStandalone.git MEIntegratorStandalone -b 10_2_X
+    
+    # same reason above
+    # mkdir -p $CMSSW_BASE/lib/$SCRAM_ARCH/
+    # cp -R MEIntegratorStandalone/libs/* $CMSSW_BASE/lib/$SCRAM_ARCH/
+    # scram setup lhapdf
+    # scram setup MEIntegratorStandalone/deps/gsl.xml
     # use recent version of LHAPDF header
-    sed -i '6i#include "LHAPDF/LHAPDF.h"' MEIntegratorStandalone/interface/Integrand.h
-    sed -i '32i /*' MEIntegratorStandalone/interface/Integrand.h
-    sed -i '44i */' MEIntegratorStandalone/interface/Integrand.h
+    # sed -i '6i#include "LHAPDF/LHAPDF.h"' MEIntegratorStandalone/interface/Integrand.h
+    # sed -i '32i /*' MEIntegratorStandalone/interface/Integrand.h
+    # sed -i '44i */' MEIntegratorStandalone/interface/Integrand.h
     # install reco likelihood variables (deprecated?)
-    source CommonClassifier/setup/install_recoLikelihood.sh
+    # source CommonClassifier/setup/install_recoLikelihood.sh
 
     # install miniaod and boostedtth
     cd $CMSSWSRCDIR
