@@ -12,11 +12,11 @@ Do for example:
 
     # setup environment
     # SL6
-    #export SCRAM_ARCH="slc6_amd64_gcc700"
+    #export SCRAM_ARCH="slc6_amd64_gcc820"
     # CC7
-    export SCRAM_ARCH="slc7_amd64_gcc700"
+    export SCRAM_ARCH="slc7_amd64_gcc820"
 
-    export CMSSW_VERSION="CMSSW_10_2_18"
+    export CMSSW_VERSION="CMSSW_10_6_27"
 
     # create new CMSSW environment
     scram project $CMSSW_VERSION
