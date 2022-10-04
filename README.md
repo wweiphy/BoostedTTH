@@ -67,20 +67,19 @@ Do for example:
     mkdir TTH
     cd TTH
     git clone https://gitlab.cern.ch/wewei/CommonClassifier.git CommonClassifier -b ttHH_Run2
-    # not needed if not using MEM
-    # git clone https://gitlab.cern.ch/algomez/MEIntegratorStandalone.git MEIntegratorStandalone -b 10_2_X
+    git clone https://gitlab.cern.ch/algomez/MEIntegratorStandalone.git MEIntegratorStandalone -b 10_2_X
     
-    # same reason above
     # mkdir -p $CMSSW_BASE/lib/$SCRAM_ARCH/
-    # cp -R MEIntegratorStandalone/libs/* $CMSSW_BASE/lib/$SCRAM_ARCH/
-    # scram setup lhapdf
-    # scram setup MEIntegratorStandalone/deps/gsl.xml
+    cp -R MEIntegratorStandalone/libs/* $CMSSW_BASE/lib/$SCRAM_ARCH/
+    scram setup lhapdf
+    # modify gsl.xml file: <environment name="GSL_BASE" default="/cvmfs/cms.cern.ch/slc7_amd64_gcc700/external/gsl/2.2.1-omkpbe2"/>
+    scram setup MEIntegratorStandalone/deps/gsl.xml
     # use recent version of LHAPDF header
-    # sed -i '6i#include "LHAPDF/LHAPDF.h"' MEIntegratorStandalone/interface/Integrand.h
-    # sed -i '32i /*' MEIntegratorStandalone/interface/Integrand.h
-    # sed -i '44i */' MEIntegratorStandalone/interface/Integrand.h
+    sed -i '6i#include "LHAPDF/LHAPDF.h"' MEIntegratorStandalone/interface/Integrand.h
+    sed -i '32i /*' MEIntegratorStandalone/interface/Integrand.h
+    sed -i '44i */' MEIntegratorStandalone/interface/Integrand.h
     # install reco likelihood variables (deprecated?)
-    # source CommonClassifier/setup/install_recoLikelihood.sh
+    source CommonClassifier/setup/install_recoLikelihood.sh
 
     # install miniaod and boostedtth
     cd $CMSSWSRCDIR
