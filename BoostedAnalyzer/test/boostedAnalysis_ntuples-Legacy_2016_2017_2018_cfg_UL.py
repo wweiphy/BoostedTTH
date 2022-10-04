@@ -339,24 +339,32 @@ if options.isData:
 
 ### E/Gamma recommendations ###  
 
-### Electron scale and smearing corrections ###  
+### Electron scale and smearing corrections ### 
+# 2017UL and 2018UL already have the corrections ()
+# But scale systematics are applied to data and not to MC
+# If you are not using the samples above, or you prefer (as we recommend) to apply the scale systematics to the MC, please check the steps below for including the scale and smearing corrections on the fly in your analysis ("Recipe for running scales and smearings using EgammaPostRecoTools ").
+# https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018#Recipe_for_running_scales_and_sm
 from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 EG_era = None
 EG_corrections = None
 EG_vid = None
-if "2016" in options.dataEra:
-    EG_era = '2016-Legacy'
-    EG_corrections = False
-    EG_vid = True
-elif "2017" in options.dataEra:
-    EG_era = '2017-Nov17ReReco'
+if "2016preVFP" in options.dataEra:
+    EG_era = '2016preVFP-UL'
     EG_corrections = True
-    EG_vid = True
+    EG_vid = False
+elif "2016postVFP" in options.dataEra:
+    EG_era = '2016postVFP-UL'
+    EG_corrections = True
+    EG_vid = False
+elif "2017" in options.dataEra:
+    EG_era = '2017-UL'
+    EG_corrections = True
+    EG_vid = False
     # EG_corrections = False
     # EG_vid = False
 elif "2018" in options.dataEra:
-    EG_era = '2018-Prompt'
-    EG_corrections = False
+    EG_era = '2018-UL'
+    EG_corrections = True
     EG_vid = False
 else:
     raise Exception( "dataEra "+options.dataEra+" not supported for Egamma tools: USE dataEra=2016/2017/2018")
@@ -367,7 +375,6 @@ setupEgammaPostRecoSeq(process,
                        era=EG_era
                        )
 # a sequence egammaPostRecoSeq has now been created and should be added to your path, eg process.p=cms.Path(process.egammaPostRecoSeq)
-# electronCollection = cms.InputTag("slimmedElectrons","",process.name_())
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------- #
 
@@ -488,21 +495,35 @@ process.CorrectedJetProducerAK4=process.SelectedJetProducerAK4.clone(jets=jetCol
 
 # smearing of corrected jets -- producers that create the nominal and up/down JER correction
 # jer shift of nominal sample
-if "2016" in options.dataEra:
-    jerResFileAK4 = "Summer16_25nsV1_MC_PtResolution_AK4PFchs.txt"
+# no files for Summer20UL campaign 
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution#Smearing_procedures
+# https://github.com/cms-jet/JRDatabase/tree/master/textFiles
+if "2016preVFP" in options.dataEra:
+    jerResFileAK4 = "Summer20UL16APV_JRV3_MC_PtResolution_AK4PFchs.txt"
+    # jerEtaFileAK4 = "Summer20UL16APV_JRV3_MC_EtaResolution_AK4PFchs.txt"
+    # jerPhiFileAK4 = "Summer20UL16APV_JRV3_MC_PhiResolution_AK4PFchs.txt"
     # jerResFileAK8 = "Summer16_25nsV1_MC_PtResolution_AK8PFchs.txt"
-    jerSFFileAK4 = "Summer16_25nsV1_MC_SF_AK4PFchs.txt"
+    jerSFFileAK4 = "Summer20UL16APV_JRV3_MC_SF_AK4PFchs.txt"
+    # jerSFFileAK8 = "Summer16_25nsV1_MC_SF_AK8PFchs.txt"
+elif "2016postVFP" in options.dataEra:
+    jerResFileAK4 = "Summer20UL16_JRV3_MC_PtResolution_AK4PFchs.txt"
+    # jerEtaFileAK4 = "Summer20UL16_JRV3_MC_EtaResolution_AK4PFchs.txt"
+    # jerPhiFileAK4 = "Summer20UL16_JRV3_MC_PhiResolution_AK4PFchs.txt"
+    # jerResFileAK8 = "Summer16_25nsV1_MC_PtResolution_AK8PFchs.txt"
+    jerSFFileAK4 = "Summer20UL16_JRV3_MC_SF_AK4PFchs.txt"
     # jerSFFileAK8 = "Summer16_25nsV1_MC_SF_AK8PFchs.txt"
 elif "2017" in options.dataEra:
-    jerResFileAK4 = "Fall17_V3_MC_PtResolution_AK4PFchs.txt"
+    jerResFileAK4 = "Summer19UL17_JRV2_MC_PtResolution_AK4PFchs.txt"
     # jerResFileAK8 = "Fall17_V3_MC_PtResolution_AK8PFchs.txt"
-    jerSFFileAK4 = "Fall17_V3_MC_SF_AK4PFchs.txt"
+    jerSFFileAK4 = "Summer19UL17_JRV2_MC_SF_AK4PFchs.txt"
     # jerSFFileAK8 = "Fall17_V3_MC_SF_AK8PFchs.txt"
 elif "2018" in options.dataEra:
-    jerResFileAK4 = "Autumn18_V7_MC_PtResolution_AK4PFchs.txt"
-    # jerResFileAK8 = "Autumn18_V7_MC_PtResolution_AK8PFchs.txt"
-    jerSFFileAK4 = "Autumn18_V7_MC_SF_AK4PFchs.txt"
-    # jerSFFileAK8 = "Autumn18_V7_MC_SF_AK8PFchs.txt"
+    jerResFileAK4 = "Summer19UL18_JRV2_MC_PtResolution_AK4PFchs.txt"
+    # jerEtaFileAK4 = "Summer19UL18_JRV2_MC_EtaResolution_AK4PFchs.txt"
+    # jerPhiFileAK4 = "Summer19UL18_JRV2_MC_PhiResolution_AK4PFchs.txt"
+    # jerResFileAK8 = "Summer16_25nsV1_MC_PtResolution_AK8PFchs.txt"
+    jerSFFileAK4 = "Summer19UL18_JRV2_MC_SF_AK4PFchs.txt"
+    # jerSFFileAK8 = "Summer16_25nsV1_MC_SF_AK8PFchs.txt"
 else:
     raise Exception("NO JER FILES SPECIFIED: USE dataEra=2016/2017/2018")
 
@@ -528,20 +549,23 @@ process.patSmearedJetsAK4 = cms.EDProducer("SmearedPATJetProducer",
 for s in systsJER:
     v=0
     if s=='JERup': v=+1
-    elif s=='JEReta0up': v=+2
-    elif s=='JEReta1up': v=+3
-    elif s=='JERpt0eta2up': v=+4
-    elif s=='JERpt1eta2up': v=+5
-    elif s=='JERpt0eta3up': v=+6
-    elif s=='JERpt1eta3up': v=+7
+    # https://github.com/cms-sw/cmssw/blob/CMSSW_10_6_X/PhysicsTools/PatUtils/interface/SmearedJetProducerT.h
+    # default producer does not have separate JER variaitons
+    # git cms-merge-topic sebwieland:CMSSW_10_2_X_SmearedJetProducer
+    # elif s=='JEReta0up': v=+2
+    # elif s=='JEReta1up': v=+3
+    # elif s=='JERpt0eta2up': v=+4
+    # elif s=='JERpt1eta2up': v=+5
+    # elif s=='JERpt0eta3up': v=+6
+    # elif s=='JERpt1eta3up': v=+7
 
     if s=='JERdown': v=-1
-    elif s=='JEReta0down': v=-2
-    elif s=='JEReta1down': v=-3
-    elif s=='JERpt0eta2down': v=-4
-    elif s=='JERpt1eta2down': v=-5
-    elif s=='JERpt0eta3down': v=-6
-    elif s=='JERpt1eta3down': v=-7
+    # elif s=='JEReta0down': v=-2
+    # elif s=='JEReta1down': v=-3
+    # elif s=='JERpt0eta2down': v=-4
+    # elif s=='JERpt1eta2down': v=-5
+    # elif s=='JERpt0eta3down': v=-6
+    # elif s=='JERpt1eta3down': v=-7
     
     setattr(process,'patSmearedJetsAK4'+s,process.patSmearedJetsAK4.clone(variation=v,src=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4")))
     # setattr(process,'patSmearedJetsAK8'+s,process.patSmearedJetsAK8.clone(variation=v,src=cms.InputTag("CorrectedJetProducerAK8:correctedJetsAK8")))
@@ -604,6 +628,8 @@ process.BoostedAnalyzer.systematics=variations
 process.BoostedAnalyzer.generatorName=options.generatorName
 
 if options.isData and options.useJson:
+    # TODO - change the lumi files when data is included
+    # https://twiki.cern.ch/twiki/bin/view/CMS/LumiRecommendationsRun2#2018
     import FWCore.PythonUtilities.LumiList as LumiList
     if "2016" in options.dataEra:
         process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_271036-284044_13TeV_ReReco_07Aug2017_Collisions16_JSON.txt").getVLuminosityBlockRange()
@@ -634,7 +660,7 @@ if options.isData:
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
   "JABDTttbarProcessor",
-    "JABDTthhProcessor",
+  "JABDTthhProcessor",  
 #  "JABDTtthProcessor",
   )
 else:
@@ -646,7 +672,7 @@ else:
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
   "JABDTttbarProcessor",
-      "JABDTthhProcessor",
+  "JABDTthhProcessor",
 #  "JABDTtthProcessor",
   )
 if (process.BoostedAnalyzer.taggingSelection): process.BoostedAnalyzer.processorNames.append("SelectionTagProcessor")
