@@ -46,7 +46,7 @@ options.parseArguments()
 
 # re-set some defaults
 if options.maxEvents is -1: # maxEvents is set in VarParsing class by default to -1
-    options.maxEvents = 1001 # reset for testing
+    options.maxEvents = 1000 # reset for testing
 
 if options.isData:
     if "2016" in options.dataEra:
@@ -249,7 +249,8 @@ elif "2018" in options.dataEra:
 # Set up JetCorrections chain to be used in MiniAODHelper
 # Note: name is hard-coded to ak4PFchsL1L2L3 and does not
 # necessarily reflect actual corrections level
-
+# TODO - figure out the funtion of following :
+#
 from JetMETCorrections.Configuration.JetCorrectionServices_cff import *
 process.ak4PFCHSL1Fastjet = cms.ESProducer(
   'L1FastjetCorrectionESProducer',
@@ -722,7 +723,7 @@ if not options.isData and not options.isBoostedMiniAOD:
     process.p *= process.genParticlesForJetsNoNu*process.ak4GenJetsCustom*process.selectedHadronsAndPartons*process.genJetFlavourInfos*process.matchGenBHadron*process.matchGenCHadron*process.categorizeGenTtbar
 
 #if "2018" not in options.dataEra:
-#    process.p += process.prefiringweight
+process.p += process.prefiringweight
 
 if printContent:
     process.p *= process.content
