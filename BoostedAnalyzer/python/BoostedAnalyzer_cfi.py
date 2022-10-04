@@ -1,4 +1,3 @@
-from BoostedAnalyzer.python.Inputs_cff import Inputs_TTHHUL_SL
 import FWCore.ParameterSet.Config as cms
 from BoostedTTH.BoostedAnalyzer.Selection_cff import *
 from BoostedTTH.BoostedAnalyzer.Inputs_cff import *
