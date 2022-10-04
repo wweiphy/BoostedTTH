@@ -12,9 +12,9 @@ Do for example:
 
     # setup environment
     # SL6
-    #export SCRAM_ARCH="slc6_amd64_gcc820"
+    #export SCRAM_ARCH="slc7_amd64_gcc700"
     # CC7
-    export SCRAM_ARCH="slc7_amd64_gcc820"
+    export SCRAM_ARCH="slc7_amd64_gcc700"
 
     export CMSSW_VERSION="CMSSW_10_6_27"
 
