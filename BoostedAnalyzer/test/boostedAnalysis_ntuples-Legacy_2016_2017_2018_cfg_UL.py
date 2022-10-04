@@ -698,8 +698,10 @@ process.p = cms.Path()
 #     process.BoostedAnalyzer.additionalFilters = cms.VInputTag(["ecalBadCalibReducedMINIAODFilter"])
 #     process.p *= process.ecalBadCalibReducedMINIAODFilter
 
-if options.recorrectMET:
-    process.p *= process.fullPatMetSequence
+# not needed naymore for UL
+# https://twiki.cern.ch/twiki/bin/view/CMS/JetMET#Quick_links_to_current_recommend
+# if options.recorrectMET:
+#     process.p *= process.fullPatMetSequence
 
 # electron scale and smearing corrections    
 process.p *= process.egammaPostRecoSeq
