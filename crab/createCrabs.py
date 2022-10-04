@@ -1,3 +1,5 @@
+# python createCrabs_wei.py -i ttH_legacy_samples_2017.csv -o ttHH_full_sys --ntuple
+
 import csv
 import os
 import shutil
@@ -41,7 +43,7 @@ dbsinstance = "global"
 ntuple=False
 slimmed=False
 ntupletag=""
-
+cmsoutname = "skim"
 
 if options.slimmed:
     ntuple=True
@@ -64,8 +66,8 @@ if options.ntuple:
 print outname
 os.system("mkdir -p " + outname)
 
-release = "CMSSW_9_4_13"
-rel = "94X"
+release = "CMSSW_10_6_27"
+rel = "106X"
 
 def repl(old,new,filename):
     cmd=" ".join(["sed","-i","'s|"+old+"|"+new+"|g'",filename])
@@ -159,11 +161,11 @@ for row in reader:
                     rel = "102X"
 
                 if row['isData']=='TRUE':
-                    dataSetTag = 'KIT_tthbb_sl_skims_DATA_'+rel+'_LEG_DATAERA'
+                    dataSetTag = 'sl_skims_DATA_'+rel+'_LEG_DATAERA'
                     splitting = 'EventAwattHTobb_M125_TuneCP5_13TeV-powheg-pythia8_0_0_crab.pyLumiBased'
                     units = '80000'
                 else:
-                    dataSetTag = 'KIT_tthbb_sl_skims_MC_'+rel+'_LEG_DATAERA'
+                    dataSetTag = 'sl_skims_MC_'+rel+'_LEG_DATAERA'
                     splitting = 'FileBased'
                     units = '2'
 
