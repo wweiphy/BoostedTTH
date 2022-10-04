@@ -1,3 +1,4 @@
+from BoostedAnalyzer.python.Inputs_cff import Inputs_TTHHUL_SL
 import FWCore.ParameterSet.Config as cms
 from BoostedTTH.BoostedAnalyzer.Selection_cff import *
 from BoostedTTH.BoostedAnalyzer.Inputs_cff import *
@@ -6,8 +7,8 @@ from BoostedTTH.BoostedAnalyzer.JetAssignment_cff import *
 
 BoostedAnalyzer2017 = cms.EDAnalyzer(
     'BoostedAnalyzer',
-    Inputs_tth_sl, # defined in Inputs_cff
-    DiLeptonSelectionMC, # defined in Selection_cff
+    Inputs_TTHHUL_SL, # defined in Inputs_cff
+    DiLeptonSelectionMC,  # defined in Selection_cff
     JetTagSelection, # defined in Selection_cff
     METSelection, # defined in Selection_cff
     checkBasicMCTriggers, # defined in Selection_cff

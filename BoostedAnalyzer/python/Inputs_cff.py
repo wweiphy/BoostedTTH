@@ -1,5 +1,5 @@
 import FWCore.ParameterSet.Config as cms
-Inputs_tth_sl= cms.PSet(
+Inputs_TTHHUL_SL= cms.PSet(
     puInfo=cms.InputTag("slimmedAddPileupInfo"),
     rho=cms.InputTag("fixedGridRhoFastjetAll"),
     hcalNoise=cms.InputTag("hcalnoise"),

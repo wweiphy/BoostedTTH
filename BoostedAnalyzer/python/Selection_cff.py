@@ -84,6 +84,7 @@ JetTagSelection = cms.PSet(
     maxTags = cms.vint32(-1)
 )
 
+# TODO - update the trigger for data when later include it
 checkBasicDataTriggers= cms.PSet(
     relevantTriggers=cms.vstring(
                                  "HLT_Ele35_WPTight_Gsf_v*",
@@ -106,6 +107,8 @@ checkBasicDataTriggers= cms.PSet(
                                  "HLT_Ele32_WPTight_Gsf_2017Seeds*"
                                  )
 )
+
+# TODO - check the trigger list
 checkBasicMCTriggers= cms.PSet(
     relevantTriggers=cms.vstring(
                                  "HLT_Ele35_WPTight_Gsf_v*",
@@ -133,40 +136,57 @@ checkNoTriggers= cms.PSet(
     relevantTriggers=cms.vstring()
     )
 
-filtersData1718=cms.vstring("Flag_goodVertices",
+#  Updated from https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETOptionalFiltersRun2#What_is_available_in_MiniAOD
+filtersData1718=cms.vstring(
+                    "Flag_goodVertices",
                     "Flag_globalSuperTightHalo2016Filter",
                     "Flag_HBHENoiseFilter",
                     "Flag_HBHENoiseIsoFilter",
                     "Flag_EcalDeadCellTriggerPrimitiveFilter",
                     "Flag_BadPFMuonFilter",
-                    "ecalBadCalibReducedMINIAODFilter",
+                    "Flag_BadPFMuonDzFilter",
+                    # "Flag_hfNoisyHitsFilter",
+                    # "Flag_BadChargedCandidateFilter",
                     "Flag_eeBadScFilter",
+                    "Flag_ecalBadCalibFilter"
                     )
 
 filtersMC1718=cms.vstring("Flag_goodVertices",
+                    "Flag_goodVertices",
                     "Flag_globalSuperTightHalo2016Filter",
                     "Flag_HBHENoiseFilter",
                     "Flag_HBHENoiseIsoFilter",
                     "Flag_EcalDeadCellTriggerPrimitiveFilter",
                     "Flag_BadPFMuonFilter",
-                    "ecalBadCalibReducedMINIAODFilter"
-                    )
-
-filtersData16=cms.vstring("Flag_goodVertices",
-                    "Flag_globalSuperTightHalo2016Filter",
-                    "Flag_HBHENoiseFilter",
-                    "Flag_HBHENoiseIsoFilter",
-                    "Flag_EcalDeadCellTriggerPrimitiveFilter",
-                    "Flag_BadPFMuonFilter",
+                    "Flag_BadPFMuonDzFilter",
+                    # "Flag_hfNoisyHitsFilter",
+                    # "Flag_BadChargedCandidateFilter",
                     "Flag_eeBadScFilter",
+                    "Flag_ecalBadCalibFilter"
                     )
 
-filtersMC16=cms.vstring("Flag_goodVertices",
+filtersData16=cms.vstring(
+                    "Flag_goodVertices",
                     "Flag_globalSuperTightHalo2016Filter",
                     "Flag_HBHENoiseFilter",
                     "Flag_HBHENoiseIsoFilter",
                     "Flag_EcalDeadCellTriggerPrimitiveFilter",
                     "Flag_BadPFMuonFilter",
+                    "Flag_BadPFMuonDzFilter",
+                    "Flag_eeBadScFilter",
+                    # "Flag_hfNoisyHitsFilter",
+                    )
+
+filtersMC16=cms.vstring(
+                    "Flag_goodVertices",
+                    "Flag_globalSuperTightHalo2016Filter",
+                    "Flag_HBHENoiseFilter",
+                    "Flag_HBHENoiseIsoFilter",
+                    "Flag_EcalDeadCellTriggerPrimitiveFilter",
+                    "Flag_BadPFMuonFilter",
+                    "Flag_BadPFMuonDzFilter",
+                    "Flag_eeBadScFilter",
+                    # "Flag_hfNoisyHitsFilter",
                     )
 
 # process.BoostedAnalyzer.additionalFilters = cms.VInputTag(["ecalBadCalibReducedMINIAODFilter"])
