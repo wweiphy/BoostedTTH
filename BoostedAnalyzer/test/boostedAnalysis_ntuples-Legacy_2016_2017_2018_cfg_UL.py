@@ -377,7 +377,7 @@ electronCollection = cms.InputTag("slimmedElectrons")
 photonCollection   = cms.InputTag("slimmedPhotons")
 muonCollection     = cms.InputTag("slimmedMuons")
 tauCollection      = cms.InputTag("slimmedTaus")
-METCollection      = cms.InputTag("slimmedMETs", "", process.name_())
+METCollection      = cms.InputTag("slimmedMETs")
 jetCollection      = cms.InputTag("slimmedJets")
 # AK8jetCollection   = cms.InputTag("slimmedJetsAK8","","PAT")
 
