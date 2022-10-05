@@ -315,8 +315,9 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
     bool inCrack = false;
     bool passesIPcuts = false;
     bool passesID = false;
-    
-    double absSCeta = 999; 
+    bool passIso = false;
+
+    double absSCeta = 999;
     if( iElectron.superCluster().isAvailable() ){
         absSCeta = fabs(iElectron.superCluster()->position().eta());
         inCrack = (absSCeta>1.4442 and absSCeta<1.5660 );
@@ -329,33 +330,38 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         IP_d0 = fabs(iElectron.gsfTrack()->dxy(vertex.position()));
         IP_dZ = fabs(iElectron.gsfTrack()->dz(vertex.position()));
     }
-    
+
+    if (iElectron.userFloat("relIso") < 0.1)
+        passIso = true;
+
     //if impact parameter cuts are not met, set passesIPcuts = false
     if( isEB ) passesIPcuts = (IP_d0 < 0.05 and IP_dZ < 0.1);
     else passesIPcuts = (IP_d0 < 0.1 and IP_dZ < 0.2);
     
     switch(iElectronID){
-        case ElectronID::None:
-            passesID = true;
-            break;
-        case ElectronID::Veto:
-            passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-veto");
-            break;
-        case ElectronID::Loose:
-            passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-loose");
-            break;
-        case ElectronID::Medium:
-            passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-medium");
-            break;
-        case ElectronID::Tight:
-            passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-tight");
-            break;
-        default:
-            std::cerr << "\n\nERROR: InvalidElectronID" <<  std::endl;
-            throw std::exception();
+        // TODO - might need to change, now just keep the other criteria as cutbased ID
+    // https://twiki.cern.ch/twiki/bin/view/CMS/EgammaIDRecipesRun2#MVA_based_electron_Identificatio
+    case ElectronID::None:
+        passesID = true;
+        break;
+    case ElectronID::Veto:
+        passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-veto");
+        break;
+    case ElectronID::Loose:
+        passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-loose");
+        break;
+    case ElectronID::Medium:
+        passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-medium");
+        break;
+    case ElectronID::Tight:
+        passesID = iElectron.electronID("mvaEleID-Fall17-iso-V2-wp80");
+        break;
+    default:
+        std::cerr << "\n\nERROR: InvalidElectronID" << std::endl;
+        throw std::exception();
     }
     
-    return passesKinematics and (not inCrack) and passesIPcuts and passesID;
+    return passesKinematics and (not inCrack) and passesIPcuts and passesID and passIso;
 }
 // function to calculate electron relative isolation by hand. Mainly needed for sync purposes since isolations are part of other provided electron properties like ID
 double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& inputElectron, const IsoCorrType icorrType, const IsoConeSize iconeSize) const {
