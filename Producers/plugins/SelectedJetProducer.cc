@@ -17,8 +17,10 @@ SelectedJetProducer::SelectedJetProducer(const edm::ParameterSet &iConfig) : jet
                                                                              muonsToken{consumes<pat::MuonCollection>(iConfig.getParameter<edm::InputTag>("muons"))},
                                                                              electronsToken{consumes<pat::ElectronCollection>(iConfig.getParameter<edm::InputTag>("electrons"))},
                                                                              rhoToken{consumes<double>(iConfig.getParameter<edm::InputTag>("rho"))},
-                                                                             jecFileAK4_2016{iConfig.getParameter<std::string>("jecFileAK4_2016")},
-                                                                             jecFileAK8_2016{iConfig.getParameter<std::string>("jecFileAK8_2016")},
+                                                                             jecFileAK4_2016preVFP{iConfig.getParameter<std::string>("jecFileAK4_2016preVFP")},
+                                                                             jecFileAK8_2016preVFP{iConfig.getParameter<std::string>("jecFileAK8_2016preVFP")},
+                                                                             jecFileAK4_2016postVFP{iConfig.getParameter<std::string>("jecFileAK4_2016postVFP")},
+                                                                             jecFileAK8_2016postVFP{iConfig.getParameter<std::string>("jecFileAK8_2016postVFP")},
                                                                              jecFileAK4_2017{iConfig.getParameter<std::string>("jecFileAK4_2017")},
                                                                              jecFileAK8_2017{iConfig.getParameter<std::string>("jecFileAK8_2017")},
                                                                              jecFileAK4_2018{iConfig.getParameter<std::string>("jecFileAK4_2018")},
@@ -68,8 +70,11 @@ SelectedJetProducer::SelectedJetProducer(const edm::ParameterSet &iConfig) : jet
   {
     jetTypeLabelForJECUncertainty = "AK4PFchs";
     // change File for 2016
-    if (era.find("2016")!=std::string::npos){ 
-      jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK4_2016;
+    if (era.find("2016preVFP")!=std::string::npos){ 
+      jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK4_2016preVFP;
+    }
+    else if (era.find("2016postVFP")!=std::string::npos){ 
+      jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK4_2016postVFP;
     }
     else if(era.find("2017")!=std::string::npos){ 
       jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK4_2017;
@@ -82,8 +87,11 @@ SelectedJetProducer::SelectedJetProducer(const edm::ParameterSet &iConfig) : jet
   {
     jetTypeLabelForJECUncertainty = "AK8PFchs";
     // change File for 2016
-    if (era.find("2016")!=std::string::npos){ 
-      jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK8_2016;
+    if (era.find("2016preVFP")!=std::string::npos){ 
+      jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK8_2016preVFP;
+    }
+    else if (era.find("2016postVFP")!=std::string::npos){ 
+      jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK8_2016postVFP;
     }
     else if(era.find("2017")!=std::string::npos){ 
       jecUncertaintyTxtFileName = std::string(getenv("CMSSW_BASE")) + "/src/BoostedTTH/Producers/data/jec/" + jecFileAK8_2017;
@@ -598,6 +606,7 @@ void SelectedJetProducer::ApplyJetEnergyCorrection(pat::Jet& jet, double& totalC
             }
 
             // Figure out if HEM issue -> only for 2018
+            // TODO - check if this still exists
             bool isHEM = false;
             if (era.find("2018") != std::string::npos) {
                 isHEM = (-3 < jet.eta()) && (jet.eta() < -1.3);
