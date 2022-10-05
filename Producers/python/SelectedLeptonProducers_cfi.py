@@ -33,11 +33,17 @@ SelectedElectronProducer2017 = cms.EDProducer(
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
     
     ea_dir = cms.string("BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
-    file_EleLooseIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2017_ElectronLoose_Fall17V2.root"),
-    file_EleMediumIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2017_ElectronMedium_Fall17V2.root"),
-    file_EleTightIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2017_ElectronTight_Fall17V2.root"),
-    file_EleRecoSF_highPt=cms.string("BoostedTTH/Producers/data/electronSFs/2017_ElectronReco.root"),
-    file_EleRecoSF_lowPt=cms.string("BoostedTTH/Producers/data/electronSFs/2017_ElectronReco_lowpt.root"),
+    # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018#SFs_for_Electrons_UL_2018
+    file_EleLooseIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_EGM2D_Loose_UL17.root"),
+    file_EleMediumIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_EGM2D_Medium_UL17.root"),
+    file_EleTightIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_EGM2D_MVA80iso_UL17.root"),
+    file_EleRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptAbove20.txt_EGM2D_UL2017.root"),
+    file_EleRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptBelow20.txt_EGM2D_UL2017.root"),
     file_MuonLooseIDSF=cms.string(""),
     file_MuonMediumIDSF=cms.string(""),
     file_MuonTightIDSF=cms.string(""),
@@ -45,22 +51,46 @@ SelectedElectronProducer2017 = cms.EDProducer(
     # file_MuonIsoSF_lowPt=cms.string("")
     )
 
-SelectedElectronProducer2016 = SelectedElectronProducer2017.clone(
-    era = cms.string("2016"),
-    file_EleLooseIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2016_ElectronLoose_Fall17V2.root"),
-    file_EleMediumIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2016_ElectronMedium_Fall17V2.root"),
-    file_EleTightIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2016_ElectronTight_Fall17V2.root"),
-    file_EleRecoSF_highPt=cms.string("BoostedTTH/Producers/data/electronSFs/2016_ElectronReco.root"),
-    file_EleRecoSF_lowPt=cms.string("BoostedTTH/Producers/data/electronSFs/2016_ElectronReco_lowpt.root")
+SelectedElectronProducer2016preVFP = SelectedElectronProducer2017.clone(
+    era = cms.string("2016preVFP"),
+    file_EleLooseIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_Loose_preVFP_EGM2D.root"),
+    file_EleMediumIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_Medium_preVFP_EGM2D.root"),
+    file_EleTightIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_wp80iso_preVFP_EGM2D.root"),
+    file_EleRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptAbove20.txt_EGM2D_UL2016preVFP.root"),
+    file_EleRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptBelow20.txt_EGM2D_UL2016preVFP.root")
     )
+
+SelectedElectronProducer2016postVFP = SelectedElectronProducer2017.clone(
+    era=cms.string("2016postVFP"),
+    file_EleLooseIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_Loose_postVFP_EGM2D.root"),
+    file_EleMediumIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_Medium_postVFP_EGM2D.root"),
+    file_EleTightIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_wp80iso_postVFP_EGM2D.root"),
+    file_EleRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptAbove20.txt_EGM2D_UL2016postVFP.root"),
+    file_EleRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptBelow20.txt_EGM2D_UL2016postVFP.root")
+)
 
 SelectedElectronProducer2018 = SelectedElectronProducer2017.clone(
     era = cms.string("2018"),
-    file_EleLooseIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2018_ElectronLoose_Fall17V2.root"),
-    file_EleMediumIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2018_ElectronMedium_Fall17V2.root"),
-    file_EleTightIDSF=cms.string("BoostedTTH/Producers/data/electronSFs/2018_ElectronTight_Fall17V2.root"),
-    file_EleRecoSF_highPt=cms.string("BoostedTTH/Producers/data/electronSFs/2018_ElectronReco.root"),
-    file_EleRecoSF_lowPt=cms.string("BoostedTTH/Producers/data/electronSFs/2018_ElectronReco.root")
+    file_EleLooseIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_Loose_EGM2D_UL18.root"),
+    file_EleMediumIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_Medium_EGM2D_UL18.root"),
+    file_EleTightIDSF=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_Ele_wp80iso_EGM2D_UL18.root"),
+    file_EleRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptAbove20.txt_EGM2D_UL2018.root"),
+    file_EleRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/electronSFs/egammaEffi_ptBelow20.txt_EGM2D_UL2018.root")
     )
 
 SelectedMuonProducer2017 = cms.EDProducer(

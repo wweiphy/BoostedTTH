@@ -487,13 +487,16 @@ std::vector<float> SelectedLeptonProducer::GetElectronRecoSF(const pat::Electron
     std::vector<float> SFs{1.0,1.0,1.0};
     
     // load the correct scale factor histogram
-    if(era.find("2016")!=std::string::npos or era.find("2017")!=std::string::npos){
-        if(pt>=20.) SF_hist = EleReco_SF_highPt;
-        else SF_hist = EleReco_SF_lowPt;
-    }
-    else if(era.find("2018")!=std::string::npos){
-        SF_hist = EleReco_SF_highPt;
-    }
+    if(pt>=20.) SF_hist = EleReco_SF_highPt;
+    else SF_hist = EleReco_SF_lowPt;
+    
+    // if(era.find("2016")!=std::string::npos or era.find("2017")!=std::string::npos){
+    //     if(pt>=20.) SF_hist = EleReco_SF_highPt;
+    //     else SF_hist = EleReco_SF_lowPt;
+    // }
+    // else if(era.find("2018")!=std::string::npos){
+    //     SF_hist = EleReco_SF_highPt;
+    // }
     
     if(SF_hist==nullptr){
         std::cerr << "\n\nERROR: Electron Reco Scale Factor File could not be loaded" <<  std::endl;

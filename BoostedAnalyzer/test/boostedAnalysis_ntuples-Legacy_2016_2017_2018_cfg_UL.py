@@ -416,8 +416,14 @@ if options.deterministicSeeds:
 # lepton selection
 #process.load('BoostedTTH.Producers.SelectedLeptonProducers_cfi')
 from BoostedTTH.Producers.SelectedLeptonProducers_cfi import *
-if "2016" in options.dataEra:
-    process.SelectedElectronProducer = SelectedElectronProducer2016
+if "2016preVFP" in options.dataEra:
+    process.SelectedElectronProducer = SelectedElectronProducer2016preVFP
+    process.SelectedElectronProducer.ptMins=[15.,15.,29.]
+    ###
+    process.SelectedMuonProducer = SelectedMuonProducer2016
+    process.SelectedMuonProducer.ptMins=[15.,15.,26.]
+elif "2016postVFP" in options.dataEra:
+    process.SelectedElectronProducer = SelectedElectronProducer2016postVFP
     process.SelectedElectronProducer.ptMins=[15.,15.,29.]
     ###
     process.SelectedMuonProducer = SelectedMuonProducer2016
