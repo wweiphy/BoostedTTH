@@ -315,7 +315,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
     bool inCrack = false;
     bool passesIPcuts = false;
     bool passesID = false;
-    bool passIso = false;
+    // bool passIso = false;
 
     double absSCeta = 999;
     if( iElectron.superCluster().isAvailable() ){
@@ -331,10 +331,10 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         IP_dZ = fabs(iElectron.gsfTrack()->dz(vertex.position()));
     }
 
-    if (iElectron.userFloat("relIso") < 0.1)
-        passIso = true;
+    // if (iElectron.userFloat("relIso") < 0.1)
+        // passIso = true;
     // test
-    std::cout << "electron isolation: " << iElectron.userFloat("relIso") << std::endl;
+    // std::cout << "electron isolation: " << iElectron.userFloat("relIso") << std::endl;
 
     //if impact parameter cuts are not met, set passesIPcuts = false
     if( isEB ) passesIPcuts = (IP_d0 < 0.05 and IP_dZ < 0.1);
@@ -363,13 +363,21 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         throw std::exception();
     }
     
-    return passesKinematics and (not inCrack) and passesIPcuts and passesID and passIso;
+    return passesKinematics and (not inCrack) and passesIPcuts and passesID;
 }
 // function to calculate electron relative isolation by hand. Mainly needed for sync purposes since isolations are part of other provided electron properties like ID
 double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& inputElectron, const IsoCorrType icorrType, const IsoConeSize iconeSize) const {
-    double isoChargedHadrons = inputElectron.pfIsolationVariables().sumChargedHadronPt;
-    double isoNeutralHadrons = inputElectron.pfIsolationVariables().sumNeutralHadronEt;
-    double isoPhotons = inputElectron.pfIsolationVariables().sumPhotonEt;
+    // TODO - need to change to mini-isolation
+    // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/PatUtils/src/MiniIsolation.cc
+    // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/PatUtils/interface/MiniIsolation.h
+    // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/plugins/IsoValueMapProducer.cc
+
+    double isoChargedHadrons = inputElectron.miniPFIsolation().chargedHadronIso();
+    double isoNeutralHadrons = inputElectron.miniPFIsolation().neutralHadronIso();
+    double isoPhotons = inputElectron.miniPFIsolation().photonIso();
+    // double isoChargedHadrons = inputElectron.pfIsolationVariables().sumChargedHadronPt;
+    // double isoNeutralHadrons = inputElectron.pfIsolationVariables().sumNeutralHadronEt;
+    // double isoPhotons = inputElectron.pfIsolationVariables().sumPhotonEt;
     double pileup = 0;
     if(iconeSize == IsoConeSize::R03) {
         if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputElectron.pfIsolationVariables().sumPUPt;
@@ -392,6 +400,7 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
         std::cerr << "\n\nERROR: electron isolation is not implemeted for conesizes other than 0.3" << std::endl;
         throw std::exception();
     }
+    // return (isoChargedHadrons+std::max(0.,isoNeutralHadrons+isoPhotons-pileup))/inputElectron.pt();
     return (isoChargedHadrons+std::max(0.,isoNeutralHadrons+isoPhotons-pileup))/inputElectron.pt();
 }
 // function to add the calculate electron relative isolation to the electron as a userfloat
@@ -552,6 +561,7 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
             throw std::exception();
 
     }
+    // TODO - change to mini-isolation 
     switch(imuonIso){
         case MuonIsolation::None:
             passesIso         = true;
