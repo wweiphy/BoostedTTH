@@ -333,6 +333,8 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
 
     if (iElectron.userFloat("relIso") < 0.1)
         passIso = true;
+    // test
+    std::cout << "electron isolation: " << iElectron.userFloat("relIso") << std::endl;
 
     //if impact parameter cuts are not met, set passesIPcuts = false
     if( isEB ) passesIPcuts = (IP_d0 < 0.05 and IP_dZ < 0.1);
