@@ -650,6 +650,7 @@ double SelectedLeptonProducer::GetMuonRelIsolation(const pat::Muon& inputMuon, c
     {
         if (icorrType == IsoCorrType::rhoEA)
         {
+            double eta = 0.;
             eta = fabs(inputMuon.eta());
             float R = 10.0 / std::min(std::max(inputMuon.pt(), 50.0), 200.0);
             // effective area for muon
