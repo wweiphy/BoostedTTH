@@ -3,27 +3,28 @@
 
 
 // constructor with initializer list for all inputs which are obtained from the config
-SelectedLeptonProducer::SelectedLeptonProducer(const edm::ParameterSet& iConfig) :  leptonType{iConfig.getParameter<std::string>("leptonType")},
-                                                                                    collectionNames_{iConfig.getParameter<std::vector< std::string> >("collectionNames")},
-                                                                                    ptMins_{iConfig.getParameter< std::vector<double> >("ptMins")},
-                                                                                    etaMaxs_{iConfig.getParameter< std::vector<double> >("etaMaxs")},
-                                                                                    leptonIDs{iConfig.getParameter< std::vector<std::string> >("leptonIDs")},
-                                                                                    isoConeSizes{iConfig.getParameter<std::vector<std::string> >("isoConeSizes")},
-                                                                                    isoCorrTypes{iConfig.getParameter<std::vector<std::string> >("isoCorrTypes")},
-                                                                                    muonIsoTypes{iConfig.getParameter<std::vector<std::string> >("muonIsoTypes")},
-                                                                                    era{iConfig.getParameter<std::string>("era")},
-                                                                                    isData{iConfig.getParameter<bool>("isData")},
-                                                                                    useMuonRC{iConfig.getParameter<bool>("useMuonRC")},
-                                                                                    deterministicSeeds{iConfig.getParameter<bool>("useDeterministicSeeds")},
-                                                                                    rc{std::string(getenv("CMSSW_BASE"))+"/src/"+iConfig.getParameter<std::string>("rc_dir")},
-                                                                                    EA{std::string(getenv("CMSSW_BASE"))+"/src/"+iConfig.getParameter<std::string>("ea_dir")},
+SelectedLeptonProducer::SelectedLeptonProducer(const edm::ParameterSet &iConfig) : leptonType{iConfig.getParameter<std::string>("leptonType")},
+                                                                                   collectionNames_{iConfig.getParameter<std::vector<std::string>>("collectionNames")},
+                                                                                   ptMins_{iConfig.getParameter<std::vector<double>>("ptMins")},
+                                                                                   etaMaxs_{iConfig.getParameter<std::vector<double>>("etaMaxs")},
+                                                                                   leptonIDs{iConfig.getParameter<std::vector<std::string>>("leptonIDs")},
+                                                                                   isoConeSizes{iConfig.getParameter<std::vector<std::string>>("isoConeSizes")},
+                                                                                   isoCorrTypes{iConfig.getParameter<std::vector<std::string>>("isoCorrTypes")},
+                                                                                   muonIsoTypes{iConfig.getParameter<std::vector<std::string>>("muonIsoTypes")},
+                                                                                   era{iConfig.getParameter<std::string>("era")},
+                                                                                   isData{iConfig.getParameter<bool>("isData")},
+                                                                                   useMuonRC{iConfig.getParameter<bool>("useMuonRC")},
+                                                                                   deterministicSeeds{iConfig.getParameter<bool>("useDeterministicSeeds")},
+                                                                                   rc{std::string(getenv("CMSSW_BASE")) + "/src/" + iConfig.getParameter<std::string>("rc_dir")},
+                                                                                   EA_electron{std::string(getenv("CMSSW_BASE")) + "/src/" + iConfig.getParameter<std::string>("ea_dir_electron")},
+                                                                                   EA_muon{std::string(getenv("CMSSW_BASE")) + "/src/" + iConfig.getParameter<std::string>("ea_dir_muon")},
 
-                                                                                    // inputs
-                                                                                    EDMRhoToken{consumes< double >                  (iConfig.getParameter<edm::InputTag>("rho"))},
-                                                                                    EDMVertexToken{consumes< reco::VertexCollection >  (iConfig.getParameter<edm::InputTag>("vertices"))},
-                                                                                    EDMMuonsToken{consumes< pat::MuonCollection >     (iConfig.getParameter<edm::InputTag>("leptons"))},
-                                                                                    EDMElectronsToken{consumes< pat::ElectronCollection >(iConfig.getParameter<edm::InputTag>("leptons"))}
-                                                                                    
+                                                                                   // inputs
+                                                                                   EDMRhoToken{consumes<double>(iConfig.getParameter<edm::InputTag>("rho"))},
+                                                                                   EDMVertexToken{consumes<reco::VertexCollection>(iConfig.getParameter<edm::InputTag>("vertices"))},
+                                                                                   EDMMuonsToken{consumes<pat::MuonCollection>(iConfig.getParameter<edm::InputTag>("leptons"))},
+                                                                                   EDMElectronsToken{consumes<pat::ElectronCollection>(iConfig.getParameter<edm::InputTag>("leptons"))}
+
 {
     // setup of producer
     if(      leptonType == "electron" ) leptonType_ = LeptonType::Electron;
@@ -356,7 +357,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         passesID = iElectron.electronID("cutBasedElectronID-Fall17-94X-V2-medium");
         break;
     case ElectronID::Tight:
-        passesID = iElectron.electronID("mvaEleID-Fall17-iso-V2-wp80");
+        passesID = iElectron.electronID("mvaEleID-Fall17-iso-V2-wp90");
         break;
     default:
         std::cerr << "\n\nERROR: InvalidElectronID" << std::endl;
@@ -367,7 +368,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
 }
 // function to calculate electron relative isolation by hand. Mainly needed for sync purposes since isolations are part of other provided electron properties like ID
 double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& inputElectron, const IsoCorrType icorrType, const IsoConeSize iconeSize) const {
-    // TODO - need to change to mini-isolation
+    // change to mini-isolation
     // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/PatUtils/src/MiniIsolation.cc
     // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/PatUtils/interface/MiniIsolation.h
     // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/plugins/IsoValueMapProducer.cc
@@ -381,7 +382,7 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
     double pileup = 0;
     if(iconeSize == IsoConeSize::R03) {
         if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputElectron.pfIsolationVariables().sumPUPt;
-        else if(icorrType == IsoCorrType::rhoEA) {
+        if(icorrType == IsoCorrType::rhoEA) {
             double eta = 0.;
             if( inputElectron.superCluster().isAvailable() ){
                 eta = fabs(inputElectron.superCluster()->position().eta());
@@ -389,7 +390,9 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
             else {
                 eta = fabs(inputElectron.eta());
             }
-            pileup = rho*EA.getEffectiveArea(eta);
+            float R = 10.0 / std::min(std::max(inputElectron.pt(), 50.0), 200.0);
+
+            pileup = rho * EA_electron.getEffectiveArea(eta) * std::pow(R / 0.3, 2);
         }
         else {
             std::cerr << "\n\nERROR: invalid electron isolation correction type" << std::endl;
@@ -489,7 +492,7 @@ std::vector<float> SelectedLeptonProducer::GetElectronRecoSF(const pat::Electron
     // load the correct scale factor histogram
     if(pt>=20.) SF_hist = EleReco_SF_highPt;
     else SF_hist = EleReco_SF_lowPt;
-    
+
     // if(era.find("2016")!=std::string::npos or era.find("2017")!=std::string::npos){
     //     if(pt>=20.) SF_hist = EleReco_SF_highPt;
     //     else SF_hist = EleReco_SF_lowPt;
@@ -627,19 +630,39 @@ void SelectedLeptonProducer::ApplyMuonMomentumCorrection(std::vector<pat::Muon>&
 }
 // function to calculate muon relative isolation by hand. Mainly needed for sync purposes since isolation-checks are provided centrally
 double SelectedLeptonProducer::GetMuonRelIsolation(const pat::Muon& inputMuon, const IsoCorrType icorrType, const IsoConeSize iconeSize) const {
-    double isoChargedHadrons = inputMuon.pfIsolationR04().sumChargedHadronPt;
-    double isoNeutralHadrons = inputMuon.pfIsolationR04().sumNeutralHadronEt;
-    double isoPhotons = inputMuon.pfIsolationR04().sumPhotonEt;
+    double isoChargedHadrons = inputMuon.miniPFIsolation().chargedHadronIso();
+    double isoNeutralHadrons = inputMuon.miniPFIsolation().neutralHadronIso();
+    double isoPhotons = inputMuon.miniPFIsolation().photonIso();
     double pileup = 0;
     if(iconeSize == IsoConeSize::R04) {
-        if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputMuon.pfIsolationR04().sumPUPt;
-        else {
+        if (icorrType == IsoCorrType::deltaBeta)
+            pileup = 0.5 * inputMuon.pfIsolationR04().sumPUPt;
+        else
+        {
             std::cerr << "\n\nERROR: muon isolation is not implemeted for pileup corrections other than deltaBeta" << std::endl;
             throw std::exception();
         }
     }
+    // Add miniPF relative isolation
+    // https://github.com/cms-sw/cmssw/blob/18de8e753f35206cb180d1c2986e3d8f9dbb913b/PhysicsTools/NanoAOD/python/muons_cff.py#L23
+    // https://github.com/cms-sw/cmssw/blob/18de8e753f35206cb180d1c2986e3d8f9dbb913b/PhysicsTools/NanoAOD/plugins/IsoValueMapProducer.cc#L147-L157
+    else if (iconeSize == IsoConeSize::R03)
+    {
+        if (icorrType == IsoCorrType::rhoEA)
+        {
+            eta = fabs(inputMuon.eta());
+            float R = 10.0 / std::min(std::max(inputMuon.pt(), 50.0), 200.0);
+            // effective area for muon
+            // https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
+            pileup = rho * EA_muon.getEffectiveArea(eta) * std::pow(R / 0.3, 2);
+        }
+        else {
+            std::cerr << "\n\nERROR: muon isolation is not implemeted for pileup corrections other than rhoEA" << std::endl;
+            throw std::exception();
+        }
+    }
     else {
-        std::cerr << "\n\nERROR: muon isolation is not implemeted for conesizes other than 0.4" << std::endl;
+        std::cerr << "\n\nERROR: muon isolation is not implemeted" << std::endl;
         throw std::exception();
     }
     return (isoChargedHadrons+std::max(0.,isoNeutralHadrons+isoPhotons-pileup))/inputMuon.pt();
