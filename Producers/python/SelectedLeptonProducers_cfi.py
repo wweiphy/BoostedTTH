@@ -33,7 +33,8 @@ SelectedElectronProducer2017 = cms.EDProducer(
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
     
     ea_dir_electron = cms.string("BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
-    ea_dir_muon=cms.string(""),
+    ea_dir_muon=cms.string(
+        "BoostedTTH/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018#SFs_for_Electrons_UL_2018
     file_EleLooseIDSF=cms.string(
         "BoostedTTH/Producers/data/electronSFs/egammaEffi.txt_EGM2D_Loose_UL17.root"),
@@ -118,7 +119,8 @@ SelectedMuonProducer2017 = cms.EDProducer(
     useMuonRC = cms.bool(True),
     useDeterministicSeeds = cms.bool(False),
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
-    ea_dir_electron=cms.string(""),
+    ea_dir_electron=cms.string(
+        "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     ea_dir_muon=cms.string(
         "BoostedTTH/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     # The following two parameters are dummies in case of muons
