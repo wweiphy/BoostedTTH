@@ -316,7 +316,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
     bool inCrack = false;
     bool passesIPcuts = false;
     bool passesID = false;
-    // bool passIso = false;
+    bool passesIso = false;
 
     double absSCeta = 999;
     if( iElectron.superCluster().isAvailable() ){
@@ -332,8 +332,8 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         IP_dZ = fabs(iElectron.gsfTrack()->dz(vertex.position()));
     }
 
-    // if (iElectron.userFloat("relIso") < 0.1)
-        // passIso = true;
+    if (iElectron.userFloat("relIso") < 0.1)
+        passesIso = true;
     // test
     // std::cout << "electron isolation: " << iElectron.userFloat("relIso") << std::endl;
 
@@ -364,7 +364,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         throw std::exception();
     }
     
-    return passesKinematics and (not inCrack) and passesIPcuts and passesID;
+    return passesKinematics and (not inCrack) and passesIPcuts and passesID and passesIso;
 }
 // function to calculate electron relative isolation by hand. Mainly needed for sync purposes since isolations are part of other provided electron properties like ID
 double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& inputElectron, const IsoCorrType icorrType, const IsoConeSize iconeSize) const {
@@ -567,19 +567,20 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
             throw std::exception();
 
     }
-    // TODO - change to mini-isolation 
+    // change to miniPF isolation
+    // https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/Muon.h
     switch(imuonIso){
         case MuonIsolation::None:
             passesIso         = true;
             break;
         case MuonIsolation::Loose:
-            passesIso         = iMuon.passed(pat::Muon::PFIsoLoose);
+            passesIso = iMuon.passed(pat::Muon::MiniIsoLoose);
             break;
         case MuonIsolation::Medium:
-            passesIso         = iMuon.passed(pat::Muon::PFIsoMedium);
+            passesIso = iMuon.passed(pat::Muon::MiniIsoMedium);
             break;
         case MuonIsolation::Tight:
-            passesIso         = iMuon.passed(pat::Muon::PFIsoTight);
+            passesIso = iMuon.passed(pat::Muon::MiniIsoTight);
             break;
         default:
             std::cerr << "\n\nERROR: InvalidMuonIso" <<  std::endl;

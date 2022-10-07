@@ -64,7 +64,7 @@ public:
     enum class MuonID        {None, Loose, Medium, Tight};
     enum class IsoConeSize      {R03, R04};
     enum class IsoCorrType      {rhoEA, deltaBeta};
-    enum class MuonIsolation {None, Loose, Medium, Tight};
+    enum class MuonIsolation {None, Loose, Medium, Tight}; 
     
     
     // Function to sort leptons by pt

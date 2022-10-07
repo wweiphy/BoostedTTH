@@ -34,14 +34,10 @@ SelectedElectronProducer2017 = cms.EDProducer(
     
     ea_dir_electron = cms.string("BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
 
-    # TODO - the muon file does not work
     # https://github.com/wweiphy/BoostedTTH/blob/TTHHUL/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
  
     ea_dir_muon=cms.string(
         "BoostedTTH/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
-
-    # ea_dir_muon=cms.string(
-    #     "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
 
     # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018#SFs_for_Electrons_UL_2018
     file_EleLooseIDSF=cms.string(
@@ -129,11 +125,8 @@ SelectedMuonProducer2017 = cms.EDProducer(
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
     ea_dir_electron=cms.string(
         "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
-    # TODO - the muon file does not work
     ea_dir_muon=cms.string(
         "BoostedTTH/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
-    # ea_dir_muon=cms.string(
-    #     "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     # The following two parameters are dummies in case of muons
     # they are not used for the muon selection, which is defined
     # via the 'leptonID' value
