@@ -137,7 +137,8 @@ private:
     RoccoR rc;
     
     // Object to get electron effective areas
-    EffectiveAreas EA;
+    EffectiveAreas EA_electron;
+    EffectiveAreas EA_muon;
     
     // data access tokens
     // pileup density
