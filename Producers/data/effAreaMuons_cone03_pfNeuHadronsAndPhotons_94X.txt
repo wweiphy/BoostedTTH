@@ -1,5 +1,7 @@
 # Fall17 version of muon effective areas for dR=0.3,
 # neutral+photon PF isolation component, for usage with mini-isolation
+# https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
+
 # |eta| min   |eta| max   effective area
 0.0000         0.8000        0.0566
 0.8000         1.3000        0.0562
