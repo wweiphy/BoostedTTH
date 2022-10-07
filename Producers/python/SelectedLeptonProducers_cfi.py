@@ -123,10 +123,10 @@ SelectedMuonProducer2017 = cms.EDProducer(
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
     ea_dir_electron=cms.string(
         "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
-    # ea_dir_muon=cms.string(
-    #     "BoostedTTH/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     ea_dir_muon=cms.string(
-        "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
+        "BoostedTTH/Producers/data/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
+    # ea_dir_muon=cms.string(
+        # "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     # The following two parameters are dummies in case of muons
     # they are not used for the muon selection, which is defined
     # via the 'leptonID' value
