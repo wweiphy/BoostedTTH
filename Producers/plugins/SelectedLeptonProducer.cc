@@ -164,7 +164,12 @@ SelectedLeptonProducer::SelectedLeptonProducer(const edm::ParameterSet &iConfig)
 
         histoname = iConfig.getParameter<std::string>("histname_MuonTightISO_TightIDSF");
         MuonISO_SF_TightRelIso_TightID = (TH2F*)TFile::Open(filename.Data())->Get(histoname.Data());
-        MuonISO_SF_TightRelIso_TightID->SetDirectory(0);    
+        MuonISO_SF_TightRelIso_TightID->SetDirectory(0);
+
+        MuonReco_SF_highPt = (TH2F *)TFile::Open(TString(std::string(getenv("CMSSW_BASE")) + "/src/" + iConfig.getParameter<std::string>("file_MuonRecoSF_highPt")))->Get("NUM_TrackerMuons_DEN_genTracks");
+        MuonReco_SF_highPt->SetDirectory(0);
+        MuonReco_SF_lowPt = (TH2F *)TFile::Open(TString(std::string(getenv("CMSSW_BASE")) + "/src/" + iConfig.getParameter<std::string>("file_MuonRecoSF_lowPt")))->Get("NUM_TrackerMuons_DEN_genTracks");
+        MuonReco_SF_lowPt->SetDirectory(0);
     }
     
 }
@@ -363,7 +368,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         std::cerr << "\n\nERROR: InvalidElectronID" << std::endl;
         throw std::exception();
     }
-    
+
     return passesKinematics and (not inCrack) and passesIPcuts and passesID and passesIso;
 }
 // function to calculate electron relative isolation by hand. Mainly needed for sync purposes since isolations are part of other provided electron properties like ID
@@ -382,22 +387,25 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
     double pileup = 0;
     if(iconeSize == IsoConeSize::R03) {
         if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputElectron.pfIsolationVariables().sumPUPt;
-        if(icorrType == IsoCorrType::rhoEA) {
-            double eta = 0.;
-            if( inputElectron.superCluster().isAvailable() ){
-                eta = fabs(inputElectron.superCluster()->position().eta());
-            }
-            else {
-                eta = fabs(inputElectron.eta());
-            }
-            float R = 10.0 / std::min(std::max(inputElectron.pt(), 50.0), 200.0);
-
-            pileup = rho * EA_electron.getEffectiveArea(eta) * std::pow(R / 0.3, 2);
-        }
         else {
             std::cerr << "\n\nERROR: invalid electron isolation correction type" << std::endl;
             throw std::exception();
         }
+    }
+    if (icorrType == IsoCorrType::rhoEA)
+    {
+        double eta = 0.;
+        if (inputElectron.superCluster().isAvailable())
+        {
+            eta = fabs(inputElectron.superCluster()->position().eta());
+        }
+        else
+        {
+            eta = fabs(inputElectron.eta());
+        }
+        float R = 10.0 / std::min(std::max(inputElectron.pt(), 50.0), 200.0);
+
+        pileup = rho * EA_electron.getEffectiveArea(eta) * std::pow(R / 0.3, 2);
     }
     else {
         std::cerr << "\n\nERROR: electron isolation is not implemeted for conesizes other than 0.3" << std::endl;
@@ -549,23 +557,25 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
     bool passesKinematics = (iMinPt<=iMuon.pt()) and (iMaxEta>=fabs(iMuon.eta()));
     bool passesID = false;
     bool passesIso = false;
-    switch(iMuonID){
-        case MuonID::None:
-            passesID         = true;
-            break;
-        case MuonID::Loose:
-            passesID         = muon::isLooseMuon(iMuon);
-            break;
-        case MuonID::Medium:
-            passesID         = muon::isMediumMuon(iMuon);
-            break;
-        case MuonID::Tight:
-            passesID         = muon::isTightMuon(iMuon, vertex);
-            break;
-        default:
-            std::cerr << "\n\nERROR: InvalidMuonID" <<  std::endl;
-            throw std::exception();
+    bool passesIso_doublecheck = false;
 
+    switch (iMuonID)
+    {
+    case MuonID::None:
+        passesID = true;
+        break;
+    case MuonID::Loose:
+        passesID = muon::isLooseMuon(iMuon);
+        break;
+    case MuonID::Medium:
+        passesID = muon::isMediumMuon(iMuon);
+        break;
+    case MuonID::Tight:
+        passesID = muon::isTightMuon(iMuon, vertex);
+        break;
+    default:
+        std::cerr << "\n\nERROR: InvalidMuonID" << std::endl;
+        throw std::exception();
     }
     // change to miniPF isolation
     // https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/Muon.h
@@ -587,7 +597,11 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
             throw std::exception();
 
     }
-    return passesKinematics and passesID and passesIso;
+    // TODO - check if this is consistent with build in function pat::Muon::MiniIsoMedium
+
+    if (iMuon.userFloat("relIso") < 0.2)
+        passesIso_doublecheck = true;
+    return passesKinematics and passesID and passesIso and passesIso_doublecheck;
 }
 // function to apply muon momentum correction (rochester correction)
 void SelectedLeptonProducer::ApplyMuonMomentumCorrection(std::vector<pat::Muon>& inputMuons){
@@ -635,36 +649,20 @@ double SelectedLeptonProducer::GetMuonRelIsolation(const pat::Muon& inputMuon, c
     double isoNeutralHadrons = inputMuon.miniPFIsolation().neutralHadronIso();
     double isoPhotons = inputMuon.miniPFIsolation().photonIso();
     double pileup = 0;
-    if(iconeSize == IsoConeSize::R04) {
-        if (icorrType == IsoCorrType::deltaBeta)
-            pileup = 0.5 * inputMuon.pfIsolationR04().sumPUPt;
-        else
-        {
-            std::cerr << "\n\nERROR: muon isolation is not implemeted for pileup corrections other than deltaBeta" << std::endl;
-            throw std::exception();
-        }
-    }
     // Add miniPF relative isolation
     // https://github.com/cms-sw/cmssw/blob/18de8e753f35206cb180d1c2986e3d8f9dbb913b/PhysicsTools/NanoAOD/python/muons_cff.py#L23
     // https://github.com/cms-sw/cmssw/blob/18de8e753f35206cb180d1c2986e3d8f9dbb913b/PhysicsTools/NanoAOD/plugins/IsoValueMapProducer.cc#L147-L157
-    else if (iconeSize == IsoConeSize::R03)
+    if (icorrType == IsoCorrType::rhoEA)
     {
-        if (icorrType == IsoCorrType::rhoEA)
-        {
-            double eta = 0.;
-            eta = fabs(inputMuon.eta());
-            float R = 10.0 / std::min(std::max(inputMuon.pt(), 50.0), 200.0);
-            // effective area for muon
-            // https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
-            pileup = rho * EA_muon.getEffectiveArea(eta) * std::pow(R / 0.3, 2);
-        }
-        else {
-            std::cerr << "\n\nERROR: muon isolation is not implemeted for pileup corrections other than rhoEA" << std::endl;
-            throw std::exception();
-        }
+        double eta = 0.;
+        eta = fabs(inputMuon.eta());
+        float R = 10.0 / std::min(std::max(inputMuon.pt(), 50.0), 200.0);
+        // effective area for muon
+        // https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
+        pileup = rho * EA_muon.getEffectiveArea(eta) * std::pow(R / 0.3, 2);
     }
     else {
-        std::cerr << "\n\nERROR: muon isolation is not implemeted" << std::endl;
+        std::cerr << "\n\nERROR: muon isolation is not implemeted for pileup corrections other than rhoEA" << std::endl;
         throw std::exception();
     }
     return (isoChargedHadrons+std::max(0.,isoNeutralHadrons+isoPhotons-pileup))/inputMuon.pt();
@@ -681,14 +679,19 @@ void SelectedLeptonProducer::AddMuonSFs(std::vector<pat::Muon>& inputMuons, cons
     for(auto& muon : inputMuons){
         auto IDSFs = GetMuonIDSF(muon, iMuonID);
         auto IsoSFs = GetMuonISOSF(muon, iMuonID, iMuonIso);
-        assert(IDSFs.size()==3);
+        auto RecoSFs = GetMuonRecoSF(muon);
+        assert(IDSFs.size() == 3);
         assert(IsoSFs.size()==3);
-        muon.addUserFloat("IdentificationSF",IDSFs.at(0));
+        assert(RecoSFs.size() == 3);
+        muon.addUserFloat("IdentificationSF", IDSFs.at(0));
         muon.addUserFloat("IdentificationSFUp",IDSFs.at(1));
         muon.addUserFloat("IdentificationSFDown",IDSFs.at(2));
         muon.addUserFloat("IsolationSF",IsoSFs.at(0));
         muon.addUserFloat("IsolationSFUp",IsoSFs.at(1));
         muon.addUserFloat("IsolationSFDown",IsoSFs.at(2));
+        muon.addUserFloat("RecoSF", RecoSFs.at(0));
+        muon.addUserFloat("RecoSFUp", RecoSFs.at(1));
+        muon.addUserFloat("RecoSFDown", RecoSFs.at(2));
     }
 }
 
@@ -772,7 +775,25 @@ std::vector<float> SelectedLeptonProducer::GetMuonISOSF(const pat::Muon& iMuon, 
                     throw std::exception();
             }
             break;
+        // TODO - no histograms found for medium muon iso
+
         case MuonIsolation::Medium:
+            switch (iMuonID)
+            {
+                case MuonID::None:
+                    break;
+                case MuonID::Loose:
+                    break;
+                case MuonID::Medium:
+                    SF_hist = MuonISO_SF_TightRelIso_MediumID;
+                    break;
+                case MuonID::Tight:
+                    SF_hist = MuonISO_SF_TightRelIso_TightID;
+                    break;
+                default:
+                    std::cerr << "\n\nERROR: InvalidMuonID in GetMuonISOSF" << std::endl;
+                    throw std::exception();
+            }
             break;
         case MuonIsolation::Tight:
             switch(iMuonID){
@@ -794,8 +815,8 @@ std::vector<float> SelectedLeptonProducer::GetMuonISOSF(const pat::Muon& iMuon, 
         default:
             std::cerr << "\n\nERROR: InvalidMuonIsolation" <<  std::endl;
             throw std::exception();
-    }
-    
+        }
+
     if(SF_hist==nullptr){
         std::cerr << "\n\nERROR: Muon Isolation Scale Factor could not be loaded" <<  std::endl;
         throw std::exception(); 
@@ -821,6 +842,47 @@ std::vector<float> SelectedLeptonProducer::GetMuonISOSF(const pat::Muon& iMuon, 
     SFs.at(1)=(SF_hist->GetBinContent(bin))+(SF_hist->GetBinError(bin));
     SFs.at(2)=(SF_hist->GetBinContent(bin))-(SF_hist->GetBinError(bin));
     
+    return SFs;
+}
+
+// function to calculate muon reconstruction scale factor
+std::vector<float> SelectedLeptonProducer::GetMuonRecoSF(const pat::Muon &iMuon) const
+{
+    // get pt and eta of the electron
+    auto pt = iMuon.hasUserFloat("PtbeforeRC") ? iMuon.userFloat("PtbeforeRC") : iMuon.pt();
+    auto eta = fabs(iMuon.eta());
+    TH2F *SF_hist = nullptr;
+    std::vector<float> SFs{1.0, 1.0, 1.0};
+
+    // load the correct scale factor histogram
+    if (pt >= 10.)
+        SF_hist = MuonReco_SF_highPt;
+    else
+        SF_hist = MuonReco_SF_lowPt;
+
+    if (SF_hist == nullptr)
+    {
+        std::cerr << "\n\nERROR: Electron Reco Scale Factor File could not be loaded" << std::endl;
+        throw std::exception();
+    }
+
+    // determine the ranges of the given TH2Fs
+    auto xmin = SF_hist->GetXaxis()->GetXmin();
+    auto xmax = SF_hist->GetXaxis()->GetXmax();
+    auto ymin = SF_hist->GetYaxis()->GetXmin();
+    auto ymax = SF_hist->GetYaxis()->GetXmax();
+
+    // make sure to stay within the range ot the histograms
+    eta = std::max(xmin + 0.1, eta);
+    eta = std::min(xmax - 0.1, eta);
+    pt = std::max(ymin + 0.1, pt);
+    pt = std::min(ymax - 0.1, pt);
+
+    // calculate the scale factors
+    SFs.at(0) = SF_hist->GetBinContent(SF_hist->FindBin(eta, pt));
+    SFs.at(1) = (SF_hist->GetBinContent(SF_hist->FindBin(eta, pt))) + (SF_hist->GetBinError(SF_hist->FindBin(eta, pt)));
+    SFs.at(2) = (SF_hist->GetBinContent(SF_hist->FindBin(eta, pt))) - (SF_hist->GetBinError(SF_hist->FindBin(eta, pt)));
+
     return SFs;
 }
 

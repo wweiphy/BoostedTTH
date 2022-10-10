@@ -7,7 +7,7 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg.py isData=False outputFile=test maxEvents=100 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear,JEReta0,JEReta1,JERpt0eta2,JERpt1eta2,JERpt0eta3,JERpt1eta3 dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
@@ -445,7 +445,7 @@ elif "2018" in options.dataEra:
 process.SelectedElectronProducer.leptons=electronCollection
 process.SelectedElectronProducer.etaMaxs=[2.4,2.4,2.4]
 process.SelectedElectronProducer.leptonIDs=["tight","tight","tight"]
-process.SelectedElectronProducer.isoConeSizes=["R03"]*3
+process.SelectedElectronProducer.isoConeSizes=[""]*3
 process.SelectedElectronProducer.isoCorrTypes=["rhoEA"]*3
 process.SelectedElectronProducer.collectionNames=["selectedElectronsLoose","selectedElectronsDL","selectedElectrons"]
 process.SelectedElectronProducer.isData=options.isData
@@ -456,7 +456,7 @@ process.SelectedMuonProducer.leptons=muonCollection
 process.SelectedMuonProducer.etaMaxs=[2.4,2.4,2.4]
 process.SelectedMuonProducer.leptonIDs=["tight","tight","tight"]
 # change the muon isolation cut to miniPF relative isolation 
-process.SelectedMuonProducer.isoConeSizes=["R03"]*3
+process.SelectedMuonProducer.isoConeSizes=[""]*3
 process.SelectedMuonProducer.isoCorrTypes=["rhoEA"]*3
 # muon iso change to miniPF isolation miniPFRelIso_all < 0.2, corresponds to medium WP
 # see https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/Muon.h

@@ -24,7 +24,7 @@ SelectedElectronProducer2017 = cms.EDProducer(
     etaMaxs  = cms.vdouble(2.4),
     leptonIDs = cms.vstring("loose"),
     collectionNames= cms.vstring("selectedElectronsLoose"),
-    isoConeSizes = cms.vstring("R03"),
+    isoConeSizes = cms.vstring(""),
     isoCorrTypes = cms.vstring("rhoEA"),
     
     muonIsoTypes = cms.vstring("loose"),
@@ -54,6 +54,8 @@ SelectedElectronProducer2017 = cms.EDProducer(
     file_MuonMediumIDSF=cms.string(""),
     file_MuonTightIDSF=cms.string(""),
     file_MuonIsoSF=cms.string(""),
+    file_EleRecoSF_highPt=cms.string(""),
+    file_EleRecoSF_lowPt=cms.string(""),
     # file_MuonIsoSF_lowPt=cms.string("")
     )
 
@@ -116,8 +118,8 @@ SelectedMuonProducer2017 = cms.EDProducer(
     etaMaxs  = cms.vdouble(2.4),
     leptonIDs = cms.vstring("loose"),
     collectionNames= cms.vstring("selectedMuonsLoose"),
-    isoConeSizes = cms.vstring("R04"),
-    isoCorrTypes = cms.vstring("deltaBeta"),
+    isoConeSizes = cms.vstring(""),
+    isoCorrTypes = cms.vstring("rhoEA"),
     
     muonIsoTypes = cms.vstring("loose"),
     useMuonRC = cms.bool(True),
@@ -141,54 +143,90 @@ SelectedMuonProducer2017 = cms.EDProducer(
     file_EleRecoSF_highPt=cms.string(""),
     file_EleRecoSF_lowPt=cms.string(""),
 
-    file_MuonIDSF=cms.string("BoostedTTH/Producers/data/muonSFs/2017/RunBCDEF_SF_ID_syst.root"),
-    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_genTracks_pt_abseta"),
-    histname_MuonMediumIDSF=cms.string("NUM_MediumID_DEN_genTracks_pt_abseta"),
-    histname_MuonTightIDSF=cms.string("NUM_TightID_DEN_genTracks_pt_abseta"),
+    # keep the muon Reco files the same for now because the low pt file does not exist? https://gitlab.cern.ch/cms-muonPOG/muonefficiencies/-/tree/master/Run2/UL/2018
+    file_EleRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2017/Efficiency_muon_generalTracks_Run2017_UL_trackerMuon.root"),
+    file_EleRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2017/Efficiency_muon_generalTracks_Run2017_UL_trackerMuon.root"),
 
-    file_MuonIsoSF=cms.string("BoostedTTH/Producers/data/muonSFs/2017/RunBCDEF_SF_ISO_syst.root"),
-    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_pt_abseta"),
-    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_pt_abseta"),
-    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta"),
+    file_MuonIDSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2017/Efficiencies_muon_generalTracks_Z_Run2017_UL_ID.root"),
+    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonMediumIDSF=cms.string(
+        "NUM_MediumID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonTightIDSF=cms.string(
+        "NUM_TightID_DEN_TrackerMuons_abseta_pt"),
 
-    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_pt_abseta"),
-    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_pt_abseta"),
+    file_MuonIsoSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2017/Efficiencies_muon_generalTracks_Z_Run2017_UL_ISO.root"),
+    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_abseta_pt"),
+    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_abseta_pt"),
+
+    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt"),
     )
 
-SelectedMuonProducer2016 = SelectedMuonProducer2017.clone(
-    era = cms.string("2016"),
+SelectedMuonProducer2016postVFP = SelectedMuonProducer2017.clone(
+    era = cms.string("2016postVFP"),
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016.txt"),
 
-    file_MuonIDSF=cms.string("BoostedTTH/Producers/data/muonSFs/2016/Merged_SF_ID.root"),
-    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_genTracks_eta_pt"),
-    histname_MuonMediumIDSF=cms.string("NUM_MediumID_DEN_genTracks_eta_pt"),
-    histname_MuonTightIDSF=cms.string("NUM_TightID_DEN_genTracks_eta_pt"),
+    file_MuonIDSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016postVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_ID.root"),
+    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonMediumIDSF=cms.string("NUM_MediumID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonTightIDSF=cms.string("NUM_TightID_DEN_TrackerMuons_abseta_pt"),
 
-    file_MuonIsoSF=cms.string("BoostedTTH/Producers/data/muonSFs/2016/Merged_SF_ISO.root"),
+    file_MuonIsoSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016postVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_ISO.root"),
 
-    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_eta_pt"),
-    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_eta_pt"),
-    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_eta_pt"),
+    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_abseta_pt"),
+    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_abseta_pt"),
 
-    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_eta_pt"),
-    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_eta_pt"),
+    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt"),
     )
+
+SelectedMuonProducer2016preVFP = SelectedMuonProducer2017.clone(
+    era = cms.string("2016preVFP"),
+    rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016.txt"),
+
+    file_MuonIDSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_HIPM_ID.root"),
+    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonMediumIDSF=cms.string("NUM_MediumID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonTightIDSF=cms.string("NUM_TightID_DEN_TrackerMuons_abseta_pt"),
+
+    file_MuonIsoSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_HIPM_ISO.root"),
+
+    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_abseta_pt"),
+    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_abseta_pt"),
+
+    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt"),
+    )
+
 SelectedMuonProducer2018 = SelectedMuonProducer2017.clone(
     era = cms.string("2018"),
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2018.txt"),
 
-    file_MuonIDSF=cms.string("BoostedTTH/Producers/data/muonSFs/2018/RunABCD_SF_ID.root"),
-    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_pt_abseta"),
-    histname_MuonMediumIDSF=cms.string("NUM_MediumID_DEN_TrackerMuons_pt_abseta"),
-    histname_MuonTightIDSF=cms.string("NUM_TightID_DEN_TrackerMuons_pt_abseta"),
+    file_MuonIDSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID.root"),
+    histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonMediumIDSF=cms.string("NUM_MediumID_DEN_TrackerMuons_abseta_pt"),
+    histname_MuonTightIDSF=cms.string("NUM_TightID_DEN_TrackerMuons_abseta_pt"),
 
-    file_MuonIsoSF=cms.string("BoostedTTH/Producers/data/muonSFs/2018/RunABCD_SF_ISO.root"),
+    file_MuonIsoSF=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO.root"),
 
-    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_pt_abseta"),
-    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_pt_abseta"),
-    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta"),
+    histname_MuonLooseISO_LooseIDSF = cms.string("NUM_LooseRelIso_DEN_LooseID_abseta_pt"),
+    histname_MuonLooseISO_MediumIDSF = cms.string("NUM_LooseRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonLooseISO_TightIDSF = cms.string("NUM_LooseRelIso_DEN_TightIDandIPCut_abseta_pt"),
 
-    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_pt_abseta"),
-    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_pt_abseta"),
+    histname_MuonTightISO_MediumIDSF = cms.string("NUM_TightRelIso_DEN_MediumID_abseta_pt"),
+    histname_MuonTightISO_TightIDSF = cms.string("NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt"),
 
     )
