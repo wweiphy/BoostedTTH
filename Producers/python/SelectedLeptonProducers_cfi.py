@@ -54,8 +54,8 @@ SelectedElectronProducer2017 = cms.EDProducer(
     file_MuonMediumIDSF=cms.string(""),
     file_MuonTightIDSF=cms.string(""),
     file_MuonIsoSF=cms.string(""),
-    file_EleRecoSF_highPt=cms.string(""),
-    file_EleRecoSF_lowPt=cms.string(""),
+    file_MuonRecoSF_highPt=cms.string(""),
+    file_MuonRecoSF_lowPt=cms.string(""),
     # file_MuonIsoSF_lowPt=cms.string("")
     )
 
@@ -144,9 +144,9 @@ SelectedMuonProducer2017 = cms.EDProducer(
     file_EleRecoSF_lowPt=cms.string(""),
 
     # keep the muon Reco files the same for now because the low pt file does not exist? https://gitlab.cern.ch/cms-muonPOG/muonefficiencies/-/tree/master/Run2/UL/2018
-    file_EleRecoSF_highPt=cms.string(
+    file_MuonRecoSF_highPt=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2017/Efficiency_muon_generalTracks_Run2017_UL_trackerMuon.root"),
-    file_EleRecoSF_lowPt=cms.string(
+    file_MuonRecoSF_lowPt=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2017/Efficiency_muon_generalTracks_Run2017_UL_trackerMuon.root"),
 
     file_MuonIDSF=cms.string(
@@ -171,6 +171,11 @@ SelectedMuonProducer2016postVFP = SelectedMuonProducer2017.clone(
     era = cms.string("2016postVFP"),
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016.txt"),
 
+    file_MuonRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016postVFP/Efficiency_muon_generalTracks_Run2016postVFP_UL_trackerMuon.root"),
+    file_MuonRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016postVFP/Efficiency_muon_generalTracks_Run2016postVFP_UL_trackerMuon.root"),
+
     file_MuonIDSF=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2016postVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_ID.root"),
     histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_abseta_pt"),
@@ -192,6 +197,11 @@ SelectedMuonProducer2016preVFP = SelectedMuonProducer2017.clone(
     era = cms.string("2016preVFP"),
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016.txt"),
 
+    file_MuonRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016preVFP/Efficiency_muon_generalTracks_Run2016preVFP_UL_trackerMuon.root"),
+    file_MuonRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2016preVFP/Efficiency_muon_generalTracks_Run2016preVFP_UL_trackerMuon.root"),
+
     file_MuonIDSF=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_HIPM_ID.root"),
     histname_MuonLooseIDSF=cms.string("NUM_LooseID_DEN_TrackerMuons_abseta_pt"),
@@ -212,6 +222,11 @@ SelectedMuonProducer2016preVFP = SelectedMuonProducer2017.clone(
 SelectedMuonProducer2018 = SelectedMuonProducer2017.clone(
     era = cms.string("2018"),
     rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2018.txt"),
+
+    file_MuonRecoSF_highPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2018/Efficiency_muon_generalTracks_Run2018_UL_trackerMuon.root"),
+    file_MuonRecoSF_lowPt=cms.string(
+        "BoostedTTH/Producers/data/muonSFs/2018/Efficiency_muon_generalTracks_Run2018_UL_trackerMuon.root"),
 
     file_MuonIDSF=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID.root"),
