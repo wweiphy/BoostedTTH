@@ -91,7 +91,7 @@ public:
     void AddMuonSFs(std::vector<pat::Muon>& inputMuons, const MuonID& iMuonID, const MuonIsolation& iMuonIso) const;
     std::vector<float> GetMuonIDSF(const pat::Muon& iMuon, const MuonID& iMuonID) const;
     std::vector<float> GetMuonISOSF(const pat::Muon& iMuon, const MuonID& iMuonID, const MuonIsolation& iMuonIso) const;
-    std::vector<float> GetMuonRECOSF(const pat::Muon& iMuon, const MuonID& iMuonID, const MuonIsolation& &iMuonIso const;
+    std::vector<float> GetMuonRecoSF(const pat::Muon& iMuon) const;
 
     // Function to calculate muon relative isolation manually, for sync exercises
     double GetMuonRelIsolation(const pat::Muon& inputMuon, const IsoCorrType icorrType = IsoCorrType::deltaBeta, const IsoConeSize iconeSize = IsoConeSize::R04) const;
