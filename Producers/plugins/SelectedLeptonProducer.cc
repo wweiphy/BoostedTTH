@@ -91,10 +91,11 @@ SelectedLeptonProducer::SelectedLeptonProducer(const edm::ParameterSet &iConfig)
         
         if(      isoConeSizes.at(i) == "R03"  ) IsoConeSizes_.at(i) = IsoConeSize::R03;
         else if( isoConeSizes.at(i) == "R04"  ) IsoConeSizes_.at(i) = IsoConeSize::R04;
-        else {
-            std::cerr << "\n\nERROR: No matching isolation cone size found for: " << isoConeSizes.at(i) << std::endl;
-            throw std::exception();
-        }
+        // Remove this as we don't need cone size for mini-isolation
+        // else {
+        //     std::cerr << "\n\nERROR: No matching isolation cone size found for: " << isoConeSizes.at(i) << std::endl;
+        //     throw std::exception();
+        // }
         
         if(      isoCorrTypes.at(i) == "deltaBeta" ) IsoCorrTypes_.at(i) = IsoCorrType::deltaBeta;
         else if( isoCorrTypes.at(i) == "rhoEA"     ) IsoCorrTypes_.at(i) = IsoCorrType::rhoEA;
