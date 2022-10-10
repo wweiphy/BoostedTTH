@@ -30,7 +30,7 @@ SelectedElectronProducer2017 = cms.EDProducer(
     muonIsoTypes = cms.vstring("loose"),
     useMuonRC = cms.bool(False),
     useDeterministicSeeds = cms.bool(False),
-    rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
+    rc_dir=cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017UL.txt"),
     
     ea_dir_electron = cms.string("BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
 
@@ -124,7 +124,7 @@ SelectedMuonProducer2017 = cms.EDProducer(
     muonIsoTypes = cms.vstring("loose"),
     useMuonRC = cms.bool(True),
     useDeterministicSeeds = cms.bool(False),
-    rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017.txt"),
+    rc_dir=cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2017UL.txt"),
     ea_dir_electron=cms.string(
         "BoostedTTH/Producers/data/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt"),
     ea_dir_muon=cms.string(
@@ -169,7 +169,7 @@ SelectedMuonProducer2017 = cms.EDProducer(
 
 SelectedMuonProducer2016postVFP = SelectedMuonProducer2017.clone(
     era = cms.string("2016postVFP"),
-    rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016.txt"),
+    rc_dir=cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016bUL.txt"),
 
     file_MuonRecoSF_highPt=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2016postVFP/Efficiency_muon_generalTracks_Run2016postVFP_UL_trackerMuon.root"),
@@ -195,7 +195,7 @@ SelectedMuonProducer2016postVFP = SelectedMuonProducer2017.clone(
 
 SelectedMuonProducer2016preVFP = SelectedMuonProducer2017.clone(
     era = cms.string("2016preVFP"),
-    rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016.txt"),
+    rc_dir=cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2016aUL.txt"),
 
     file_MuonRecoSF_highPt=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2016preVFP/Efficiency_muon_generalTracks_Run2016preVFP_UL_trackerMuon.root"),
@@ -221,7 +221,7 @@ SelectedMuonProducer2016preVFP = SelectedMuonProducer2017.clone(
 
 SelectedMuonProducer2018 = SelectedMuonProducer2017.clone(
     era = cms.string("2018"),
-    rc_dir = cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2018.txt"),
+    rc_dir=cms.string("BoostedTTH/Producers/data/muonSFs/RoccoR2018UL.txt"),
 
     file_MuonRecoSF_highPt=cms.string(
         "BoostedTTH/Producers/data/muonSFs/2018/Efficiency_muon_generalTracks_Run2018_UL_trackerMuon.root"),
