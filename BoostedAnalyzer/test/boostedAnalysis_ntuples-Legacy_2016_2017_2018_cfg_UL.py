@@ -7,7 +7,7 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2430000/31C4D752-4BB3-324A-BE81-A24F0B1037D5.root
 
@@ -38,8 +38,8 @@ options.register( "dataset", "NA", VarParsing.multiplicity.singleton, VarParsing
 options.register( "dumpSyncExe", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "Dump textfiles for sync exe?" )
 options.register( "systematicVariations","nominal", VarParsing.multiplicity.list, VarParsing.varType.string, "comma-separated list of systematic variations ('nominal' or systematics base name, up/down will be added)" )
 options.register( "deterministicSeeds",False,VarParsing.multiplicity.singleton,VarParsing.varType.bool,"create collections with deterministic seeds")
-options.register( "electronRegression","",VarParsing.multiplicity.singleton,VarParsing.varType.string,"'GT' or an absolute path to a sqlite file for electron energy regression")
-options.register( "electronSmearing","",VarParsing.multiplicity.singleton,VarParsing.varType.string,"correction type for electron energy smearing")
+# options.register( "electronRegression","",VarParsing.multiplicity.singleton,VarParsing.varType.string,"'GT' or an absolute path to a sqlite file for electron energy regression")
+# options.register( "electronSmearing","",VarParsing.multiplicity.singleton,VarParsing.varType.string,"correction type for electron energy smearing")
 options.register( "useMuonRC", True, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "use Rochester Correction for muons" )
 options.register( "dataEra",     "2017",     VarParsing.multiplicity.singleton,     VarParsing.varType.string,     "the era of the data taking period or mc campaign, e.g. '2016B' or '2017'" )
 # options.register( "updatePUJetId",     False,     VarParsing.multiplicity.singleton,     VarParsing.varType.bool,     "update the PUJetId values" )
@@ -428,13 +428,13 @@ if "2016preVFP" in options.dataEra:
     process.SelectedElectronProducer = SelectedElectronProducer2016preVFP
     process.SelectedElectronProducer.ptMins=[15.,15.,29.]
     ###
-    process.SelectedMuonProducer = SelectedMuonProducer2016
+    process.SelectedMuonProducer = SelectedMuonProducer2016preVFP
     process.SelectedMuonProducer.ptMins=[15.,15.,26.]
 elif "2016postVFP" in options.dataEra:
     process.SelectedElectronProducer = SelectedElectronProducer2016postVFP
     process.SelectedElectronProducer.ptMins=[15.,15.,29.]
     ###
-    process.SelectedMuonProducer = SelectedMuonProducer2016
+    process.SelectedMuonProducer = SelectedMuonProducer2016postVFP
     process.SelectedMuonProducer.ptMins=[15.,15.,26.]
 elif "2017" in options.dataEra:
     process.SelectedElectronProducer = SelectedElectronProducer2017
