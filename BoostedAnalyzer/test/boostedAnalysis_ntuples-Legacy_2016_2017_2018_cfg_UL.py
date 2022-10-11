@@ -7,7 +7,11 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData = False outputFile = test maxEvents = 10 systematicVariations = nominal dataEra = 2016postVFP ProduceMemNtuples = False deterministicSeeds = False inputFiles = /store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
+
+
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg.py isData=False outputFile=test maxEvents=100 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear,JEReta0,JEReta1,JERpt0eta2,JERpt1eta2,JERpt0eta3,JERpt1eta3 dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
@@ -504,6 +508,7 @@ process.CorrectedJetProducerAK4=process.SelectedJetProducerAK4.clone(jets=jetCol
 # Rerun pileupJetID for 2016 and 2017 UL after JEC correction above
 # https://twiki.cern.ch/twiki/bin/view/CMS/PileupJetIDUL#Data_MC_Efficiency_Scale_Factors
 
+process.load("RecoJets.JetProducers.PileupJetID_cfi")
 if "2016postVFP" in options.dataEra:
     from RecoJets.JetProducers.PileupJetID_cfi import _chsalgos_106X_UL16
     process.pileupJetIdUpdated = process.pileupJetId.clone(
