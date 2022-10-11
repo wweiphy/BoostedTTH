@@ -9,8 +9,7 @@ import os
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData = False outputFile = test maxEvents = 10 systematicVariations = nominal dataEra = 2016postVFP ProduceMemNtuples = False deterministicSeeds = False inputFiles = /store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
-
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2430000/31C4D752-4BB3-324A-BE81-A24F0B1037D5.root
 
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg.py isData=False outputFile=test maxEvents=100 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear,JEReta0,JEReta1,JERpt0eta2,JERpt1eta2,JERpt0eta3,JERpt1eta3 dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
@@ -174,6 +173,7 @@ from PhysicsTools.PatUtils.l1PrefiringWeightProducer_cfi import l1PrefiringWeigh
 if "2016preVFP" in options.dataEra:
 
    process.prefiringweight = l1PrefiringWeightProducer.clone(
+        TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
         DataEraECAL = cms.string("UL2016preVFP"),
         DataEraMuon = cms.string("2016preVFP"),
@@ -185,6 +185,7 @@ if "2016preVFP" in options.dataEra:
 elif "2016postVFP" in options.dataEra:
    
    process.prefiringweight = l1PrefiringWeightProducer.clone(
+        TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
         DataEraECAL = cms.string("UL2016postVFP"),
         DataEraMuon = cms.string("2016postVFP"),
@@ -196,6 +197,7 @@ elif "2016postVFP" in options.dataEra:
 elif "2017" in options.dataEra:
    
    process.prefiringweight = l1PrefiringWeightProducer.clone(
+        TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
         DataEraECAL = cms.string("UL2017BtoF"),
         DataEraMuon = cms.string("20172018"),
@@ -206,6 +208,7 @@ elif "2017" in options.dataEra:
 elif "2018" in options.dataEra:
 
     process.prefiringweight = l1PrefiringWeightProducer.clone(
+        TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
         DataEraECAL = cms.string("None"),
         DataEraMuon = cms.string("20172018"),
