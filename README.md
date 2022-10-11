@@ -27,9 +27,9 @@ Do for example:
     # producer of deterministic seeds for physics objects to be able to do synchronization
 
     # producer to apply JER to jets
-    git cms-merge-topic sebwieland:CMSSW_10_2_X_SmearedJetProducer
+    # git cms-merge-topic sebwieland:CMSSW_10_2_X_SmearedJetProducer
     # producer of deterministic seeds for physics objects to be able to do synchronization
-    git cms-merge-topic yrath:deterministicSeeds_102X
+    # git cms-merge-topic yrath:deterministicSeeds_102X
 
     # adds function to easily recalculate electron/photon IDs and energy corrections
     # For UL:
