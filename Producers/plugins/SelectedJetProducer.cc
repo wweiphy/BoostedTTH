@@ -273,175 +273,133 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   
   if (not passesID) return false;
 
+  // JetID for UL
+  // https: // twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
+
   switch (iJetID)
   {
   case JetID::Loose:
-    passesID = iJet.neutralHadronEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.numberOfDaughters() > 1;
-    if (fabs(iJet.eta()) < 2.4) passesID = passesID && (iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.99);
-    break;
-  case JetID::Tight:
-    // works for 2016 tight ID (CHS and Puppi), 2017 tight ID (CHS and Puppi), and 2018 tight ID (CHS and Puppi). Only take this for jets with |eta|<=2.4, otherwise recheck!
-    // passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.numberOfDaughters() > 1;
-    // if (fabs(iJet.eta()) < 2.4) passesID = passesID && (iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0);
-    // if (era.find("2016") != std::string::npos) passesID = passesID && iJet.chargedEmEnergyFraction() < 0.99;
     if (era.find("2016") != std::string::npos)
     {
-      if (fabs(iJet.eta()) <= 2.7){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90
-                && iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.numberOfDaughters() > 1;
-        if (fabs(iJet.eta()) <= 2.4){
-          passesID = passesID && iJet.chargedHadronEnergyFraction() > 0.0
-                && iJet.chargedMultiplicity() > 0
-                && iJet.chargedEmEnergyFraction() < 0.99;
-        }
+      if (fabs(iJet.eta()) <= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
       }
-      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0.01 
-                && iJet.neutralHadronEnergyFraction() < 0.98 
-                && iJet.neutralMultiplicity() > 2;
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
       }
-      else if (fabs(iJet.eta()) > 3.0){
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.neutralMultiplicity() > 10;
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
       }
     }
 
-    if (era.find("2017") != std::string::npos)
+    if (era.find("2017") != std::string::npos or era.find("2018") != std::string::npos)
     {
-      if (fabs(iJet.eta()) <= 2.7){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.numberOfDaughters() > 1;
-        if (fabs(iJet.eta()) <= 2.4){
-          passesID = passesID && iJet.chargedHadronEnergyFraction() > 0.0
-                && iJet.chargedMultiplicity() > 0;
-        }
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
-      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0.02 
-                && iJet.neutralEmEnergyFraction() < 0.99 
-                && iJet.neutralMultiplicity() > 2;
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
-      else if (fabs(iJet.eta()) > 3.0){
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.neutralHadronEnergyFraction() > 0.02
-                && iJet.neutralMultiplicity() > 10;
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
-    }
-
-    if (era.find("2018") != std::string::npos)
-    {
-      if (fabs(iJet.eta()) <= 2.6){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.numberOfDaughters() > 1
-                && iJet.chargedHadronEnergyFraction() > 0.0
-                && iJet.chargedMultiplicity() > 0;
-
-      }
-      else if (2.6 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 2.7){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.99 
-                && iJet.chargedMultiplicity() > 0;
-      }
-      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0.02 
-                && iJet.neutralEmEnergyFraction() < 0.99 
-                && iJet.neutralMultiplicity() > 2;
-      }
-      else if (3.0 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 5.0){
-        passesID = iJet.neutralHadronEnergyFraction() > 0.2 
-                && iJet.neutralEmEnergyFraction() < 0.9 
-                && iJet.neutralMultiplicity() > 10 ;
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
       }
     }
     break;
+  case JetID::Tight:
+
+    if (era.find("2016") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
+        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+      }
+    }
+
+    if (era.find("2017") != std::string::npos or era.find("2018") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 
+                && iJet.neutralHadronEnergyFraction() > 0.2
+                && iJet.neutralMultiplicity() > 10;
+      }
+    }
+    break;
+
   case JetID::TightLepVeto:
-    // works for 2016 tight ID (CHS and Puppi), 2017 tight ID (CHS and Puppi), and 2018 tight ID (CHS and Puppi). Only take this for jets with |eta|<=2.4, otherwise recheck!
-    // passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.muonEnergyFraction()<0.80 && iJet.numberOfDaughters() > 1;
-    // if (fabs(iJet.eta()) < 2.4) passesID = passesID && (iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0);
-    // if (era.find("2016") != std::string::npos) passesID = passesID && iJet.chargedEmEnergyFraction() < 0.90;
-    // else passesID = passesID && iJet.chargedEmEnergyFraction() < 0.80;
     if (era.find("2016") != std::string::npos)
     {
-      if (fabs(iJet.eta()) <= 2.7){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.numberOfDaughters() > 1
-                && iJet.muonEnergyFraction() < 0.8;
-        if (fabs(iJet.eta()) <= 2.4){
-          passesID = passesID && iJet.chargedHadronEnergyFraction() > 0.0
-                && iJet.chargedMultiplicity() > 0
-                && iJet.chargedEmEnergyFraction() < 0.90;
-        }
+      if (fabs(iJet.eta()) <= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
       }
-      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0.01 
-                && iJet.neutralHadronEnergyFraction() < 0.98 
-                && iJet.neutralMultiplicity() > 2;
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
       }
-      else if (fabs(iJet.eta()) > 3.0){
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.neutralMultiplicity() > 10;
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
       }
     }
 
-
-    if (era.find("2017") != std::string::npos)
+    if (era.find("2017") != std::string::npos or era.find("2018") != std::string::npos)
     {
-      if (fabs(iJet.eta()) <= 2.7){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.numberOfDaughters() > 1
-                && iJet.muonEnergyFraction() < 0.8;
-        if (fabs(iJet.eta()) <= 2.4){
-          passesID = passesID && iJet.chargedHadronEnergyFraction() > 0.0
-                && iJet.chargedMultiplicity() > 0
-                && iJet.chargedEmEnergyFraction() < 0.80;
-
-        }
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
-      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0.02 
-                && iJet.neutralEmEnergyFraction() < 0.99 
-                && iJet.neutralMultiplicity() > 2;
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
-      else if (fabs(iJet.eta()) > 3.0){
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.neutralHadronEnergyFraction() > 0.02
-                && iJet.neutralMultiplicity() > 10;
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
-    }
-
-    if (era.find("2018") != std::string::npos)
-    {
-      if (fabs(iJet.eta()) <= 2.6){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.90 
-                && iJet.numberOfDaughters() > 1
-                && iJet.muonEnergyFraction() < 0.8
-                && iJet.chargedHadronEnergyFraction() > 0.0
-                && iJet.chargedMultiplicity() > 0
-                && iJet.chargedEmEnergyFraction() < 0.8;
-
-      }
-      else if (2.6 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 2.7){
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 
-                && iJet.neutralEmEnergyFraction() < 0.99 
-                && iJet.muonEnergyFraction() < 0.8
-                && iJet.chargedMultiplicity() > 0
-                && iJet.chargedEmEnergyFraction() < 0.8;
-      }
-      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0.02 
-                && iJet.neutralEmEnergyFraction() < 0.99 
-                && iJet.neutralMultiplicity() > 2;
-      }
-      else if (3.0 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 5.0){
-        passesID = iJet.neutralHadronEnergyFraction() > 0.2 
-                && iJet.neutralEmEnergyFraction() < 0.9 
-                && iJet.neutralMultiplicity() > 10 ;
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
       }
     }
     break;
@@ -587,7 +545,7 @@ pat::Jet SelectedJetProducer::GetCorrectedJet(const pat::Jet &inputJet, const ed
   return outputJet;
 }
 
-// function to apply JES, JER needs to be implemente (is currently done via SmearedJetProducer)
+// function to apply JES, JER needs to be implemented (is currently done via SmearedJetProducer)
 void SelectedJetProducer::ApplyJetEnergyCorrection(pat::Jet& jet, double& totalCorrFactor, const edm::Event& event, const edm::EventSetup& setup,
     const edm::Handle<reco::GenJetCollection>& genjets, const SystematicsHelper::Type iSysType,
     const bool doJES, const bool doJER,

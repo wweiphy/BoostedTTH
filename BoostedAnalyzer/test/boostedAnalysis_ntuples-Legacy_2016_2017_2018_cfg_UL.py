@@ -378,6 +378,7 @@ setupEgammaPostRecoSeq(process,
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------- #
 
+
 ### some standard collections ####
 #if not options.isData:
 electronCollection = cms.InputTag("slimmedElectrons")
@@ -500,7 +501,38 @@ process.CorrectedJetProducerAK4=process.SelectedJetProducerAK4.clone(jets=jetCol
                                                                JetID=["tightlepveto"],
                                                                PUJetIDMins=["none"])
 
+# Rerun pileupJetID for 2016 and 2017 UL after JEC correction above
+# https://twiki.cern.ch/twiki/bin/view/CMS/PileupJetIDUL#Data_MC_Efficiency_Scale_Factors
 
+if "2016postVFP" in options.dataEra:
+    from RecoJets.JetProducers.PileupJetID_cfi import _chsalgos_106X_UL16
+    process.pileupJetIdUpdated = process.pileupJetId.clone(
+        jets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
+        inputIsCorrected=True,
+        applyJec=False,
+        vertexes=cms.InputTag("offlineSlimmedPrimaryVertices"),
+        algos=cms.VPSet(_chsalgos_106X_UL16),
+    )
+
+elif "2016preVFP" in options.dataEra:
+    from RecoJets.JetProducers.PileupJetID_cfi import _chsalgos_106X_UL16APV
+    process.pileupJetIdUpdated = process.pileupJetId.clone(
+        jets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
+        inputIsCorrected=True,
+        applyJec=False,
+        vertexes=cms.InputTag("offlineSlimmedPrimaryVertices"),
+        algos=cms.VPSet(_chsalgos_106X_UL16APV),
+    )
+
+elif "2018" in options.dataEra:
+    from RecoJets.JetProducers.PileupJetID_cfi import _chsalgos_106X_UL18
+    process.pileupJetIdUpdated = process.pileupJetId.clone(
+        jets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
+        inputIsCorrected=True,
+        applyJec=False,
+        vertexes=cms.InputTag("offlineSlimmedPrimaryVertices"),
+        algos=cms.VPSet(_chsalgos_106X_UL18),
+    )
 
 # smearing of corrected jets -- producers that create the nominal and up/down JER correction
 # jer shift of nominal sample
@@ -749,6 +781,10 @@ process.p*=process.SelectedElectronProducer*process.SelectedMuonProducer
 process.p*=process.CorrectedJetProducerAK4
 # process.p*=process.CorrectedJetProducerAK8
 # always produce (but not necessarily write to ntuple) nominal case as collections might be needed                                    
+
+if "2016" in options.dataEra or "2018" in options.dataEra:
+    process.p *= process.pileupJetIdUpdated
+
 for s in [""]+systs:
     process.p *= getattr(process,'patSmearedJetsAK4'+s)
     # process.p *= getattr(process,'patSmearedJetsAK8'+s)
