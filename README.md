@@ -38,7 +38,7 @@ Do for example:
     git cms-addpkg RecoEgamma/EgammaTools  ### essentially just checkout the package from CMSSW
     git clone https://github.com/cms-egamma/EgammaPostRecoTools.git
     mv EgammaPostRecoTools/python/EgammaPostRecoTools.py RecoEgamma/EgammaTools/python/.
-    git clone https://github.com/cms-data/EgammaAnalysis-ElectronTools.git EgammaAnalysis/ElectronTools/data/
+    git clone -b ULSSfiles_correctScaleSysMC https://github.com/jainshilpi/EgammaAnalysis-ElectronTools.git EgammaAnalysis/ElectronTools/data
     git cms-addpkg EgammaAnalysis/ElectronTools
 
     # mitigation of EE noise to MET in 2017 data
