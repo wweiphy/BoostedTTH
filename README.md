@@ -77,6 +77,7 @@ Do for example:
     scram setup lhapdf
     # modify gsl.xml file: <environment name="GSL_BASE" default="/cvmfs/cms.cern.ch/slc7_amd64_gcc700/external/gsl/2.2.1-omkpbe2"/>
     scram setup MEIntegratorStandalone/deps/gsl.xml
+    # modify gsl.xml file: <tool name="gsl" version="2.2.1">
     # use recent version of LHAPDF header
     sed -i '6i#include "LHAPDF/LHAPDF.h"' MEIntegratorStandalone/interface/Integrand.h
     sed -i '32i /*' MEIntegratorStandalone/interface/Integrand.h
