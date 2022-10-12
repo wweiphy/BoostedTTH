@@ -390,13 +390,13 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
     // double isoNeutralHadrons = inputElectron.pfIsolationVariables().sumNeutralHadronEt;
     // double isoPhotons = inputElectron.pfIsolationVariables().sumPhotonEt;
     double pileup = 0;
-    if(iconeSize == IsoConeSize::R03) {
-        if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputElectron.pfIsolationVariables().sumPUPt;
-        else {
-            std::cerr << "\n\nERROR: invalid electron isolation correction type" << std::endl;
-            throw std::exception();
-        }
-    }
+    // if(iconeSize == IsoConeSize::R03) {
+    //     if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputElectron.pfIsolationVariables().sumPUPt;
+    //     else {
+    //         std::cerr << "\n\nERROR: invalid electron isolation correction type" << std::endl;
+    //         throw std::exception();
+    //     }
+    // }
     if (icorrType == IsoCorrType::rhoEA)
     {
         double eta = 0.;
