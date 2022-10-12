@@ -7,7 +7,7 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=1000 systematicVariations=nominal dataEra=2016preVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2430000/31C4D752-4BB3-324A-BE81-A24F0B1037D5.root
 
@@ -640,8 +640,10 @@ if options.isData:
 
 else:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_cfi import *
-    if "2016" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016
+    if "2016preVFP" in options.dataEra:
+        process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
+    if "2016postVFP" in options.dataEra:
+        process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
     elif "2017" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2017
     elif "2018" in options.dataEra:

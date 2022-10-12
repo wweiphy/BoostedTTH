@@ -245,6 +245,7 @@ SelectedLeptonProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetu
             
             std::vector<pat::Electron> selectedElectrons = GetSortedByPt(GetSelectedElectrons(updatedElectrons,ptMins_.at(i),electronIDs_.at(i),etaMaxs_.at(i)));
             
+            // turn off SFs because this is gonna updated later
             if(not isData) AddElectronSFs(selectedElectrons, electronIDs_.at(i));
             
             // produce the different electron collections and create a unique ptr to it      
@@ -281,7 +282,10 @@ SelectedLeptonProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetu
             //add muon scale factors
 
             std::vector<pat::Muon> selectedMuons = GetSortedByPt(GetSelectedMuons(updatedMuons,ptMins_.at(i),muonIDs_.at(i),IsoConeSizes_.at(i),IsoCorrTypes_.at(i),etaMaxs_.at(i),muonIsos_.at(i)));
+
+            // turn off SFs, this is gonna updated later
             if(not isData) AddMuonSFs(selectedMuons, muonIDs_.at(i),muonIsos_.at(i));
+            
             // produce the different muon collections and create a unique ptr to it      
             std::unique_ptr<pat::MuonCollection> selectedLeptons =  std::make_unique<pat::MuonCollection>(selectedMuons) ;
             // put the collection into the event with help of the unique ptr

@@ -23,6 +23,8 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
     dataset=cms.string("NA"),
     dataEra = cms.string("2017"),
 
+    # turn off the SFs calculations as this will be updated later
+    # will develop code after producing the ntuples
     # b-tag SF, defined in Weights_cff
     bTagSFs = BTagSFs94XDeepJet2017,
 
@@ -33,6 +35,7 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
     # information about lepton trigger SFs, defined in Weights_cff
     leptonTriggerSFInfos = TriggerSFs2017,
     # information about jet assignment weight .xml file
+    
     JetAssignmentOptions = JetAssignment2017,
     #MET Filters
     METfilters = filtersMC1718,
@@ -42,7 +45,8 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
 
     generatorName = cms.string("notSpecified"),
 
-    isreHLT = cms.bool(False),
+    # this does not exist in the plugins
+    # isreHLT = cms.bool(False),
 
     useFatJets = cms.bool(True),
     useForwardJets = cms.bool(False),
@@ -65,15 +69,26 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
     taggingSelection=cms.bool(False),
 )
 
-BoostedAnalyzer2016 = BoostedAnalyzer2017.clone(
+BoostedAnalyzer2016preVFP = BoostedAnalyzer2017.clone(
     LeptonSelection = LeptonSelectionMC2016,    
-    dataEra = cms.string("2016"),
-    bTagSFs = BTagSFs94XDeepJet2016,
-    leptonTriggerSFInfos = TriggerSFs2016,
-    nominalPUWeight = NominalPUWeight2016,
-    additionalPUWeights = AdditionalPUWeights2016,
+    dataEra = cms.string("2016preVFP"),
+    bTagSFs = BTagSFs94XDeepJet2016preVFP,
+    leptonTriggerSFInfos = TriggerSFs2016preVFP,
+    nominalPUWeight=NominalPUWeight2016preVFP,
+    additionalPUWeights=AdditionalPUWeights2016preVFP,
     METfilters = filtersMC16,
-    JetAssignmentOptions = JetAssignment2016,
+    JetAssignmentOptions=JetAssignment2016preVFP,
+
+)
+BoostedAnalyzer2016postVFP = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionMC2016,    
+    dataEra = cms.string("2016postVFP"),
+    bTagSFs = BTagSFs94XDeepJet2016postVFP,
+    leptonTriggerSFInfos=TriggerSFs2016postVFP,
+    nominalPUWeight=NominalPUWeight2016postVFP,
+    additionalPUWeights=AdditionalPUWeights2016postVFP,
+    METfilters = filtersMC16,
+    JetAssignmentOptions = JetAssignment2016postVFP,
 
 )
 

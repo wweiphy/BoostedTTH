@@ -383,6 +383,7 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
 	     correctedMETsTokens.push_back(consumes< std::vector<pat::MET> >(tag));
     }
     
+    // TODO - what is this helper? 
     // initialize helper classes
     helper.SetUp("2015_74x", isData ? -1 : 1, analysisType::LJ, isData);
 
