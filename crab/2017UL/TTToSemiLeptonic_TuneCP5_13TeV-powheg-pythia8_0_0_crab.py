@@ -15,7 +15,7 @@ config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','outName=ntup
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-PUForMUOVal_106X_mc2017_realistic_v9_ext1-v2/MINIAODSIM'
+config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM'
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 1500
