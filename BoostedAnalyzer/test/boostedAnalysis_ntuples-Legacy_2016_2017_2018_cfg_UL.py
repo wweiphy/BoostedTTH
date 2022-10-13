@@ -7,7 +7,7 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# python boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outputFile=test maxEvents=10 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/00000/005708B7-331C-904E-88B9-189011E6C9DD.root
 
@@ -76,24 +76,27 @@ elif not options.isData:
 else:
     raise Exception("Problem with isData option! This should never happen!")
 
-# if not options.inputFiles:
-#     if not options.isData:
-#         if "2016" in options.dataEra:
-#             options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/vanderli/ttH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/KIT_tthbb_sl_skims_MC_94X_LEG_2016/191218_102941/0000/Skim_1.root']
-#         elif "2017" in options.dataEra: 
-#            options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/vanderli/TTH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/KIT_tthbb_sl_skims_MC_94X_LEG_2017/191218_102702/0000/Skim_1.root']
+
+# this is needed when using crab 
+# when crab imports the configuration file it will test run it and if no inputfiles are preset the program will terminate because L#110
+if not options.inputFiles:
+    if not options.isData:
+        if "2016" in options.dataEra:
+            options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/vanderli/ttH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/KIT_tthbb_sl_skims_MC_94X_LEG_2016/191218_102941/0000/Skim_1.root']
+        elif "2017" in options.dataEra: 
+           options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/vanderli/TTH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/KIT_tthbb_sl_skims_MC_94X_LEG_2017/191218_102702/0000/Skim_1.root']
       
-#         elif "2018" in options.dataEra:
+        elif "2018" in options.dataEra:
             
-#             options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/vanderli/TTH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/KIT_tthbb_sl_skims_MC_102X_LEG_2018/191218_103017/0000/Skim_1.root']
+            options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/vanderli/TTH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/KIT_tthbb_sl_skims_MC_102X_LEG_2018/191218_103017/0000/Skim_1.root']
             
-#     else:
-#         if "2016" in options.dataEra: # CAREFUL: NO 2016 Data Skims ready yet
-#         	options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/pkeicher/SingleElectron/KIT_tthbb_sl_skims_DATA_94X_Run2017B/180617_220344/0000/Skim_1.root']
-#         elif "2017" in options.dataEra:
-#             options.inputFiles=['file:///pnfs/desy.de/cms/tier2//store/user/vanderli/SingleElectron/KIT_tthbb_sl_skims_DATA_94X_LEG_2017B/190607_140551/0000/Skim_526.root']
-#         elif "2018" in options.dataEra:
-#         	options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/mschrode/SingleMuon/KIT_tthbb_skims_DATA_94X_LEG_2018A/190406_082949/0000/Skim_1.root']
+    else:
+        if "2016" in options.dataEra: # CAREFUL: NO 2016 Data Skims ready yet
+        	options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/pkeicher/SingleElectron/KIT_tthbb_sl_skims_DATA_94X_Run2017B/180617_220344/0000/Skim_1.root']
+        elif "2017" in options.dataEra:
+            options.inputFiles=['file:///pnfs/desy.de/cms/tier2//store/user/vanderli/SingleElectron/KIT_tthbb_sl_skims_DATA_94X_LEG_2017B/190607_140551/0000/Skim_526.root']
+        elif "2018" in options.dataEra:
+        	options.inputFiles=['file:///pnfs/desy.de/cms/tier2/store/user/mschrode/SingleMuon/KIT_tthbb_skims_DATA_94X_LEG_2018A/190406_082949/0000/Skim_1.root']
     
  
 
