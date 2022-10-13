@@ -2,7 +2,7 @@ from CRABClient.UserUtilities import config
 config = config()
 
 config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2017_ntuple_0_0'
-config.General.workArea = 'crab_ntuple'
+config.General.workArea = '2017'
 
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_27/src/BoostedTTH/BoostedAnalyzer/test//boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py'
