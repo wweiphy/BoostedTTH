@@ -1,4 +1,6 @@
+import CRABClient
 from CRABClient.UserUtilities import config
+
 config = config()
 
 config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2017_ntuple_0_0'
