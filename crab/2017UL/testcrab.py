@@ -7,7 +7,8 @@ config.General.requestName = 'TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8_2017_ntupl
 # config.General.workArea = '2017'
 
 config.JobType.pluginName = 'Analysis'
-config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py'
+config.JobType.psetName = 'pset.py'
+# config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py'
 config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutflow.txt"]
 # config.JobType.maxJobRuntimeMin = 2800
 # config.JobType.maxMemoryMB = 20000
@@ -23,9 +24,10 @@ config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 5
 config.Data.splitting = 'FileBased'
+
 #config.Data.unitsPerJob = 720
 #config.Data.splitting = 'Automatic'
-config.Data.publication = False
+config.Data.publication = True
 config.Data.publishDBS = 'phys03'
 config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
 config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017'
