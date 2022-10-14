@@ -38,6 +38,8 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 process.options = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(True)
 
+process.options.numberOfThreads = cms.untracked.uint32(8)
+
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 if options.isData:
     if "2016" in options.dataEra:
