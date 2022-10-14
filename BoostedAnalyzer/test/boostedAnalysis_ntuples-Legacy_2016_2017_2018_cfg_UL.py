@@ -31,7 +31,8 @@ options.register( "skipEvents", 0, VarParsing.multiplicity.singleton, VarParsing
 options.register( "isData", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "is it data or MC?" )
 options.register( "isBoostedMiniAOD", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "has the file been prepared with the BoostedProducer ('custom' MiniAOD)?" )
 options.register( "generatorName", "MadGraph", VarParsing.multiplicity.singleton, VarParsing.varType.string, "'POWHEG','aMC', 'MadGraph' or 'pythia8'" )
-options.register( "globalTag", "106X_mc2017_realistic_v8", VarParsing.multiplicity.singleton, VarParsing.varType.string, "global tag" )
+options.register("globalTag", "106X_mc2017_realistic_v9",
+                 VarParsing.multiplicity.singleton, VarParsing.varType.string, "global tag")
 options.register( "useJson",True, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "apply the json filter (on the grid there are better ways to do this)" )
 options.register( "additionalSelection","NONE", VarParsing.multiplicity.singleton, VarParsing.varType.string, "addition Selection to use for this sample" )
 datasets=['NA','mu','el','elel','elmu','mumu']

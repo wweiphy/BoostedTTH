@@ -17,10 +17,10 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM'
 config.Data.inputDBS = 'global'
-# config.Data.splitting = 'EventAwareLumiBased'
-# config.Data.unitsPerJob = 5
+config.Data.splitting = 'EventAwareLumiBased'
+config.Data.unitsPerJob = 8000
 # config.Data.splitting = 'FileBased'
-config.Data.splitting = 'Automatic'
+# config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
 config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
