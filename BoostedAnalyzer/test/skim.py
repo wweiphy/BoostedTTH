@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 
 
-# cmsRun skim.py isData=False maxEvents=5 dataEra=2017 inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# cmsRun skim.py isData=False maxEvents=1000 dataEra=2017 inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
 options = VarParsing ('analysis')
 options.register( "isData", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "is it data or MC?" )
@@ -94,10 +94,12 @@ process.LeptonJetsSkim.isData=cms.bool(options.isData)
 
 process.skimmed=cms.Path(process.LeptonJetsSkim)
 
+# https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideSelectingBranchesForOutput
 process.OUT = cms.OutputModule(
     "PoolOutputModule",
     fileName = cms.untracked.string('Skim.root'),
-    outputCommands = cms.untracked.vstring(['drop *','keep *_*_*_PAT','keep *_*_*_RECO','keep *_*_*_HLT*','keep *_*_*_SIM','keep *_*_*_LHE','keep *_matchGen*Hadron_*_*', 'keep *_ak4GenJetsCustom_*_*', 'keep *_categorizeGenTtbar_*_*']),
+    outputCommands=cms.untracked.vstring(['drop *', 'keep *_*_*_PAT', 'keep *_*_*_RECO', 'keep *_*_*_HLT*', 'keep *_*_*_SIM', 'keep *_*_*_LHE',
+                                         'keep *_matchGen*Hadron_*_*', 'keep *_ak4GenJetsCustom_*_*', 'keep *_categorizeGenTtbar_*_*', 'keep GenEventInfoProduct_*_*_GEN', 'keep LHEEventProduct_*_*_GEN']),
     SelectEvents = cms.untracked.PSet(
         SelectEvents = cms.vstring("skimmed")
     )
