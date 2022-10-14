@@ -1102,31 +1102,54 @@ void BoostedAnalyzer::endJob()
 // ------------ method called when starting to processes a run ------------
 void BoostedAnalyzer::beginRun(edm::Run const& iRun, edm::EventSetup const& iSetup) {
     
-    edm::Handle<LHERunInfoProduct> runhandle1;
-    edm::Handle<LHERunInfoProduct> runhandle2;
-    //iEvent.getRun()
-    iRun.getByLabel("externalLHEProducer",runhandle1);
-    iRun.getByLabel("source",runhandle2);
+    // edm::Handle<LHERunInfoProduct> runhandle1;
+    // edm::Handle<LHERunInfoProduct> runhandle2;
+    // //iEvent.getRun()
+    // iRun.getByLabel("externalLHEProducer",runhandle1);
+    // iRun.getByLabel("source",runhandle2);
     
-    LHERunInfoProduct myLHERunInfoProduct;
-    if(runhandle1.isValid()) {
-        myLHERunInfoProduct = *(runhandle1.product());
-    }
-    else if(runhandle2.isValid()) {
-        myLHERunInfoProduct = *(runhandle2.product());
-    }
-    else {
-        cout << "Attention: no genweights will be written because the LHERunInfoProduct is not available!" << endl;
-        return;
-    }
+    // LHERunInfoProduct myLHERunInfoProduct;
+    // if(runhandle1.isValid()) {
+    //     myLHERunInfoProduct = *(runhandle1.product());
+    // }
+    // else if(runhandle2.isValid()) {
+    //     myLHERunInfoProduct = *(runhandle2.product());
+    // }
+    // else {
+    //     cout << "Attention: no genweights will be written because the LHERunInfoProduct is not available!" << endl;
+    //     return;
+    // }
     
-    genweights.GetNamesFromLHE(myLHERunInfoProduct);
+    // genweights.GetNamesFromLHE(myLHERunInfoProduct);
     
     
     
 }
 
 void BoostedAnalyzer::endRun(edm::Run const& iRun, edm::EventSetup const& iSetup) {
+    edm::Handle<LHERunInfoProduct> runhandle1;
+    edm::Handle<LHERunInfoProduct> runhandle2;
+    // iEvent.getRun()
+    iRun.getByLabel("externalLHEProducer", runhandle1);
+    iRun.getByLabel("source", runhandle2);
+
+    LHERunInfoProduct myLHERunInfoProduct;
+    if (runhandle1.isValid())
+    {
+        myLHERunInfoProduct = *(runhandle1.product());
+    }
+    else if (runhandle2.isValid())
+    {
+        myLHERunInfoProduct = *(runhandle2.product());
+    }
+    else
+    {
+        cout << "Attention: no genweights will be written because the LHERunInfoProduct is not available!" << endl;
+        return;
+    }
+
+    genweights.GetNamesFromLHE(myLHERunInfoProduct);
+    
     genweights.Clear();
 }
 
