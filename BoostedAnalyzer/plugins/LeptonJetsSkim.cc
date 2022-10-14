@@ -106,7 +106,7 @@ LeptonJetsSkim::LeptonJetsSkim(const edm::ParameterSet& iConfig)
   electronEtaMax_ = iConfig.getParameter<double>("electronEtaMax");
   electronID_     = electronID::skimming;
   muonID_         = muonID::muonLoose;
-  muonIso_        = muonIso::PFIsoLoose;
+  muonIso_ = muonIso::MiniIsoLoose;
   muonIsoConeSize_ = coneSize::R04;
   muonIsoCorrType_ = corrType::deltaBeta;
   const bool isData = iConfig.getParameter<bool>("isData");
@@ -142,9 +142,9 @@ LeptonJetsSkim::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
 	edm::Handle<pat::MuonCollection> hMuons;
 	iEvent.getByToken(EDMMuonsToken,hMuons);
-	pat::MuonCollection selectedMuons = helper_.GetSelectedMuons(*hMuons,muonPtMin_,muonID_,muonIsoConeSize_,muonIsoCorrType_,muonEtaMax_,muonIso_);
-	
-	edm::Handle<pat::JetCollection> hJets;
+  pat::MuonCollection selectedMuons = helper_.GetSelectedMuons(*hMuons, muonPtMin_, muonID_, muonIsoConeSize_, muonIsoCorrType_, muonEtaMax_, muonIso_);
+
+  edm::Handle<pat::JetCollection> hJets;
 	iEvent.getByToken(EDMJetsToken,hJets);	    
 	pat::JetCollection selectedJets =  helper_.GetSelectedJets(*hJets,jetPtMin_,jetEtaMax_,jetID::jetTight,'-');
 	// TODO: correct jets (maybe even with JESUP) to make sure the jetcuts are loose enough

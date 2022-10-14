@@ -562,7 +562,7 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
     bool passesKinematics = (iMinPt<=iMuon.pt()) and (iMaxEta>=fabs(iMuon.eta()));
     bool passesID = false;
     bool passesIso = false;
-    bool passesIso_doublecheck = false;
+    // bool passesIso_doublecheck = false;
 
     switch (iMuonID)
     {
@@ -604,9 +604,7 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
     }
     // TODO - check if this is consistent with build in function pat::Muon::MiniIsoMedium
 
-    if (iMuon.userFloat("relIso") < 0.2)
-        passesIso_doublecheck = true;
-    return passesKinematics and passesID and passesIso and passesIso_doublecheck;
+    return passesKinematics and passesID and passesIso;
 }
 // function to apply muon momentum correction (rochester correction)
 void SelectedLeptonProducer::ApplyMuonMomentumCorrection(std::vector<pat::Muon>& inputMuons){

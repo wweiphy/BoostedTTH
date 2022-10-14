@@ -1,9 +1,14 @@
 import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 
+
+# cmsRun skim.py isData=False maxEvents=5 dataEra=2017 inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+
 options = VarParsing ('analysis')
 options.register( "isData", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "is it data or MC?" )
 options.register( "skipEvents", 0, VarParsing.multiplicity.singleton, VarParsing.varType.int, "Number of events to skip" )
+options.register("dataEra",     "2017",     VarParsing.multiplicity.singleton,     VarParsing.varType.string,
+                 "the era of the data taking period or mc campaign, e.g. '2016B' or '2017'")
 
 options.parseArguments()
 
@@ -34,10 +39,30 @@ process.options = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(True)
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-if not options.isData:
-    process.GlobalTag.globaltag = "94X_mc2017_realistic_v13"
+if options.isData:
+    if "2016" in options.dataEra:
+        options.globalTag = "106X_dataRun2_v35"
+    elif "2017" in options.dataEra:
+        options.globalTag = "106X_dataRun2_v35"
+    elif "2018" in options.dataEra:
+        options.globalTag = "106X_dataRun2_v35"
+    else:
+        raise Exception("dataEra "+options.dataEra +
+                        " not supported for this config: USE dataEra=2016/2017")
+elif not options.isData:
+    if "2016preVFP" in options.dataEra:
+        options.globalTag = "106X_mcRun2_asymptotic_preVFP_v11"
+    elif "2016postVFP" in options.dataEra:
+        options.globalTag = "106X_mcRun2_asymptotic_v17"
+    elif "2017" in options.dataEra:
+        options.globalTag = "106X_mc2017_realistic_v9"
+    elif "2018" in options.dataEra:
+        options.globalTag = "106X_upgrade2018_realistic_v16_L1v1"
+    else:
+        raise Exception("dataEra "+options.dataEra +
+                        " not supported for this config: USE dataEra=2016/2017")
 else:
-    process.GlobalTag.globaltag = "94X_dataRun2_ReReco_EOY17_v6"
+    raise Exception("Problem with isData option! This should never happen!")
 process.load("CondCore.CondDB.CondDB_cfi")
 
 

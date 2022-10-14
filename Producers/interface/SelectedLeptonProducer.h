@@ -37,6 +37,10 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "RecoEgamma/EgammaTools/interface/EffectiveAreas.h"
+
+// From CMSSW_12_1_1, this file is in a different location
+// https : // github.com/cms-sw/cmssw/blob/38405a5b319be8ec094c981d6b45320aa577676a/PhysicsTools/NanoAOD/plugins/IsoValueMapProducer.cc#L32
+// #include "CommonTools/Egamma/interface/EffectiveAreas.h"
 //#include "MiniAOD/MiniAODHelper/interface/MiniAODHelper.h"
 
 #include "DataFormats/PatCandidates/interface/Lepton.h"
@@ -47,11 +51,11 @@
 #include "TFile.h"
 
 #include "BoostedTTH/Producers/interface/RoccoR.h" // this is needed to calculate the correction factors of the rochester correction
-//
-// class declaration
-//
+        //
+        // class declaration
+        //
 
-class SelectedLeptonProducer : public edm::EDProducer {
+        class SelectedLeptonProducer : public edm::EDProducer {
 public:
     explicit SelectedLeptonProducer(const edm::ParameterSet&);
     ~SelectedLeptonProducer();
