@@ -95,6 +95,8 @@ process.LeptonJetsSkim.isData=cms.bool(options.isData)
 process.skimmed=cms.Path(process.LeptonJetsSkim)
 
 # https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideSelectingBranchesForOutput
+# In the UL samples, GenEventInfoProduct and LHEEventProduct are saved as GEN in stead of LHE (I guess)
+# 'keep *_*_*_HLT*'
 process.OUT = cms.OutputModule(
     "PoolOutputModule",
     fileName = cms.untracked.string('Skim.root'),

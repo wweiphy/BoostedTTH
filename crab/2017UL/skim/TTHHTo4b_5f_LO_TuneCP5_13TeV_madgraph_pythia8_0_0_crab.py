@@ -5,7 +5,7 @@ config.General.requestName = 'TTHHTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8_2017
 config.General.workArea = 'crab_skims'
 
 config.JobType.pluginName = 'Analysis'
-config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/CMSSW_10_2_18/src/BoostedTTH/BoostedAnalyzer/test/skim.py'
+config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/skim.py'
 config.JobType.outputFiles = ['Skim.root']
 config.JobType.maxJobRuntimeMin = 2800
 config.JobType.numCores = 8
@@ -14,7 +14,7 @@ config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','dataEta=2017
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.inputDataset = '/TTHHTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
+config.Data.inputDataset = '/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17-v2/MINIAODSIM'
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 2

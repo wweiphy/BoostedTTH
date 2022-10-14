@@ -5,7 +5,7 @@ config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2017
 config.General.workArea = 'crab_skims'
 
 config.JobType.pluginName = 'Analysis'
-config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/CMSSW_10_2_18/src/BoostedTTH/BoostedAnalyzer/test/skim.py'
+config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/skim.py'
 config.JobType.outputFiles = ['Skim.root']
 config.JobType.maxJobRuntimeMin = 2800
 config.JobType.numCores = 8
