@@ -41,23 +41,23 @@ process.options.allowUnscheduled = cms.untracked.bool(True)
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 if options.isData:
     if "2016" in options.dataEra:
-        options.globalTag = "106X_dataRun2_v35"
+        process.GlobalTag.globaltag = "106X_dataRun2_v35"
     elif "2017" in options.dataEra:
-        options.globalTag = "106X_dataRun2_v35"
+        process.GlobalTag.globaltag = "106X_dataRun2_v35"
     elif "2018" in options.dataEra:
-        options.globalTag = "106X_dataRun2_v35"
+        process.GlobalTag.globaltag = "106X_dataRun2_v35"
     else:
         raise Exception("dataEra "+options.dataEra +
                         " not supported for this config: USE dataEra=2016/2017")
 elif not options.isData:
     if "2016preVFP" in options.dataEra:
-        options.globalTag = "106X_mcRun2_asymptotic_preVFP_v11"
+        process.GlobalTag.globaltag = "106X_mcRun2_asymptotic_preVFP_v11"
     elif "2016postVFP" in options.dataEra:
-        options.globalTag = "106X_mcRun2_asymptotic_v17"
+        process.GlobalTag.globaltag = "106X_mcRun2_asymptotic_v17"
     elif "2017" in options.dataEra:
-        options.globalTag = "106X_mc2017_realistic_v9"
+        process.GlobalTag.globaltag = "106X_mc2017_realistic_v9"
     elif "2018" in options.dataEra:
-        options.globalTag = "106X_upgrade2018_realistic_v16_L1v1"
+        process.GlobalTag.globaltag = "106X_upgrade2018_realistic_v16_L1v1"
     else:
         raise Exception("dataEra "+options.dataEra +
                         " not supported for this config: USE dataEra=2016/2017")
