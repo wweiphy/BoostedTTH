@@ -10,7 +10,7 @@ config.JobType.outputFiles = ['Skim.root']
 # config.JobType.maxJobRuntimeMin = 2800
 # config.JobType.numCores = 8
 config.JobType.maxMemoryMB = 5000
-config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','dataEta=2017']
+config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','dataEra=2017']
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
