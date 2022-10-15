@@ -15,8 +15,8 @@ config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','outName=ntup
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.inputDataset = '/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM'
-config.Data.inputDBS = 'global'
+config.Data.inputDataset = '/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
+config.Data.inputDBS = 'phys03'
 # config.Data.unitsPerJob = 5
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 1
@@ -26,7 +26,7 @@ config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
 config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
-config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017'
+config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017/ntuple'
 
 
 config.Site.storageSite = 'T3_US_FNALLPC'
