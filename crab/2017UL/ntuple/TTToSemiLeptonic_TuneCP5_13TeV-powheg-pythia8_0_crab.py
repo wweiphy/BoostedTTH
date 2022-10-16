@@ -7,8 +7,8 @@ config.General.workArea = 'crab_ntuple'
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py'
 config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutflow.txt"]
-# config.JobType.maxJobRuntimeMin = 2800
-config.JobType.maxMemoryMB = 5000
+config.JobType.maxJobRuntimeMin = 2800
+config.JobType.maxMemoryMB = 4000
 #config.JobType.numCores = 8
 
 config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=99999999','outName=ntuples', 'dataEra=2017','systematicVariations=nominal','weight=2.78E-05','ProduceMemNtuples=False', 'deterministicSeeds=False']
@@ -17,10 +17,11 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
 config.Data.inputDBS = 'phys03'
-config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 5000
+# config.Data.splitting = 'EventAwareLumiBased'
+# config.Data.unitsPerJob = 5000
 # config.Data.splitting = 'FileBased'
-# config.Data.splitting = 'Automatic'
+config.Data.unitsPerJob = 360
+config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
 config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
