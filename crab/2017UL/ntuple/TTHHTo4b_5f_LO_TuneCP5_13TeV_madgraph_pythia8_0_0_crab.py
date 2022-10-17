@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTHHTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8_2017_ntuple_0_0'
+config.General.requestName = 'TTHHTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8_2017_ntuple_0_0_2'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -19,18 +19,18 @@ config.Data.inputDataset = '/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/lpctthrun2-
 config.Data.inputDBS = 'phys03'
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'
-NJOB = 2000
+# NJOB = 2000
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.unitsPerJob = 1
 # config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 360
-config.Data.totalUnits = config.Data.unitsPerJob * NJOB
+# config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
-config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
+config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017_2'
 config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017/ntuple'
 
 
 config.Site.storageSite = 'T3_US_FNALLPC'
-
+# config.Site.blacklist = 'T1_US_FNAL'
