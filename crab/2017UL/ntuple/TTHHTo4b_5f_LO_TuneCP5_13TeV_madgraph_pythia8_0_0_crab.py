@@ -17,8 +17,10 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
 config.Data.inputDBS = 'phys03'
-config.Data.unitsPerJob = 3000
+config.Data.unitsPerJob = 1000
 config.Data.splitting = 'EventAwareLumiBased'
+# NJOB = 500
+# config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.unitsPerJob = 1
 # config.Data.splitting = 'FileBased'
 # config.Data.unitsPerJob = 360
