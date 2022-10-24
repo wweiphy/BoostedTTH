@@ -462,7 +462,7 @@ process.SelectedMuonProducer.isoConeSizes=[""]*3
 process.SelectedMuonProducer.isoCorrTypes=["rhoEA"]*3
 # muon iso change to miniPF isolation miniPFRelIso_all < 0.2, corresponds to medium WP
 # see https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/Muon.h
-process.SelectedMuonProducer.muonIsoTypes = ["loose", "loose", "medium"]
+process.SelectedMuonProducer.muonIsoTypes = ["loose", "loose", "tight"]
 process.SelectedMuonProducer.collectionNames=["selectedMuonsLoose","selectedMuonsDL","selectedMuons"]
 process.SelectedMuonProducer.useMuonRC=options.useMuonRC
 process.SelectedMuonProducer.useDeterministicSeeds=options.deterministicSeeds

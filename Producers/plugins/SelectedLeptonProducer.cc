@@ -585,17 +585,21 @@ SelectedLeptonProducer::isGoodMuon(const pat::Muon& iMuon, const double iMinPt, 
     // change to miniPF isolation
     // https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/Muon.h
     switch(imuonIso){
+        // change back to PF isolation tight 
         case MuonIsolation::None:
             passesIso         = true;
             break;
         case MuonIsolation::Loose:
-            passesIso = iMuon.passed(pat::Muon::MiniIsoLoose);
+            // passesIso = iMuon.passed(pat::Muon::MiniIsoLoose);
+            passesIso = iMuon.passed(pat::Muon::PFIsoLoose);
             break;
         case MuonIsolation::Medium:
-            passesIso = iMuon.passed(pat::Muon::MiniIsoMedium);
+            // passesIso = iMuon.passed(pat::Muon::MiniIsoMedium);
+            passesIso = iMuon.passed(pat::Muon::PFIsoMedium);
             break;
         case MuonIsolation::Tight:
-            passesIso = iMuon.passed(pat::Muon::MiniIsoTight);
+            // passesIso = iMuon.passed(pat::Muon::MiniIsoTight);
+            passesIso = iMuon.passed(pat::Muon::PFIsoTight);
             break;
         default:
             std::cerr << "\n\nERROR: InvalidMuonIso" <<  std::endl;
