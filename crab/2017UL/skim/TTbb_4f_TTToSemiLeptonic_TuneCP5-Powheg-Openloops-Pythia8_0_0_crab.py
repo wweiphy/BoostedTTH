@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTbb_Powheg_Openloops_SL_2017_skim_0_0'
+config.General.requestName = 'TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8_2017_skim_0_0'
 config.General.workArea = 'crab_skims'
 
 config.JobType.pluginName = 'Analysis'

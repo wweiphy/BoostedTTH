@@ -716,8 +716,8 @@ else:
   "essentialMVAVarProcessor",
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
-#   "JABDTttbarProcessor",
-#   "JABDTthhProcessor",
+  "JABDTttbarProcessor",
+  "JABDTthhProcessor",
 #  "JABDTtthProcessor",
   )
 if (process.BoostedAnalyzer.taggingSelection): process.BoostedAnalyzer.processorNames.append("SelectionTagProcessor")
