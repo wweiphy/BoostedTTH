@@ -343,14 +343,14 @@ BoostedAnalyzer::BoostedAnalyzer(const edm::ParameterSet& iConfig):
     genJetsToken                    { consumes< std::vector<reco::GenJet> >(iConfig.getParameter<edm::InputTag>("genJets")) },
     LHERunInfoToken                 { consumes<LHERunInfoProduct,edm::InRun>(edm::InputTag("externalLHEProducer")) },
     LHERunInfoTokenalternative      { consumes<LHERunInfoProduct,edm::InRun>(edm::InputTag("source")) }
-    prefweight_token                { consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"))},
-    prefweightup_token              { consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"))},
-    prefweightdown_token            { consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"))}
+    // prefweight_token                { consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"))},
+    // prefweightup_token              { consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"))},
+    // prefweightdown_token            { consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"))}
 {
     // if( era != "2018"){
-    //     prefweight_token = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"));
-    //     prefweightup_token = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
-    //     prefweightdown_token = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
+    prefweight_token = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"));
+    prefweightup_token = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
+    prefweightdown_token = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
     // }
     //set up resource monitor
     ResMon.reset(new ResourceMonitor());
