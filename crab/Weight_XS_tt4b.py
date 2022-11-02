@@ -505,5 +505,34 @@ files_ttzbb = [
 
 ]
 
-a = GetTotalSampleNumbers(files_ttzbb)
+files_ttzz = [
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/7114667A-D8A9-394D-81D4-EE422620D545.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/017DB7D0-12F7-1A4C-9A63-5F57EEFCC0AA.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/0613965A-01F6-2647-AD54-CDDD500A4261.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/69DC7C37-F483-F946-B2FC-D1C607110DE3.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/5FF483E1-3F9B-7046-BEAE-E22BC1B9F429.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/F34C0218-A33B-8642-81AB-4B21E8EF6BA2.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/ECCDD1AE-3BDB-D547-AB09-A0FB6C88D99E.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/840320F1-727C-974E-AC52-049FFB3CAED8.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/3B19AA01-54E3-BD44-A522-172CB1CEBB9E.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/085F9CA8-9417-5844-B12F-EDE5476DFBFB.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/75E12FB7-F967-C24A-8CAC-F91D8A29D655.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/A93DB916-6BB8-5046-B585-301CC1CEA15F.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/80E8CB1B-F31F-244E-A682-BE814CB02ABE.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/7FAEBE10-2ABA-ED40-BCA1-5444241E9425.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/5E7804EF-2317-3E49-AF19-83672320A3C7.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/CE69925D-710E-2844-B17E-1E24724ED318.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/56FFEAD9-FEBC-5741-9C8E-C36AC3B2CC79.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/A75126B1-F917-5144-B38A-96A17309B156.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/843EC573-64CD-F741-943B-37D0BEF35F2A.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/E0F2F466-C3AF-7D44-B985-B0AED5E6E9C6.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/56ACD52A-65DB-2C41-BC86-D4932B1DB1B4.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/13322BDF-4313-0344-9563-026A05D986F3.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/2F1C368B-A03D-A34C-AFAA-7F24A4F2DC2B.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/15BA7099-2147-484A-AAE1-E1BF7F938072.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/40000/0163102B-6A60-214D-AC8C-8ACAB8CEDC48.root',
+
+]
+
+a = GetTotalSampleNumbers(files_ttzz)
 print "ratio: ", a
