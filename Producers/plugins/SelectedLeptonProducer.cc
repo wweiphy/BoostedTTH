@@ -696,9 +696,9 @@ void SelectedLeptonProducer::AddMuonSFs(std::vector<pat::Muon>& inputMuons, cons
         muon.addUserFloat("IsolationSF",IsoSFs.at(0));
         muon.addUserFloat("IsolationSFUp",IsoSFs.at(1));
         muon.addUserFloat("IsolationSFDown",IsoSFs.at(2));
-        muon.addUserFloat("RecoSF", RecoSFs.at(0));
-        muon.addUserFloat("RecoSFUp", RecoSFs.at(1));
-        muon.addUserFloat("RecoSFDown", RecoSFs.at(2));
+        muon.addUserFloat("ReconstructionSF", RecoSFs.at(0));
+        muon.addUserFloat("ReconstructionSFUp", RecoSFs.at(1));
+        muon.addUserFloat("ReconstructionSFDown", RecoSFs.at(2));
     }
 }
 
