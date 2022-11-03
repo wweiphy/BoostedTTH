@@ -576,5 +576,39 @@ files_ttdl = [
     '/store/mc/RunIISummer20UL17MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/230000/CB019276-E7A4-AB4B-8CB6-A1BC6FD8E9ED.root',
 
 ]
-a = GetTotalSampleNumbers(files_ttdl)
+
+files_ttbbdl = [
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/270000/F3D05818-4B89-E64E-A1D2-5BC78438FC8E.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/270000/F9F2701B-CE68-E243-A9FE-E1E397A50323.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/270000/954E537A-0E64-5A4C-B4D8-3758D742028B.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/270000/256A5DE0-52DF-774B-B111-224D425EDB7A.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/270000/76AC6C11-DD56-384C-9206-CC4331E4D27F.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/270000/3E8D3C06-8CD6-1840-A66F-C4BD57D3AE10.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/49C11732-055D-5E45-8FEB-44693B3A1D38.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/0A33D51F-58D6-6B4D-B6C0-9ADA6829CF5E.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/A5F8C326-A0B5-E94F-99CD-917D44C6539F.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/0857BBF1-7051-F94F-9DC2-859FB45F38D9.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/F366B813-C3EC-D64B-BEEB-FC92817B664F.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/D5508154-79CC-B845-8CEC-E2F647680396.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/B4A87B4D-EA8D-EC43-B4D3-D3E8AA9FA602.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/AB1DD053-6121-5A47-B91F-581CAE6B27D0.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/1A741388-DAD7-5E47-9952-B88FD67742A4.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/C2557D74-CAD7-BC4E-9C41-F24A3987DDF3.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/842DC297-1B88-F44A-B996-1DD85BE85A22.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/C0368E99-4FAB-FC43-AF81-DED9F8A2E0D4.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/330A4D88-30CE-B24E-80B7-DC2231808BBC.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/B9C890AF-7B2C-1A43-9B2D-521478B45AF3.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/C9DEC0D7-75E0-5F4B-B2FF-EDE39EDACCAC.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/D1776465-6DF2-A749-B48E-05DFCF6A6BBD.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/95F2A82A-E3BB-1244-B8CA-CB7428477C97.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/9AED1BB0-B3F0-8045-A785-C7EF6C691C47.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/AE97B246-983C-994C-860F-69ED7B15B160.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/CEED2805-1CD6-2E40-8231-AD499D7BC4EB.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/EE183D10-F651-E041-A36A-F0ED39EC3CDA.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/89AE47B9-5BC2-BC41-98CB-6D97E6AED02B.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/495783FB-E1B6-1F4C-8AA5-697ACD61E493.root',
+    '/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/280000/79AACB70-9410-4444-8ABD-823BA80967F1.root',
+
+]
+a = GetTotalSampleNumbers(files_ttbbdl)
 print "ratio: ", a
