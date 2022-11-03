@@ -10,7 +10,7 @@ echo "Attempting setenv command"
 # export CMSSW_VERSION={{CMSSW_VERSION}}
 # cmsrel $CMSSW_VERSION
 
-xrdcp -s root://cmseos.fnal.gov//store/user/wwei/UL/CMSSW_10_6_29.tgz .
+xrdcp -s root://cmseos.fnal.gov//store/user/wwei/UL/CMSSW_10_6_29_2.tgz .
 
 tar -xf CMSSW_10_6_29.tgz
 rm CMSSW_10_6_29.tgz
