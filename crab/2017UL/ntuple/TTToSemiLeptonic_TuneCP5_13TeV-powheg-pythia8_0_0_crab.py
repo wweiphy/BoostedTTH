@@ -16,10 +16,11 @@ config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
+
 config.Data.inputDBS = 'phys03'
 config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 5000
-# NJOB = 9000
+config.Data.unitsPerJob = 15000
+# NJOB = 9500
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'FileBased'
 # config.Data.unitsPerJob = 360
