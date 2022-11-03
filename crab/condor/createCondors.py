@@ -42,15 +42,18 @@ CPU = options.cpus
 
 # obtain the input files
 
-if options.process == "ttHH":
+# if options.process == "ttHH":
+#     if options.dataEra == 2017:
+#         allFiles = sorted(glob.glob(
+#             '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/ntuple/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/sl_LEG_ntuple_2017_2/*/*/*root'))
+if options.process == "ttbar":
     if options.dataEra == 2017:
         allFiles = sorted(glob.glob(
-            '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/ntuple/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/sl_LEG_ntuple_2017_2/*/*/*root'))
-elif options.process == "ttbar":
-    if options.dataEra == 2017:
-        allFiles = sorted(glob.glob(
-            '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/skim/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/sl_skims_MC_LEG_2017/221014_053044/*/*root'))
-        outPath = "/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/crab/condor/{}/".format(options.dataEra) + options.process
+            '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/skim/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/sl_skims_MC_LEG_2017/221014_141722/*/*root'))
+
+outPath = "/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/crab/condor/{}/".format(options.dataEra) + options.process
+if not os.path.exists(outPath):
+    os.system("mkdir -p " + outPath)
 
 
 environment = Environment(loader=FileSystemLoader("."))
@@ -60,9 +63,7 @@ jdlTemplate = environment.get_template("condor_template.jdl")
 # eospath = "root://cmseos.fnal.gov/"
 
 for i, file in enumerate(allFiles):
-    
-    if not os.path.exists(outPath):
-        os.system("mkdir -p " + outPath)
+
 
     # INFILE = "xrdcp -f " + eospath + file + " ."
     
