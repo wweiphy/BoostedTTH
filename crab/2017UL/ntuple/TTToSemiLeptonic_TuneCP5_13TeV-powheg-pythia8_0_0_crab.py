@@ -19,7 +19,7 @@ config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/lpctt
 
 config.Data.inputDBS = 'phys03'
 config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 15500
+config.Data.unitsPerJob = 16000
 # NJOB = 9500
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'FileBased'
