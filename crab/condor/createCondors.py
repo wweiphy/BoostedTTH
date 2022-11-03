@@ -15,7 +15,7 @@ parser.add_option("-e", "--dataEra", dest="dataEra", default=2017,
 # parser.add_option("-o", "--outPath", dest="outPath", default="/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/JABDT/condor",
         # help="Path of Output Folder containing condor files, default: 'condor'", metavar="outPath")
 
-parser.add_option("-p", "--process", dest="process", default="ttHH",
+parser.add_option("-p", "--process", dest="process", default="ttbar",
                   help="Process of the card and Name of the Output Folder", metavar="process")
 
 parser.add_option("-c", "--cpus", dest="cpus", default=1,
