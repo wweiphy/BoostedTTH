@@ -136,7 +136,7 @@ for i, file in enumerate(allFiles):
         TRANSFEROUTFILE = "xrdcp -f " + ROOTOUTFILE + " " + OUTDIR + "/" + ROOTOUTFILE + \
             "\n" + "xrdcp -f " + TXTOUTFILE + " " + OUTDIR + "/" + TXTOUTFILE + "\n"
 
-        RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=3.42E-06 systematicVariations=nominal inputFiles=".format(k) + allinputfile
+        RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=3.42E-06 systematicVariations=nominal ".format(k) + allinputfile
 
         scriptFileName = outPath + "/" + \
             options.process + "_ntuple_{}.sh".format(k)
