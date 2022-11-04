@@ -35,8 +35,9 @@ allFiles = sorted(glob.glob(inPath+"/*jdl".format(options.dataEra)))
 
 
 
-for file in allFiles:
-    os.system("condor_submit " + file)
+for i, file in enumerate(allFiles):
+    if i <=100:
+        os.system("condor_submit " + file)
     
 
 print("finished submitting condor jobs")
