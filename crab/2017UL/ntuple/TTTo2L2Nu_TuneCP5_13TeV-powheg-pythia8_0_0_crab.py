@@ -19,7 +19,7 @@ config.Data.inputDataset = '/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/lpctthrun2-s
 
 config.Data.inputDBS = 'phys03'
 config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 18000
+config.Data.unitsPerJob = 6000
 # NJOB = 9500
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'FileBased'
