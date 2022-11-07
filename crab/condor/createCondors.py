@@ -24,7 +24,7 @@ parser.add_option("-c", "--cpus", dest="cpus", default=1,
 parser.add_option("-m", "--memory", dest="memory", default=20000,
                   help="Memory request", metavar="memory")
 
-parser.add_option("-n", "--numberfile", dest="numberfile", default=50,
+parser.add_option("-n", "--numberfile", dest="numberfile", default=20,
                   help="Number of files per job", metavar="numberfile")
 
 # parser.add_option("-d", "--disk", dest="disk", default=5000,
