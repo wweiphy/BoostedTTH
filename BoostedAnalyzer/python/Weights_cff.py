@@ -174,29 +174,36 @@ BTagSFs94XDeepJet2016postVFP = cms.PSet(
 TriggerSFs2016preVFP = cms.PSet(
     elecFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleEG_JetHT_Trigger_Scale_Factors_ttHbb2016_v2.root"),
     elecHistName = cms.string("ele27_ele_pt_ele_sceta"),
-    muonFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleMuTriggerEfficienciesAndSF_2016_RunBtoH.root"),
-    muonHistName = cms.string("IsoMu24_OR_IsoTkMu24_PtEtaBins/pt_abseta_ratio"),
+    muonFileName=cms.string(
+        "MiniAOD/MiniAODHelper/data/leptonTriggerSF_UL/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_HIPM_SingleMuonTriggers.root"),
+    muonHistName = cms.string("NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoTight_abseta_pt"),
 )
 
 TriggerSFs2016postVFP = cms.PSet(
     elecFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleEG_JetHT_Trigger_Scale_Factors_ttHbb2016_v2.root"),
     elecHistName = cms.string("ele27_ele_pt_ele_sceta"),
-    muonFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleMuTriggerEfficienciesAndSF_2016_RunBtoH.root"),
-    muonHistName = cms.string("IsoMu24_OR_IsoTkMu24_PtEtaBins/pt_abseta_ratio"),
+    muonFileName=cms.string(
+        "MiniAOD/MiniAODHelper/data/leptonTriggerSF_UL/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_SingleMuonTriggers.root"),
+    muonHistName=cms.string(
+        "NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoTight_abseta_pt"),
 )
 
 TriggerSFs2017 = cms.PSet(
     elecFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleEG_JetHT_Trigger_Scale_Factors_ttHbb2017_v2.root"),
     elecHistName = cms.string("ele28_ht150_OR_ele32_ele_pt_ele_sceta"),
-    muonFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleMuTriggerEfficienciesAndSF_RunBtoF_Nov17Nov2017.root"),
-    muonHistName = cms.string("IsoMu27_PtEtaBins/pt_abseta_ratio"),
+    muonFileName=cms.string(
+        "MiniAOD/MiniAODHelper/data/leptonTriggerSF_UL/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2017_UL_SingleMuonTriggers.root"),
+    muonHistName=cms.string(
+        "NUM_IsoMu27_DEN_CutBasedIdTight_and_PFIsoTight_abseta_pt"),
 )
 
 TriggerSFs2018 = cms.PSet(
     elecFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleEG_JetHT_Trigger_Scale_Factors_ttHbb2018_v2.root"),
     elecHistName = cms.string("ele28_ht150_OR_ele32_ele_pt_ele_sceta"),
-    muonFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleMuTriggerEfficienciesAndSF_2018_RunAtoD.root"),
-    muonHistName = cms.string("IsoMu24_PtEtaBins/pt_abseta_ratio"),
+    muonFileName=cms.string(
+        "MiniAOD/MiniAODHelper/data/leptonTriggerSF_UL/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2018_UL_SingleMuonTriggers.root"),
+    muonHistName=cms.string(
+        "NUM_IsoMu24_DEN_CutBasedIdTight_and_PFIsoTight_abseta_pt"),
 )
 
 
