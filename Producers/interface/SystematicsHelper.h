@@ -17,8 +17,8 @@ public:
     JESAbsoluteup,
     JESAbsolutedown,
 
-    JESAbsolute_yearup,    
-    JESAbsolute_yeardown,
+    JESAbsoluteyearup,    
+    JESAbsoluteyeardown,
 
     // JESFlavorQCDup,
     // JESFlavorQCDdown,
@@ -26,26 +26,26 @@ public:
     JESBBEC1up,
     JESBBEC1down,
 
-    JESBBEC1_yearup,
-    JESBBEC1_yeardown,
+    JESBBEC1yearup,
+    JESBBEC1yeardown,
 
     JESEC2up,
     JESEC2down,
 
-    JESEC2_yearup,
-    JESEC2_yeardown,
+    JESEC2yearup,
+    JESEC2yeardown,
 
     JESHFup,
     JESHFdown,
 
-    JESHF_yearup,
-    JESHF_yeardown,
+    JESHFyearup,
+    JESHFyeardown,
 
     // JESRelativeBalup,
     // JESRelativeBaldown,
 
-    JESRelativeSample_yearup,
-    JESRelativeSample_yeardown,
+    JESRelativeSampleyearup,
+    JESRelativeSampleyeardown,
 
     // additional JES source for 2018 HEM issue
     JESHEMup,
@@ -259,16 +259,16 @@ void SystematicsHelper::init() {
 
 
   add(JESAbsoluteup,             JESAbsolutedown,            "JESAbsolute",              "Absolute"          );
-  add(JESAbsolute_yearup,         JESAbsolute_yeardown,        "JESAbsolute_year",          "Absolute_year"       );
+  add(JESAbsoluteyearup,         JESAbsoluteyeardown,        "JESAbsoluteyear",          "Absoluteyear"       );
   // add(JESFlavorQCDup,            JESFlavorQCDdown,           "JESFlavorQCD",             "FlavorQCD"           );
   add(JESBBEC1up,                JESBBEC1down,               "JESBBEC1",                 "BBEC1"               );
-  add(JESBBEC1_yearup,            JESBBEC1_yeardown,           "JESBBEC1_year",             "BBEC1_year"          );
+  add(JESBBEC1yearup,            JESBBEC1yeardown,           "JESBBEC1year",             "BBEC1year"          );
   add(JESEC2up,                  JESEC2down,                 "JESEC2",                   "EC2"                 );
-  add(JESEC2_yearup,              JESEC2_yeardown,             "JESEC2_year",               "EC2_year"            );
+  add(JESEC2yearup,              JESEC2yeardown,             "JESEC2year",               "EC2year"            );
   add(JESHFup,                   JESHFdown,                  "JESHF",                    "HF"                  );
-  add(JESHF_yearup,               JESHF_yeardown,              "JESHF_year",                "HF_year"             );
+  add(JESHFyearup,               JESHFyeardown,              "JESHFyear",                "HFyear"             );
   // add(JESRelativeBalup,          JESRelativeBaldown,         "JESRelativeBal",           "RelativeBal"         );
-  add(JESRelativeSample_yearup,   JESRelativeSample_yeardown,  "JESRelativeSample_year",    "RelativeSample_year" );
+  add(JESRelativeSampleyearup,   JESRelativeSampleyeardown,  "JESRelativeSampleyear",    "RelativeSampleyear" );
 
   add( JESHEMup,                 JESHEMdown,                 "JESHEM",                   "HEM"                 );             
   add( JESAbsoluteStatup,        JESAbsoluteStatdown,        "JESAbsoluteStat",          "AbsoluteStat"        );             

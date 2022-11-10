@@ -187,16 +187,16 @@ private:
   const bool doJES = true;
   const std::map<std::string, std::vector<std::string>> groups = {
           { "JESAbsolute", { "JESAbsoluteMPFBias", "JESAbsoluteScale", "JESFragmentation", "JESPileUpDataMC", "JESPileUpPtRef", "JESRelativeFSR", "JESSinglePionECAL", "JESSinglePionHCAL" } },
-          { "JESAbsolute_year", { "JESAbsoluteStat", "JESRelativeStatFSR", "JESTimePtEta" } },
+          { "JESAbsoluteyear", { "JESAbsoluteStat", "JESRelativeStatFSR", "JESTimePtEta" } },
           { "JESFlavorQCD", { "JESFlavorQCD" } },
           { "JESBBEC1", { "JESPileUpPtBB", "JESPileUpPtEC1", "JESRelativePtBB" } },
-          { "JESBBEC1_year", { "JESRelativeJEREC1", "JESRelativePtEC1", "JESRelativeStatEC" } },
+          { "JESBBEC1year", { "JESRelativeJEREC1", "JESRelativePtEC1", "JESRelativeStatEC" } },
           { "JESEC2", { "JESPileUpPtEC2" } },
-          { "JESEC2_year", { "JESRelativeJEREC2", "JESRelativePtEC2" } },
+          { "JESEC2year", { "JESRelativeJEREC2", "JESRelativePtEC2" } },
           { "JESHF", { "JESPileUpPtHF", "JESRelativeJERHF", "JESRelativePtHF" } },
-          { "JESHF_year", { "JESRelativeStatHF" } },
+          { "JESHFyear", { "JESRelativeStatHF" } },
           { "JESRelativeBal", { "JESRelativeBal" } },
-          { "JESRelativeSample_year", { "JESRelativeSample" } },
+          { "JESRelativeSampleyear", { "JESRelativeSample" } },
 
       };
 
