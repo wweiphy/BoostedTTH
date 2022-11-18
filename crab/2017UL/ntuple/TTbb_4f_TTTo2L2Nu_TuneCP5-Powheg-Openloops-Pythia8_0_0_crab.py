@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8_2017_ntuple_0_0'
+config.General.requestName = 'TTbb_4f_TTTo2L2Nu_TuneCP5-Powheg-Openloops-Pythia8_2017_ntuple_0_0_3'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -12,7 +12,8 @@ config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutf
 # config.JobType.maxMemoryMB = 20000
 # config.JobType.numCores = 8
 config.JobType.maxMemoryMB = 4000
-config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','outName=ntuples', 'dataEra=2017','systematicVariations=nominal','weight=1.54E-05','ProduceMemNtuples=False', 'deterministicSeeds=False']
+config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=ntuples', 'dataEra=2017',
+                              'systematicVariations=nominal', 'weight=3.60E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
