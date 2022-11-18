@@ -342,7 +342,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         IP_dZ = fabs(iElectron.gsfTrack()->dz(vertex.position()));
     }
 
-    if (iElectron.userFloat("relIso") < 0.1)
+    if (iElectron.userFloat("relIso") < 0.06)
         passesIso = true;
     // test
     // std::cout << "electron isolation: " << iElectron.userFloat("relIso") << std::endl;
@@ -383,20 +383,13 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
     // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/PatUtils/interface/MiniIsolation.h
     // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/plugins/IsoValueMapProducer.cc
 
-    double isoChargedHadrons = inputElectron.miniPFIsolation().chargedHadronIso();
-    double isoNeutralHadrons = inputElectron.miniPFIsolation().neutralHadronIso();
-    double isoPhotons = inputElectron.miniPFIsolation().photonIso();
-    // double isoChargedHadrons = inputElectron.pfIsolationVariables().sumChargedHadronPt;
-    // double isoNeutralHadrons = inputElectron.pfIsolationVariables().sumNeutralHadronEt;
-    // double isoPhotons = inputElectron.pfIsolationVariables().sumPhotonEt;
+    // double isoChargedHadrons = inputElectron.miniPFIsolation().chargedHadronIso();
+    // double isoNeutralHadrons = inputElectron.miniPFIsolation().neutralHadronIso();
+    // double isoPhotons = inputElectron.miniPFIsolation().photonIso();
+    double isoChargedHadrons = inputElectron.pfIsolationVariables().sumChargedHadronPt;
+    double isoNeutralHadrons = inputElectron.pfIsolationVariables().sumNeutralHadronEt;
+    double isoPhotons = inputElectron.pfIsolationVariables().sumPhotonEt;
     double pileup = 0;
-    // if(iconeSize == IsoConeSize::R03) {
-    //     if(icorrType == IsoCorrType::deltaBeta) pileup = 0.5*inputElectron.pfIsolationVariables().sumPUPt;
-    //     else {
-    //         std::cerr << "\n\nERROR: invalid electron isolation correction type" << std::endl;
-    //         throw std::exception();
-    //     }
-    // }
     if (icorrType == IsoCorrType::rhoEA)
     {
         double eta = 0.;
