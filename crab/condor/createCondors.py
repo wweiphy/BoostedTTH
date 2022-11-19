@@ -51,8 +51,16 @@ CPU = options.cpus
 #             '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/ntuple/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/sl_LEG_ntuple_2017_2/*/*/*root'))
 if options.process == "ttbar":
     if options.dataEra == 2017:
+
+        OUTDIR = "root://cmseos.fnal.gov//store/user/wwei/UL/2017/ttSL"
+
+elif options.process == "ttDL":
+    if options.dataEra == 2017:
         allFiles = sorted(glob.glob(
-            '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/skim/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/sl_skims_MC_LEG_2017/221014_141722/*/*root'))
+            '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/skim/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/sl_skims_MC_LEG_2017/221103_043951/*/*root'))
+        OUTDIR = "root://cmseos.fnal.gov//store/user/wwei/UL/2017/ttDL"
+
+        
 
 outPath = "/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/crab/condor/{}/".format(options.dataEra) + options.process
 if not os.path.exists(outPath):
@@ -63,7 +71,7 @@ environment = Environment(loader=FileSystemLoader("."))
 scriptTemplate = environment.get_template("condor_template.sh")
 jdlTemplate = environment.get_template("condor_template.jdl")
 
-OUTDIR = "root://cmseos.fnal.gov//store/user/wwei/UL/2017/ttSL"
+
 
 # eospath = "root://cmseos.fnal.gov/"
 
@@ -88,7 +96,15 @@ for i, file in enumerate(allFiles):
         TRANSFEROUTFILE = "xrdcp -f " + ROOTOUTFILE + " " + OUTDIR + "/" + ROOTOUTFILE + \
             "\n" + "xrdcp -f " + TXTOUTFILE + " " + OUTDIR + "/" + TXTOUTFILE + "\n"
 
-        RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=3.42E-06 systematicVariations=nominal ".format(k) + allinputfile
+        if options.process == "ttbar":
+
+            RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=3.42E-06 systematicVariations=nominal ".format(
+                k) + allinputfile
+
+        elif options.process == "ttDL":
+
+            RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=1.15E-05 systematicVariations=nominal ".format(
+                k) + allinputfile
 
         scriptFileName = outPath + "/" + options.process + "_ntuple_{}.sh".format(k)
         scriptcontent = scriptTemplate.render(
@@ -136,7 +152,15 @@ for i, file in enumerate(allFiles):
         TRANSFEROUTFILE = "xrdcp -f " + ROOTOUTFILE + " " + OUTDIR + "/" + ROOTOUTFILE + \
             "\n" + "xrdcp -f " + TXTOUTFILE + " " + OUTDIR + "/" + TXTOUTFILE + "\n"
 
-        RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=3.42E-06 systematicVariations=nominal ".format(k) + allinputfile
+        if options.process == "ttbar":
+
+            RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=3.42E-06 systematicVariations=nominal ".format(
+                k) + allinputfile
+
+        elif options.process == "ttDL":
+
+            RUNCOMMAND = "cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples_{} maxEvents=999999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False weight=1.15E-05 systematicVariations=nominal ".format(
+                k) + allinputfile
 
         scriptFileName = outPath + "/" + \
             options.process + "_ntuple_{}.sh".format(k)
