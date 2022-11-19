@@ -51,7 +51,8 @@ CPU = options.cpus
 #             '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/ntuple/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/sl_LEG_ntuple_2017_2/*/*/*root'))
 if options.process == "ttbar":
     if options.dataEra == 2017:
-
+        allFiles = sorted(glob.glob(
+            '/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/skim/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/sl_skims_MC_LEG_2017/221014_141722/*/*root'))
         OUTDIR = "root://cmseos.fnal.gov//store/user/wwei/UL/2017/ttSL"
 
 elif options.process == "ttDL":
