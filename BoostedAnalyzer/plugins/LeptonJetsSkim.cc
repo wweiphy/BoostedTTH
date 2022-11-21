@@ -106,7 +106,7 @@ LeptonJetsSkim::LeptonJetsSkim(const edm::ParameterSet& iConfig)
   electronEtaMax_ = iConfig.getParameter<double>("electronEtaMax");
   electronID_     = electronID::skimming;
   muonID_         = muonID::muonLoose;
-  muonIso_ = muonIso::CalculateManually;
+  muonIso_ = muonIso::PFIsoLoose;
   muonIsoConeSize_ = coneSize::R04;
   muonIsoCorrType_ = corrType::deltaBeta;
   const bool isData = iConfig.getParameter<bool>("isData");
