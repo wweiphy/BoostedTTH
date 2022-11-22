@@ -262,19 +262,25 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
                                     const JetID iJetID, const PUJetIDWP wp) const
 {
 
+  bool passesPt = false;
+  bool passesEta = false;
+  bool passesID = false;
+  bool passesID2 = false;
+  bool passesPUID = false;
   // Transverse momentum requirement
-  if (iJet.pt() < iMinPt) return false;
+  if (iJet.pt() < iMinPt) passesPt = true;
 
   // Absolute eta requirement
-  if (fabs(iJet.eta()) > iMaxAbsEta) return false;
+  if (fabs(iJet.eta()) > iMaxAbsEta) passesEta = true;
 
   // Jet ID
-  bool passesID = iJet.isPFJet();
-  
-  if (not passesID) return false;
+  if (iJet.isPFJet())
+    passesID = true;
+  // bool passesID = iJet.isPFJet();
+  // if (not passesID) return false;
 
-  // // JetID for UL
-  // // https: // twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
+  // JetID for UL
+  // https: // twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
 
   switch (iJetID)
   {
@@ -283,19 +289,19 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.4)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
       }
     }
 
@@ -303,19 +309,19 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
       }
     }
 
@@ -324,19 +330,19 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
       }
     }
     break;
@@ -347,18 +353,18 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.4)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
       }
     }
 
@@ -366,18 +372,18 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.90 
                 && iJet.neutralHadronEnergyFraction() > 0.2
                 && iJet.neutralMultiplicity() > 10;
       }
@@ -388,18 +394,18 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.90 
                 && iJet.neutralHadronEnergyFraction() > 0.2
                 && iJet.neutralMultiplicity() > 10;
       }
@@ -411,19 +417,19 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.4)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
       }
     }
 
@@ -431,19 +437,19 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
       }
     }
 
@@ -452,25 +458,25 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
       {
-        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+        passesID2 = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
       }
       else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
       }
       else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
       {
-        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+        passesID2 = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
       }
     }
     break;
 
   case JetID::None:
-    passesID = true;
+    passesID2 = true;
     break;
   default:
     std::cerr << "\n\nERROR: Unknown Jet ID " << jetType << std::endl;
@@ -479,16 +485,18 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     break;
   }
   
-  if (not passesID) return false;
+  // if (not passesID) return false;
   
   // PileUP Jet ID
   if (iJet.hasUserInt("pileupJetId:fullId") && iJet.pt()<50 )
   {
     if (iJet.userInt("pileupJetId:fullId") < TranslateJetPUIDtoInt(wp))
-      return false;
+      passesPUID = true;
+    // return false;
   }
 
-  return true;
+  // return true;
+  return passesPt and passesEta and passesID and passesID2 and passesPUID;
 }
 
 // function to Translate PUJetIDWP into its corresponding int
