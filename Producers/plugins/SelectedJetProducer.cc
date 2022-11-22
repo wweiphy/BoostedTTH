@@ -262,16 +262,16 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
                                     const JetID iJetID, const PUJetIDWP wp) const
 {
 
-  // // Transverse momentum requirement
-  // if (iJet.pt() < iMinPt) return false;
+  // Transverse momentum requirement
+  if (iJet.pt() < iMinPt) return false;
 
-  // // Absolute eta requirement
-  // if (fabs(iJet.eta()) > iMaxAbsEta) return false;
+  // Absolute eta requirement
+  if (fabs(iJet.eta()) > iMaxAbsEta) return false;
 
-  // // Jet ID
-  // bool passesID = iJet.isPFJet();
+  // Jet ID
+  bool passesID = iJet.isPFJet();
   
-  // if (not passesID) return false;
+  if (not passesID) return false;
 
   // // JetID for UL
   // // https: // twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
