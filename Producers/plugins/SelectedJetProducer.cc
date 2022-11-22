@@ -276,217 +276,217 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   // // JetID for UL
   // // https: // twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
 
-  // switch (iJetID)
-  // {
-  // case JetID::Loose:
-  //   if (era.find("2016") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.4)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
+  switch (iJetID)
+  {
+  case JetID::Loose:
+    if (era.find("2016") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+      }
+    }
 
-  //   if (era.find("2017") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
-
-
-  //   if (era.find("2018") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
-  //   break;
-
-  // case JetID::Tight:
-
-  //   if (era.find("2016") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.4)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-  //       passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
-
-  //   if (era.find("2017") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.90 
-  //               && iJet.neutralHadronEnergyFraction() > 0.2
-  //               && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
+    else if (era.find("2017") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+      }
+    }
 
 
-  //   if (era.find("2018") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.90 
-  //               && iJet.neutralHadronEnergyFraction() > 0.2
-  //               && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
-  //   break;
+    else if (era.find("2018") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+      }
+    }
+    break;
 
-  // case JetID::TightLepVeto:
-  //   if (era.find("2016") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.4)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
+  case JetID::Tight:
 
-  //   if (era.find("2017") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
+    if (era.find("2016") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
+        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+      }
+    }
+
+    else if (era.find("2017") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 
+                && iJet.neutralHadronEnergyFraction() > 0.2
+                && iJet.neutralMultiplicity() > 10;
+      }
+    }
 
 
-  //   if (era.find("2018") != std::string::npos)
-  //   {
-  //     if (fabs(iJet.eta()) <= 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
-  //     {
-  //       passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
-  //     }
-  //     else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
-  //     }
-  //     else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
-  //     {
-  //       passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
-  //     }
-  //   }
-  //   break;
+    else if (era.find("2018") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0){
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 
+                && iJet.neutralHadronEnergyFraction() > 0.2
+                && iJet.neutralMultiplicity() > 10;
+      }
+    }
+    break;
 
-  // case JetID::None:
-  //   passesID = true;
-  //   break;
-  // default:
-  //   std::cerr << "\n\nERROR: Unknown Jet ID " << jetType << std::endl;
-  //   std::cerr << "Please select 'loose' or 'tight'\n" << std::endl;
-  //   throw std::exception();
-  //   break;
-  // }
+  case JetID::TightLepVeto:
+    if (era.find("2016") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.80;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) >= 2.4)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() > 0. && iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralMultiplicity() > 10;
+      }
+    }
+
+    else if (era.find("2017") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+      }
+    }
+
+
+    else if (era.find("2018") != std::string::npos)
+    {
+      if (fabs(iJet.eta()) <= 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (fabs(iJet.eta()) <= 2.7 && fabs(iJet.eta()) > 2.6)
+      {
+        passesID = iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.99 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8;
+      }
+      else if (2.7 < fabs(iJet.eta()) && fabs(iJet.eta()) <= 3.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.99 && iJet.neutralEmEnergyFraction() > 0.01 && iJet.neutralMultiplicity() > 1;
+      }
+      else if (fabs(iJet.eta()) > 3.0 && fabs(iJet.eta()) <= 5.0)
+      {
+        passesID = iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10;
+      }
+    }
+    break;
+
+  case JetID::None:
+    passesID = true;
+    break;
+  default:
+    std::cerr << "\n\nERROR: Unknown Jet ID " << jetType << std::endl;
+    std::cerr << "Please select 'loose' or 'tight'\n" << std::endl;
+    throw std::exception();
+    break;
+  }
   
-  // if (not passesID) return false;
+  if (not passesID) return false;
   
-  // // PileUP Jet ID
-  // if (iJet.hasUserInt("pileupJetId:fullId") && iJet.pt()<50 )
-  // {
-  //   if (iJet.userInt("pileupJetId:fullId") < TranslateJetPUIDtoInt(wp))
-  //     return false;
-  // }
+  // PileUP Jet ID
+  if (iJet.hasUserInt("pileupJetId:fullId") && iJet.pt()<50 )
+  {
+    if (iJet.userInt("pileupJetId:fullId") < TranslateJetPUIDtoInt(wp))
+      return false;
+  }
 
   return true;
 }
