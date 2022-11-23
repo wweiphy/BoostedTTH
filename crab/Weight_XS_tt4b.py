@@ -722,5 +722,13 @@ files_ttzzext = [
 
 ]
 
-a = GetTotalSampleNumbers(files_ttzzext)
+files_ttzhext = [
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/C99DEE98-7631-2646-9E61-2E169064E1DB.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/50AAB92A-C84C-9D4D-9F0D-01AFBF2602FF.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/9799075D-8DFD-924E-9262-2C7E14CA4606.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/D0F56470-DE92-F843-A9AA-AF969C9E81E9.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/70A3C9A5-F36D-0749-A0D6-29649E3AF2C0.root',
+]
+
+a = GetTotalSampleNumbers(files_ttzhext)
 print "ratio: ", a
