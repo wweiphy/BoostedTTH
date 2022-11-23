@@ -707,5 +707,5 @@ files_tthdl = [
 '/store/mc/RunIISummer20UL17MiniAODv2/ttHTobb_ttTo2L2Nu_M125_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/50000/4CF83251-C34F-ED43-B439-AD6371E924CE.root',
 ]
 
-a = GetTotalSampleNumbers(files_tthsl)
+a = GetTotalSampleNumbers(files_tthdl)
 print "ratio: ", a
