@@ -708,11 +708,18 @@ files_tthdl = [
 ]
 
 files_ttzzext = [
-'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/A887C7DB-E3DF-E911-9191-68CC6EA5BDDA.root',
-'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/B6D2FD75-DDDF-E911-AA59-0025904AC2CC.root',
-'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/80677EE0-E3DF-E911-B16C-00259048AC10.root',
-'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/B09F7145-8AE2-E911-A5C6-A0369FE2C140.root',
-'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/88209751-CBDF-E911-9CA3-20040FF49288.root',
+
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/13FDBFD6-3FF2-0D4A-91B3-35316A417A2B.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/63AD4FBF-25D2-C74E-993C-4282F6D43379.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/43ACCC94-476B-7142-B4A1-67EAD1CF5347.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/BB6CCC65-C4C9-A545-BAF4-21023AEE7F18.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/07B9B4EE-AEAA-4E4F-98DC-EED67AE3D389.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/DB3728C5-9C49-D745-8EF8-3B672EDFC85B.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/9FC023FE-66B6-3848-9941-0E7D042D2F37.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/7C65F37F-670D-AE47-82F6-AB75C6074FEF.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/152F6F51-4CDF-FB4A-9819-2F8718D4108B.root',
+'/store/mc/RunIISummer20UL17MiniAODv2/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9_ext1-v2/50000/72BBD9BE-C1F5-224F-8351-1BA908C371E4.root',
+
 ]
 
 a = GetTotalSampleNumbers(files_ttzzext)
