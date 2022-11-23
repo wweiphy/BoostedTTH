@@ -707,5 +707,13 @@ files_tthdl = [
 '/store/mc/RunIISummer20UL17MiniAODv2/ttHTobb_ttTo2L2Nu_M125_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/50000/4CF83251-C34F-ED43-B439-AD6371E924CE.root',
 ]
 
-a = GetTotalSampleNumbers(files_tthdl)
+files_ttzzext = [
+'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/A887C7DB-E3DF-E911-9191-68CC6EA5BDDA.root',
+'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/B6D2FD75-DDDF-E911-AA59-0025904AC2CC.root',
+'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/80677EE0-E3DF-E911-B16C-00259048AC10.root',
+'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/B09F7145-8AE2-E911-A5C6-A0369FE2C140.root',
+'/store/mc/RunIIFall17MiniAODv2/TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/280000/88209751-CBDF-E911-9CA3-20040FF49288.root',
+]
+
+a = GetTotalSampleNumbers(files_ttzzext)
 print "ratio: ", a
