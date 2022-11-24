@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8_2017_ntuple_0_0_4'
+config.General.requestName = 'TTZZTo4b_5f_LO_TuneCP5_13TeV_madgraph_pythia8_Ext_2017_ntuple_0_0_4'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -21,15 +21,15 @@ config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=nt
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.inputDataset = '/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
-config.Data.inputDBS = 'phys03'
+config.Data.inputDataset = '/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9_ext1-v2/MINIAODSIM'
+config.Data.inputDBS = 'global'
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 1
 config.Data.splitting = 'FileBased'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
-config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
+config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017_Ext'
 config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017/ntuple'
 # config.Data.outLFNDirBase = '/store/user/wwei/UL/2017/ntuple'
 
