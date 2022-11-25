@@ -268,10 +268,10 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   bool passesID2 = false;
   bool passesPUID = false;
   // Transverse momentum requirement
-  if (iJet.pt() < iMinPt) passesPt = true;
+  if (iJet.pt() >= iMinPt) passesPt = true;
 
   // Absolute eta requirement
-  if (fabs(iJet.eta()) > iMaxAbsEta) passesEta = true;
+  if (fabs(iJet.eta()) <= iMaxAbsEta) passesEta = true;
 
   // Jet ID
   if (iJet.isPFJet())
