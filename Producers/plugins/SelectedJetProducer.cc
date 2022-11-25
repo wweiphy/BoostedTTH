@@ -266,7 +266,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   bool passesEta = false;
   bool passesID = false;
   bool passesID2 = false;
-  bool passesPUID = false;
+  bool passesPUID = true;
   // Transverse momentum requirement
   if (iJet.pt() >= iMinPt) passesPt = true;
 
@@ -495,10 +495,11 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   // if (not passesID) return false;
   
   // PileUP Jet ID
+  // passesPUID = true;
   if (iJet.hasUserInt("pileupJetId:fullId") && iJet.pt()<50 )
   {
     if (iJet.userInt("pileupJetId:fullId") < TranslateJetPUIDtoInt(wp))
-      passesPUID = true;
+      passesPUID = false;
     // return false;
   }
 
