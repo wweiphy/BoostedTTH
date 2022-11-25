@@ -441,7 +441,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
 
     if (era.find("2017") != std::string::npos)
     {
-      std::cout << "2017 TightLepVeto " << std::endl;
+      // std::cout << "2017 TightLepVeto " << std::endl;
       if (fabs(iJet.eta()) <= 2.6)
       {
         if (iJet.neutralHadronEnergyFraction() < 0.90 && iJet.neutralEmEnergyFraction() < 0.90 && (iJet.chargedMultiplicity() + iJet.neutralMultiplicity()) > 1 && iJet.muonEnergyFraction() < 0.8 && iJet.chargedHadronEnergyFraction() > 0.0 && iJet.chargedMultiplicity() > 0 && iJet.chargedEmEnergyFraction() < 0.8) passesID2 = true;
@@ -459,7 +459,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    std::cout << passesID2 << std::endl;
+    // std::cout << passesID2 << std::endl;
 
     if (era.find("2018") != std::string::npos)
     {
@@ -502,6 +502,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
       passesPUID = false;
     // return false;
   }
+  // std::cout << passesPUID << std::endl;
 
   // return true;
   return passesPt and passesEta and passesID and passesID2 and passesPUID;
