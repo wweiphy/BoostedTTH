@@ -309,7 +309,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
       }
     }
 
-    else if (era.find("2017") != std::string::npos)
+    if (era.find("2017") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
@@ -334,7 +334,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     }
 
 
-    else if (era.find("2018") != std::string::npos)
+    if (era.find("2018") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
@@ -376,7 +376,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
       }
     }
 
-    else if (era.find("2017") != std::string::npos)
+    if (era.find("2017") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
@@ -397,7 +397,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     }
 
 
-    else if (era.find("2018") != std::string::npos)
+    if (era.find("2018") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
@@ -439,7 +439,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
       }
     }
 
-    else if (era.find("2017") != std::string::npos)
+    if (era.find("2017") != std::string::npos)
     {
       std::cout << "2017 TightLepVeto " << std::endl;
       if (fabs(iJet.eta()) <= 2.6)
@@ -461,7 +461,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
     }
     std::cout << passesID2 << std::endl;
 
-    else if (era.find("2018") != std::string::npos)
+    if (era.find("2018") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.6)
       {
