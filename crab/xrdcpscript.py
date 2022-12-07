@@ -54,7 +54,7 @@ parser.add_option("-f", "--folder", dest="folder", default="221204_test_evaluati
 # ]
 
 allFiles = sorted(
-    glob.glob('/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/ntuple/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/sl_LEG_ntuple_2017/221126_052019/0000/ntuples_nominal_Cutflow*')
+    glob.glob('/eos/uscms/store/group/lpctthrun2/wwei/UL/2017/ntuple/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/sl_LEG_ntuple_2017/221126_052019/0000/ntuples_nominal_Cutflow*'))
 
 # print ("doing nominal files")
 
