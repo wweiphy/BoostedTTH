@@ -56,6 +56,9 @@ DiLeptonSelectionMC = cms.PSet(
     elelTriggers = cms.vstring("HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*","HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*"),
     elmuTriggers = cms.vstring("HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*","HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*",
                                "HLT_Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*","HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*"),
+    muonTriggers=cms.vstring("HLT_IsoMu27_v*"),
+    electronTriggers=cms.vstring(
+        "HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*", "HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
     dlchannel = cms.string("all"),
 )
 DiLeptonSelectionData = cms.PSet(
