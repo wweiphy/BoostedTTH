@@ -681,7 +681,7 @@ if options.isData:
 process.BoostedAnalyzer.selectionNames = [
 "FilterSelection",
 "VertexSelection",
-"LeptonSelection",
+# "LeptonSelection",
 "DiLeptonSelection",
 "DiLeptonJetTagSelection",
 "DiLeptonMETSelection"
