@@ -264,7 +264,7 @@ void GenWeights::GetNamesFromLHE(const LHERunInfoProduct& myLHERunInfoProduct)
         line.ReplaceAll("=", "");
         line.ReplaceAll("+", "");
 
-        std::cout << "myLHERunInfoProduct is" << line << std::endl;
+        // std::cout << "myLHERunInfoProduct is" << line << std::endl;
 
         // check if this line has anything to do with generator weights
         if (!line.Contains("weight"))
@@ -517,7 +517,7 @@ void GenWeights::GetNamesFromLHE(const LHERunInfoProduct& myLHERunInfoProduct)
         if (line == "")
             continue;
         // add the unique weightid and the corresponding name to a map to use later when reading the weights from the events
-        // std::cout << "id: " << id << " line: " << line << std::endl;
+        std::cout << "id: " << id << " line: " << line << std::endl;
         lhe_weights[std::string(id)] = line;
     }
 
