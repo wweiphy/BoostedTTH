@@ -105,7 +105,7 @@ bool GenWeights::GetLHAPDFWeight(std::map<string, float>& weights,
     //Loop over all initialized PDFSets and calculate the weight for a pdf variation
     for (size_t p = 0; p < initializedPDFSets.size(); p++) {
 
-        std::cout << "initializedPDFSets " << p << "is" << initializedPDFNames[p] << std::endl; // test
+        // std::cout << "initializedPDFSets " << p << "is" << initializedPDFNames[p] << std::endl; // test
 
         LHAPDF::PDFSet PDFSet = initializedPDFSets[p];
         std::vector<LHAPDF::PDF*> PDFs = initializedPDFs[p];
