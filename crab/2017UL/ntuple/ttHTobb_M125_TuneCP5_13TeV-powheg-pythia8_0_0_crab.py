@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_2017_ntuple_0_0_4'
+config.General.requestName = 'ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_2017_ntuple_0_0_5'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -20,7 +20,10 @@ config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=nt
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.inputDataset = '/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
+config.Data.inputDataset = '/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM'
+
+# config.Data.inputDataset = '/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
+
 config.Data.inputDBS = 'phys03'
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'

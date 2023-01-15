@@ -82,7 +82,7 @@ void GenWeights::GetGenWeights(std::map<string, float>& weights,
         if (lhe_weights.find(weight_id) == lhe_weights.end())
             continue;
         const std::string& weight_name = lhe_weights.at(weight_id);
-        cout << "Get Weight values: " << weight_id << "   " << weight_name << endl;
+        // cout << "Get Weight values: " << weight_id << "   " << weight_name << endl;
         weights[weight_name] = LHEEvent.weights()[i].wgt / LHE_central_weight;
     }
     weights["Weight_LHECentral"] = LHE_central_weight;
@@ -517,7 +517,7 @@ void GenWeights::GetNamesFromLHE(const LHERunInfoProduct& myLHERunInfoProduct)
         if (line == "")
             continue;
         // add the unique weightid and the corresponding name to a map to use later when reading the weights from the events
-        std::cout << "Get Weight Names " << "id: " << id << " line: " << line << std::endl;
+        // std::cout << "Get Weight Names " << "id: " << id << " line: " << line << std::endl;
         lhe_weights[std::string(id)] = line;
     }
 
