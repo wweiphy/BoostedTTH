@@ -25,7 +25,8 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM'
 
-config.Data.inputDBS = 'phys03'
+# config.Data.inputDBS = 'phys03'
+config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
 # NJOB = 9000
