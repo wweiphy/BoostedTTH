@@ -35,7 +35,7 @@ config.Data.unitsPerJob = 1
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
 config.Data.outputDatasetTag = 'sl_LEG_ntuple_2017'
-# config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017/ntuple'
+config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2017/ntuple'
 # config.Data.outLFNDirBase = '/store/user/wwei/UL/2017/ntuple'
 
 
