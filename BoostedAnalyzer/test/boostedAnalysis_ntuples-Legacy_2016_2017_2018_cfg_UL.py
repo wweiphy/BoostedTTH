@@ -20,6 +20,9 @@ import os
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/100000/3B05C6F7-7877-BD43-8F5F-E29283865170.root
 
 
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
+
+
 
 
  
@@ -207,7 +210,7 @@ elif "2018" in options.dataEra:
     process.prefiringweight = l1PrefiringWeightProducer.clone(
         TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
-        DataEraECAL = cms.string("None"),
+        DataEraECAL=cms.string("2017BtoF"),
         DataEraMuon = cms.string("20172018"),
         UseJetEMPt = cms.bool(False),
         PrefiringRateSystematicUnctyECAL = cms.double(0.2),
