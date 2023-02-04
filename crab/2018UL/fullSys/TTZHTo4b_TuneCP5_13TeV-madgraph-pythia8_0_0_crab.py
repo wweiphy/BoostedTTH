@@ -25,7 +25,7 @@ config.JobType.allowUndistributedCMSSW = True
 #      '/store/group/lpctthrun2/wwei/TTZH_TuneCP5_13TeV-madgraph-pythia8/sl_skims_MC_94X_LEG_2017/220311_034726/0000/Skim_3.root']
      
 config.Data.inputDataset = '/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2/MINIAODSIM'
-config.Data.inputDBS = 'phys03'
+config.Data.inputDBS = 'global'
 
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'

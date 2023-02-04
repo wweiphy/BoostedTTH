@@ -21,7 +21,7 @@ config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2/MINIAODSIM'
-config.Data.inputDBS = 'phys03'
+config.Data.inputDBS = 'global'
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 1
