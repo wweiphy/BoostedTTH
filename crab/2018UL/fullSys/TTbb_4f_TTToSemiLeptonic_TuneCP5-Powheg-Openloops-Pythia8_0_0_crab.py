@@ -26,7 +26,7 @@ config.JobType.allowUndistributedCMSSW = True
 
 # config.Data.inputDataset = '/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/lpctthrun2-sl_skims_MC_LEG_2017-f7a1084d3f7c1cbe4d4074d5b1a88d52/USER'
 
-config.Data.inputDataset = '/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM'
+config.Data.inputDataset = '/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'
 
 # config.Data.inputDBS = 'phys03'
 config.Data.inputDBS = 'global'
