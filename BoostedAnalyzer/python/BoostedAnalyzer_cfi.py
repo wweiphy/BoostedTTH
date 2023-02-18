@@ -69,6 +69,18 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
     taggingSelection=cms.bool(False),
 )
 
+BoostedAnalyzer2017test = BoostedAnalyzer2017.clone(
+    LeptonSelection=LeptonSelectionNoTrigger,
+    dataEra=cms.string("2016preVFP"),
+    bTagSFs=BTagSFs94XDeepJet2016preVFP,
+    leptonTriggerSFInfos=TriggerSFs2016preVFP,
+    nominalPUWeight=NominalPUWeight2016preVFP,
+    additionalPUWeights=AdditionalPUWeights2016preVFP,
+    METfilters=filtersMC16,
+    JetAssignmentOptions=JetAssignment2016preVFP,
+
+)
+
 BoostedAnalyzer2016preVFP = BoostedAnalyzer2017.clone(
     LeptonSelection = LeptonSelectionMC2016,    
     dataEra = cms.string("2016preVFP"),
