@@ -5,19 +5,8 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ttHH maxEvents=2000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
-
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=test maxEvents=10000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/21D89C30-2062-1E4C-A4C5-7A290C65EBD4.root
-
-
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
-
-
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal applyTrigger=False dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
-
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal dataEra=2017 applyTrigger=False ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/120000/1C62027C-288F-CE4C-9A62-602C92963E9F.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_test.py isData=False outName=ntuples maxEvents=2000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=3000 systematicVariations=nominal dataEra=2017 applyTrigger=True ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/8B706D29-F67A-B64A-AF01-42FCADC912E0.root
@@ -25,8 +14,6 @@ import os
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
 
-
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples2 maxEvents=99999999 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/0D9A3188-0E7F-A440-9C94-A651492FEDE3.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/21E2C06D-2E3A-3948-BB1D-E4083A1B900B.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/24E54481-4CF6-F14C-A3D3-5877E8BDB273.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/2639CF66-2665-5A42-8AC2-B6022705A7A1.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/2AE1CB4B-628D-A24B-BDE4-12CA94245856.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/3DE1D414-1C47-924F-B08A-687270A68CCC.root
 
 
 
@@ -43,8 +30,8 @@ options.register( "outName", "testrun", VarParsing.multiplicity.singleton, VarPa
 options.register( "weight", 0.01, VarParsing.multiplicity.singleton, VarParsing.varType.float, "xs*lumi/(nPosEvents-nNegEvents)" )
 options.register( "skipEvents", 0, VarParsing.multiplicity.singleton, VarParsing.varType.int, "Number of events to skip" )
 options.register( "isData", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "is it data or MC?" )
-options.register("applyTrigger", True, VarParsing.multiplicity.singleton,
-                 VarParsing.varType.bool, "Apply Trigger selection or not")
+# options.register("applyTrigger", True, VarParsing.multiplicity.singleton,
+                 # VarParsing.varType.bool, "Apply Trigger selection or not")
 options.register( "isBoostedMiniAOD", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "has the file been prepared with the BoostedProducer ('custom' MiniAOD)?" )
 options.register( "generatorName", "MadGraph", VarParsing.multiplicity.singleton, VarParsing.varType.string, "'POWHEG','aMC', 'MadGraph' or 'pythia8'" )
 options.register("globalTag", "106X_mc2017_realistic_v9",
@@ -159,8 +146,8 @@ process.load("CondCore.CondDB.CondDB_cfi")
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(False)
 
-process.options.numberOfThreads = cms.untracked.uint32(8)
-process.options.numberOfStreams = cms.untracked.uint32(8)
+# process.options.numberOfThreads = cms.untracked.uint32(8)
+# process.options.numberOfStreams = cms.untracked.uint32(8)
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.maxEvents)))
 process.source = cms.Source(  "PoolSource",
@@ -654,10 +641,10 @@ else:
     if "2016postVFP" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
     elif "2017" in options.dataEra:
-        if options.applyTrigger:
-            process.BoostedAnalyzer = BoostedAnalyzer2017
-        else:
-            process.BoostedAnalyzer = BoostedAnalyzer2017test
+        # if options.applyTrigger:
+            # process.BoostedAnalyzer = BoostedAnalyzer2017
+        # else:
+        process.BoostedAnalyzer = BoostedAnalyzer2017test
     elif "2018" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2018
     
