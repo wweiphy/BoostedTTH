@@ -43,8 +43,8 @@ options.register( "outName", "testrun", VarParsing.multiplicity.singleton, VarPa
 options.register( "weight", 0.01, VarParsing.multiplicity.singleton, VarParsing.varType.float, "xs*lumi/(nPosEvents-nNegEvents)" )
 options.register( "skipEvents", 0, VarParsing.multiplicity.singleton, VarParsing.varType.int, "Number of events to skip" )
 options.register( "isData", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "is it data or MC?" )
-# options.register("applyTrigger", True, VarParsing.multiplicity.singleton,
-                #  VarParsing.varType.bool, "Apply Trigger selection or not")
+options.register("applyTrigger", True, VarParsing.multiplicity.singleton,
+                 VarParsing.varType.bool, "Apply Trigger selection or not")
 options.register( "isBoostedMiniAOD", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "has the file been prepared with the BoostedProducer ('custom' MiniAOD)?" )
 options.register( "generatorName", "MadGraph", VarParsing.multiplicity.singleton, VarParsing.varType.string, "'POWHEG','aMC', 'MadGraph' or 'pythia8'" )
 options.register("globalTag", "106X_mc2017_realistic_v9",
@@ -651,13 +651,13 @@ else:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_cfi import *
     if "2016preVFP" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
-    elif "2016postVFP" in options.dataEra:
+    if "2016postVFP" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
     elif "2017" in options.dataEra:
-        # if options.applyTrigger:
-            # process.BoostedAnalyzer = BoostedAnalyzer2017
-        # else:
-        process.BoostedAnalyzer = BoostedAnalyzer2017test
+        if options.applyTrigger:
+            process.BoostedAnalyzer = BoostedAnalyzer2017
+        else:
+            process.BoostedAnalyzer = BoostedAnalyzer2017test
     elif "2018" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2018
     
@@ -726,14 +726,14 @@ if options.isData:
   )
 else:
   process.BoostedAnalyzer.processorNames=cms.vstring(
-  "WeightProcessor",
-  "MCMatchVarProcessor",
+#   "WeightProcessor",
+#   "MCMatchVarProcessor",
   "essentialBasicVarProcessor",
-  "essentialMVAVarProcessor",
-  "essentialRecoVarProcessor",
-  "TriggerVarProcessor",
-  "JABDTttbarProcessor",
-  "JABDTthhProcessor",
+#   "essentialMVAVarProcessor",
+#   "essentialRecoVarProcessor",
+#   "TriggerVarProcessor",
+#   "JABDTttbarProcessor",
+#   "JABDTthhProcessor",
 #  "JABDTtthProcessor",
   )
 if (process.BoostedAnalyzer.taggingSelection): process.BoostedAnalyzer.processorNames.append("SelectionTagProcessor")
