@@ -15,7 +15,7 @@ import os
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
 
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal applyTrigger=False dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal dataEra=2017 applyTrigger=False ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/120000/1C62027C-288F-CE4C-9A62-602C92963E9F.root
 
@@ -26,7 +26,7 @@ import os
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
 
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples2 maxEvents=99999999 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/0D9A3188-0E7F-A440-9C94-A651492FEDE3.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/21E2C06D-2E3A-3948-BB1D-E4083A1B900B.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/24E54481-4CF6-F14C-A3D3-5877E8BDB273.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/2639CF66-2665-5A42-8AC2-B6022705A7A1.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/2AE1CB4B-628D-A24B-BDE4-12CA94245856.root,/store/mc/RunIISummer20UL17MiniAODv2/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2430000/3DE1D414-1C47-924F-B08A-687270A68CCC.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018D/EGamma/MINIAOD/UL2018_MiniAODv2-v2/120000/003D1380-15BF-534F-9DF4-3E7D7743D4F4.root
 
 
 
@@ -72,11 +72,11 @@ if options.maxEvents is -1: # maxEvents is set in VarParsing class by default to
 
 if options.isData:
     if "2016" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     elif "2017" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     elif "2018" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     else:
         raise Exception( "dataEra "+options.dataEra+" not supported for this config: USE dataEra=2016/2017")
 elif not options.isData:

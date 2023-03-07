@@ -6,7 +6,7 @@ from BoostedTTH.BoostedAnalyzer.JetAssignment_cff import *
 
 BoostedAnalyzer2017 = cms.EDAnalyzer(
     'BoostedAnalyzer',
-    Inputs_tth_sl, # defined in Inputs_cff
+    Inputs_TTHHUL_SL, # defined in Inputs_cff
     DiLeptonSelectionData, # defined in Selection_cff
     JetTagSelection, # defined in Selection_cff
     METSelection, # defined in Selection_cff
@@ -58,16 +58,40 @@ BoostedAnalyzer2017 = cms.EDAnalyzer(
     taggingSelection=cms.bool(False)
 )
 
-BoostedAnalyzer2016 = BoostedAnalyzer2017.clone(
-    dataEra = cms.string("2016"),
-    LeptonSelection = LeptonSelectionData2016,
+# BoostedAnalyzer2016 = BoostedAnalyzer2017.clone(
+#     dataEra = cms.string("2016"),
+#     LeptonSelection = LeptonSelectionData2016,
+#     METfilters = filtersData16,
+#     JetAssignmentOptions = JetAssignment2016,
+
+# )
+
+BoostedAnalyzer2016preVFP = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2016,    
+    dataEra = cms.string("2016preVFP"),
     METfilters = filtersData16,
-    JetAssignmentOptions = JetAssignment2016,
+    JetAssignmentOptions=JetAssignment2016preVFP,
 
 )
 
+BoostedAnalyzer2016postVFP = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2016,    
+    dataEra = cms.string("2016preVFP"),
+    METfilters = filtersData16,
+    JetAssignmentOptions=JetAssignment2016postVFP,
+
+)
+
+# BoostedAnalyzer2018 = BoostedAnalyzer2017.clone(
+#     dataEra = cms.string("2018"),
+#     LeptonSelection = LeptonSelectionData2018,
+#     JetAssignmentOptions = JetAssignment2018,
+# )
+
 BoostedAnalyzer2018 = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2018,    
     dataEra = cms.string("2018"),
-    LeptonSelection = LeptonSelectionData2018,
-    JetAssignmentOptions = JetAssignment2018,
+    METfilters = filtersData1718,
+    JetAssignmentOptions=JetAssignment2018,
+
 )
