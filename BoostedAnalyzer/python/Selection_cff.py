@@ -155,7 +155,7 @@ filtersData1718=cms.vstring(
                     "Flag_HBHENoiseIsoFilter",
                     "Flag_EcalDeadCellTriggerPrimitiveFilter",
                     "Flag_BadPFMuonFilter",
-                    # "Flag_BadPFMuonDzFilter", # TODO - Remove for now, may need to be added later
+                    "Flag_BadPFMuonDzFilter", # TODO - Remove for now, may need to be added later
                     # "Flag_hfNoisyHitsFilter",
                     # "Flag_BadChargedCandidateFilter",
                     "Flag_eeBadScFilter",
