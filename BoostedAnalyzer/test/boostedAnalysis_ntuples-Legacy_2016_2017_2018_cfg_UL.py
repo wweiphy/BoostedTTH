@@ -649,7 +649,7 @@ if options.isData:
         process.BoostedAnalyzer = BoostedAnalyzer2018
     
     
-    process.BoostedAnalyzer.filterBits=cms.InputTag("TriggerResults::RECO")
+    process.BoostedAnalyzer.filterBits=cms.InputTag("TriggerResults::PAT")
     process.BoostedAnalyzer.dataEra=options.dataEra
 
 else:
