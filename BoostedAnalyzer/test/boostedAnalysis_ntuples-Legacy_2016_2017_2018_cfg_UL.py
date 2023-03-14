@@ -77,11 +77,11 @@ if options.maxEvents is -1: # maxEvents is set in VarParsing class by default to
 
 if options.isData:
     if "2016" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     elif "2017" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     elif "2018" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     else:
         raise Exception( "dataEra "+options.dataEra+" not supported for this config: USE dataEra=2016/2017")
 elif not options.isData:
@@ -164,8 +164,8 @@ process.load("CondCore.CondDB.CondDB_cfi")
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(False)
 
-# process.options.numberOfThreads = cms.untracked.uint32(8)
-# process.options.numberOfStreams = cms.untracked.uint32(8)
+process.options.numberOfThreads = cms.untracked.uint32(8)
+process.options.numberOfStreams = cms.untracked.uint32(8)
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.maxEvents)))
 process.source = cms.Source(  "PoolSource",
