@@ -360,5 +360,5 @@ files_ttzhext = [
 
 ]
 
-a = GetTotalSampleNumbers(files_tthsl)
+a = GetTotalSampleNumbers(files_tthdl)
 print "ratio: ", a
