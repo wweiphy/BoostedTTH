@@ -77,11 +77,11 @@ if options.maxEvents is -1: # maxEvents is set in VarParsing class by default to
 
 if options.isData:
     if "2016" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     elif "2017" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     elif "2018" in options.dataEra:
-        options.globalTag="106X_dataRun2_v35"
+        options.globalTag="106X_dataRun2_v37"
     else:
         raise Exception( "dataEra "+options.dataEra+" not supported for this config: USE dataEra=2016/2017")
 elif not options.isData:
