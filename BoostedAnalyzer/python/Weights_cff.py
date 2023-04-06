@@ -311,7 +311,7 @@ TriggerSFs2016postVFP = cms.PSet(
     elecFileName = cms.string("MiniAOD/MiniAODHelper/data/Run2Legacy/SingleEG_JetHT_Trigger_Scale_Factors_ttHbb2016_v2.root"),
     elecHistName = cms.string("ele27_ele_pt_ele_sceta"),
     muonFileName=cms.string(
-        "MiniAOD/MiniAODHelper/data/leptonTriggerSF_UL/2016preVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_SingleMuonTriggers.root"),
+        "MiniAOD/MiniAODHelper/data/leptonTriggerSF_UL/2016postVFP/Efficiencies_muon_generalTracks_Z_Run2016_UL_SingleMuonTriggers.root"),
     muonHistName=cms.string(
         "NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoTight_abseta_pt"),
 )
