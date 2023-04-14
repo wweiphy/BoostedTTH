@@ -700,11 +700,14 @@ if options.isData and options.useJson:
     # https://twiki.cern.ch/twiki/bin/view/CMS/LumiRecommendationsRun2#2018
     import FWCore.PythonUtilities.LumiList as LumiList
     if "2016" in options.dataEra:
-        process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_271036-284044_13TeV_ReReco_07Aug2017_Collisions16_JSON.txt").getVLuminosityBlockRange()
+        process.source.lumisToProcess = LumiList.LumiList(filename=os.getenv(
+            'CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt").getVLuminosityBlockRange()
     elif "2017" in options.dataEra:
-        process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt").getVLuminosityBlockRange()
+        process.source.lumisToProcess = LumiList.LumiList(filename=os.getenv(
+            'CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt").getVLuminosityBlockRange()
     elif "2018" in options.dataEra:
-        process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt").getVLuminosityBlockRange()
+        process.source.lumisToProcess = LumiList.LumiList(filename=os.getenv(
+            'CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt").getVLuminosityBlockRange()
 
 if options.isData:
   process.BoostedAnalyzer.dataset=cms.string(options.dataset)
