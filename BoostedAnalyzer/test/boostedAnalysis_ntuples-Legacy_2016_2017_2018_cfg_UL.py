@@ -730,8 +730,8 @@ if options.isData:
   "essentialMVAVarProcessor",
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
-  "JABDTttbarProcessor",
-  "JABDTthhProcessor",  
+#   "JABDTttbarProcessor",
+#   "JABDTthhProcessor",  
 #  "JABDTtthProcessor",
   )
 else:
