@@ -154,5 +154,5 @@ files_ttzhext = [
 '/store/mc/RunIISummer20UL16MiniAODv2/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17_ext1-v2/50000/77A07E48-A5D0-D447-8557-7CBA70B393BF.root',
 ]
 
-a = GetTotalSampleNumbers(files_tth)
+a = GetTotalSampleNumbers(files_tthsl)
 print "ratio: ", a
