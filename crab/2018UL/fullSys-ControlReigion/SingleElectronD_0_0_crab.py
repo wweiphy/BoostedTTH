@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'SingleElectronD_2018D_ntuple_0_0_2'
+config.General.requestName = 'SingleElectronD_2018D_ntuple_0_0'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -27,8 +27,8 @@ config.Data.lumiMask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/
 # config.Data.splitting = 'EventAwareLumiBased'
 # NJOB = 2000
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
-config.Data.unitsPerJob = 2
-config.Data.splitting = 'FileBased'
+config.Data.splitting = 'LumiBased'
+config.Data.unitsPerJob = 80000
 # config.Data.unitsPerJob = 360
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
