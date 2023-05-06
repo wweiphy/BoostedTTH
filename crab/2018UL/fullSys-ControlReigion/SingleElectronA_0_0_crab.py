@@ -30,7 +30,7 @@ config.Data.inputDBS = 'global'
 # NJOB = 2000
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 config.Data.splitting = 'LumiBased'
-config.Data.unitsPerJob = 80000
+config.Data.unitsPerJob = 1000
 # config.Data.unitsPerJob = 360
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
@@ -42,4 +42,4 @@ config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2018/ntuple'
 
 
 config.Site.storageSite = 'T3_US_FNALLPC'
-# config.Site.blacklist = 'T1_US_FNAL'
+config.Site.blacklist = ['T2_CH_CERN','T2_US_Wisconsin','T2_US_Purdue','T2_US_Nebraska']
