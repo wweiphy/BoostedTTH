@@ -20,7 +20,7 @@ config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=nt
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.inputDataset = '/TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11-v2/MINIAODSIM'
+config.Data.inputDataset = '/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11-v2/MINIAODSIM'
 config.Data.inputDBS = 'global'
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'
