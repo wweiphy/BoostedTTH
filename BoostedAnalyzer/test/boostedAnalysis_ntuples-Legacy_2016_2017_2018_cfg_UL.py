@@ -724,13 +724,13 @@ if options.additionalSelection!="NONE":
 
 if options.isData:
   process.BoostedAnalyzer.processorNames=cms.vstring(
-  "WeightProcessor",
+#   "WeightProcessor",
   "essentialBasicVarProcessor",
-  "essentialMVAVarProcessor",
-  "essentialRecoVarProcessor",
-  "TriggerVarProcessor",
-  "JABDTttbarProcessor",
-  "JABDTthhProcessor",  
+#   "essentialMVAVarProcessor",
+#   "essentialRecoVarProcessor",
+#   "TriggerVarProcessor",
+#   "JABDTttbarProcessor",
+#   "JABDTthhProcessor",  
 #  "JABDTtthProcessor",
   )
 else:
