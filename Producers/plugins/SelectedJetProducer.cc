@@ -491,7 +491,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   }
 
   // case JetID::None:
-  else if (iJetID == JetID:None){
+  else if (iJetID == JetID::None){
     passesID2 = true;
     // break;
   }
