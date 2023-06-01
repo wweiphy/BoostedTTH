@@ -354,7 +354,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    break;
+    // break;
 
   }
 
@@ -419,7 +419,7 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
           passesID2 = true;
       }
     }
-    break;
+    // break;
 
   }
 
@@ -486,21 +486,21 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    break;
+    // break;
 
   }
 
   // case JetID::None:
   else if (iJetID == JetID:None){
     passesID2 = true;
-    break;
+    // break;
   }
   // default:
   else{
     std::cerr << "\n\nERROR: Unknown Jet ID " << jetType << std::endl;
     std::cerr << "Please select 'loose' or 'tight'\n" << std::endl;
     throw std::exception();
-    break;
+    // break;
   }
   // }
   
