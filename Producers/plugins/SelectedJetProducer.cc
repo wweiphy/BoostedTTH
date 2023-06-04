@@ -518,6 +518,12 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   // std::cout << passesPUID << std::endl;
 
   // return true;
+  std::cout << "iJetID: " << iJetID << std::endl;
+  std::cout << "dataera: " << era << std::endl;
+  std::cout << "pass Pt: " << passesPt << std::endl;
+  std::cout << "pass Eta: " << passesEta << std::endl;
+  std::cout << "pass ID: " << passesID << std::endl;
+  std::cout << "pass ID2: " << passesID2  << std::endl;
   return passesPt and passesEta and passesID and passesID2 and passesPUID;
 }
 
