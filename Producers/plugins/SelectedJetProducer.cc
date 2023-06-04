@@ -855,15 +855,15 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
 }
 
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
-void
-    SelectedJetProducer::beginStream(edm::StreamID)
-{
-}
+// void
+//     SelectedJetProducer::beginStream(edm::StreamID)
+// {
+// }
 
-// ------------ method called once each stream after processing all runs, lumis and events  ------------
-void SelectedJetProducer::endStream()
-{
-}
+// // ------------ method called once each stream after processing all runs, lumis and events  ------------
+// void SelectedJetProducer::endStream()
+// {
+// }
 
 // ------------ method called when starting to processes a run  ------------
 /*
@@ -882,20 +882,20 @@ SelectedJetProducer::endRun(edm::Run const&, edm::EventSetup const&)
 */
 
 // ------------ method called when starting to processes a luminosity block  ------------
-/*
+
 void
 SelectedJetProducer::beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&)
 {
 }
-*/
+
 
 // ------------ method called when ending the processing of a luminosity block  ------------
-/*
+
 void
 SelectedJetProducer::endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&)
 {
 }
-*/
+
 
 // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
 void SelectedJetProducer::fillDescriptions(edm::ConfigurationDescriptions &descriptions)
