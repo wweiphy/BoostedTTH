@@ -93,13 +93,13 @@ private:
   // some enums to make things nicer
 
   // member functions
-  virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
-  virtual void produce(edm::Event &, const edm::EventSetup &) override;
-  virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
-
-  // virtual void beginStream(edm::StreamID) override;
+  // virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
   // virtual void produce(edm::Event &, const edm::EventSetup &) override;
-  // virtual void endStream() override;
+  // virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
+
+  virtual void beginStream(edm::StreamID) override;
+  virtual void produce(edm::Event &, const edm::EventSetup &) override;
+  virtual void endStream() override;
   
   std::string systName(std::string name, SystematicsHelper::Type) const;
   
