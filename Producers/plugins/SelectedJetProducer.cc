@@ -274,8 +274,8 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   if (fabs(iJet.eta()) <= iMaxAbsEta) passesEta = true;
 
   // Jet ID
-  if (iJet.isPFJet())
-    passesID = true;
+  // if (iJet.isPFJet())
+  passesID = true;
   // bool passesID = iJet.isPFJet();
   // if (not passesID) return false;
 
@@ -508,13 +508,13 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   // if (not passesID) return false;
   
   // PileUP Jet ID
-  // passesPUID = true;
-  if (iJet.hasUserInt("pileupJetId:fullId") && iJet.pt()<50 )
-  {
-    if (iJet.userInt("pileupJetId:fullId") < TranslateJetPUIDtoInt(wp))
-      passesPUID = false;
-    // return false;
-  }
+  passesPUID = true;
+  // if (iJet.hasUserInt("pileupJetId:fullId") && iJet.pt()<50 )
+  // {
+  //   if (iJet.userInt("pileupJetId:fullId") < TranslateJetPUIDtoInt(wp))
+  //     passesPUID = false;
+  //   // return false;
+  // }
   // std::cout << passesPUID << std::endl;
 
   // return true;
