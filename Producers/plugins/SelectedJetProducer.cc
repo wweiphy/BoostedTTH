@@ -828,7 +828,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         std::vector<pat::Jet> unsortedJets;
         if (applyCorrection)
         {
-            
+            std::cout << "success 211" << std::endl;
             std::vector<pat::Jet> rawJets = GetSortedByPt(GetUncorrectedJets(idJets));
             
             // Clean muons and electrons from jets
@@ -842,7 +842,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         // if no correction is to be applied, still remove jets close to a lepton
         else
         {
-        
+            std::cout << "success 212" << std::endl;
             unsortedJets = GetDeltaRCleanedJets(idJets, *inputMuons, *inputElectrons, leptonJetDr);
             
         }
