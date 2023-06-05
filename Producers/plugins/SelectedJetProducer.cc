@@ -828,15 +828,17 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         std::vector<pat::Jet> unsortedJets;
         if (applyCorrection)
         {
-            std::cout << "success 211" << std::endl;
+            std::cout << "success 2110" << std::endl;
             std::vector<pat::Jet> rawJets = GetSortedByPt(GetUncorrectedJets(idJets));
-            
+            std::cout << "success 2111" << std::endl;
             // Clean muons and electrons from jets
             std::vector<pat::Jet> cleanJets = GetDeltaRCleanedJets(rawJets, *inputMuons, *inputElectrons, leptonJetDr);
+            std::cout << "success 2112" << std::endl;
             // Apply jet corrections
             // Get genjets for new JER recommendation (JER is done in extra producer SmearedJetProducer, the manual JER application is therefore disabled doJER=false)
             
             unsortedJets = GetCorrectedJets(cleanJets, iEvent, iSetup, genJets, systematics.at(j), doJES, doJER);
+            std::cout << "success 2113" << std::endl;
             
         }
         // if no correction is to be applied, still remove jets close to a lepton
