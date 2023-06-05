@@ -659,7 +659,7 @@ void SelectedJetProducer::ApplyJetEnergyCorrection(pat::Jet& jet, double& totalC
     if (doJES || doJER) { // check again if JES or JER is demanded
         /// JES
         if (doJES) {
-            std::cout << "do JES" << std::endl;
+            // std::cout << "do JES" << std::endl;
             double scale = 1.;
             if (corrector) {
                 scale = corrector->correction(jet, event, setup);
