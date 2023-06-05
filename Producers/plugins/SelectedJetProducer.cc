@@ -240,11 +240,11 @@ std::vector<pat::Jet> SelectedJetProducer::GetSelectedJets(const std::vector<pat
   std::vector<pat::Jet> selectedJets;
   for (const auto& jet: inputJets )
   {
-    selectedJets.push_back(jet); // just a test
-    // if (isGoodJet(jet, iMinPt, iMaxAbsEta, iJetID, wp))
-    // {
-    //   selectedJets.push_back(jet);
-    // }
+    // selectedJets.push_back(jet); // just a test
+    if (isGoodJet(jet, iMinPt, iMaxAbsEta, iJetID, wp))
+    {
+      selectedJets.push_back(jet);
+    }
   }
   return selectedJets;
 }
@@ -857,6 +857,8 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         iEvent.put(std::move(selectedJets), systName(collectionNames.at(i), systematics.at(j)));
     }
   }
+
+  std::cout << "success 3" << std::endl;
 }
 
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
