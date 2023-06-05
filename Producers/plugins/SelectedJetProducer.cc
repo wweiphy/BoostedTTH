@@ -821,7 +821,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   {
       // selected jets with jet ID cuts ( do this before jet energy correction !!! )
       const std::vector<pat::Jet> idJets = GetSelectedJets(*inputJets, 0., 9999., Jet_ID.at(i));
-      
+      std::cout << "success 21" << std::endl;
       for (size_t j = 0; j < systematics.size(); j++)
       {
 
@@ -848,8 +848,8 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         }
 
         // loop over all jetcollections and each systematic and apply pt,eta as well as pujetid cut on them
-        
-            
+
+        std::cout << "success 22" << std::endl;
         //Get jet Collection which passes selections
         std::vector<pat::Jet> selectedJets_unsorted = GetSelectedJets(unsortedJets, ptMins.at(i), etaMaxs.at(i), JetID::None, PUJetID_WP.at(i));
         // sort the selected jets with respect to pt
