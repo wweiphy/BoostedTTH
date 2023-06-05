@@ -621,13 +621,14 @@ std::vector<pat::Jet> SelectedJetProducer::GetCorrectedJets(const std::vector<pa
 
   //resulting corrected Jets
   std::vector<pat::Jet> outputJets;
-
+  std::cout << "success 21120" << std::endl;
   //loop over input jets and correct each one
   // for (std::vector<pat::Jet>::const_iterator it = inputJets.begin(), ed = inputJets.end(); it != ed; ++it)
   for (const auto& jet: inputJets)
   {
     outputJets.push_back(GetCorrectedJet(jet, event, setup, genjets, iSysType, doJES, doJER, corrFactor, uncFactor));
   }
+  std::cout << "success 21121" << std::endl;
   return outputJets;
 }
 
@@ -641,7 +642,7 @@ pat::Jet SelectedJetProducer::GetCorrectedJet(const pat::Jet &inputJet, const ed
   double uncFactor_ = 1.;
   pat::Jet outputJet = inputJet;
   bool addUserFloats = true;
-
+  
   ApplyJetEnergyCorrection(outputJet, factor, event, setup, genjets, iSysType, doJES, doJER, addUserFloats, corrFactor, uncFactor_);
 
   return outputJet;
@@ -658,6 +659,7 @@ void SelectedJetProducer::ApplyJetEnergyCorrection(pat::Jet& jet, double& totalC
     if (doJES || doJER) { // check again if JES or JER is demanded
         /// JES
         if (doJES) {
+            std::cout << "do JES" << std::endl;
             double scale = 1.;
             if (corrector) {
                 scale = corrector->correction(jet, event, setup);
@@ -828,9 +830,9 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         std::vector<pat::Jet> unsortedJets;
         if (applyCorrection)
         {
-            std::cout << "success 2110" << std::endl;
+            // std::cout << "success 2110" << std::endl;
             std::vector<pat::Jet> rawJets = GetSortedByPt(GetUncorrectedJets(idJets));
-            std::cout << "success 2111" << std::endl;
+            // std::cout << "success 2111" << std::endl;
             // Clean muons and electrons from jets
             std::vector<pat::Jet> cleanJets = GetDeltaRCleanedJets(rawJets, *inputMuons, *inputElectrons, leptonJetDr);
             std::cout << "success 2112" << std::endl;
@@ -844,7 +846,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
         // if no correction is to be applied, still remove jets close to a lepton
         else
         {
-            std::cout << "success 212" << std::endl;
+            // std::cout << "success 212" << std::endl;
             unsortedJets = GetDeltaRCleanedJets(idJets, *inputMuons, *inputElectrons, leptonJetDr);
             
         }
