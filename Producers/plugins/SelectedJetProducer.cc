@@ -240,11 +240,11 @@ std::vector<pat::Jet> SelectedJetProducer::GetSelectedJets(const std::vector<pat
   std::vector<pat::Jet> selectedJets;
   for (const auto& jet: inputJets )
   {
-    // selectedJets.push_back(jet); // just a test
-    if (isGoodJet(jet, iMinPt, iMaxAbsEta, iJetID, wp))
-    {
-      selectedJets.push_back(jet);
-    }
+    selectedJets.push_back(jet); // just a test
+    // if (isGoodJet(jet, iMinPt, iMaxAbsEta, iJetID, wp))
+    // {
+    //   selectedJets.push_back(jet);
+    // }
   }
   return selectedJets;
 }
@@ -761,7 +761,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   using namespace edm;
   UpdateJetCorrectorUncertainties(iSetup);
 
-  // std::cout << "success 1" << std::endl;
+  std::cout << "success 1" << std::endl;
 
   edm::Handle<double> hRho;
   iEvent.getByToken(rhoToken, hRho);
@@ -815,7 +815,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   std::unique_ptr<pat::JetCollection> rawJets_general_ = std::make_unique<pat::JetCollection>(rawJets_general);
   iEvent.put(std::move(rawJets_general_), "rawJets");
 
-  // std::cout << "success 2" << std::endl;
+  std::cout << "success 2" << std::endl;
 
   for (size_t i = 0; i < ptMins.size(); i++)
   {
