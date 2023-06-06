@@ -867,12 +867,12 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
 
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
 void
-    SelectedJetProducer::beginjob()
+    SelectedJetProducer::beginJob()
 {
 }
 
 // ------------ method called once each stream after processing all runs, lumis and events  ------------
-void SelectedJetProducer::endjob()
+void SelectedJetProducer::endJob()
 {
 }
 

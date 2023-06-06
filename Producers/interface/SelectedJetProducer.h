@@ -68,7 +68,7 @@ T *ptr(T *obj) { return obj; } //obj is already pointer, return it!
 // class declaration
 //
 
-class SelectedJetProducer : public edm::EDProducer<>
+class SelectedJetProducer : public edm::EDProducer
 {
 public:
   explicit SelectedJetProducer(const edm::ParameterSet &);
@@ -103,9 +103,9 @@ private:
   // virtual void produce(edm::Event &, const edm::EventSetup &) override;
   // virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
 
-  virtual void beginjob() override;
+  virtual void beginJob() override;
   virtual void produce(edm::Event &, const edm::EventSetup &) override;
-  virtual void endjob() override;
+  virtual void endJob() override;
   
   std::string systName(std::string name, SystematicsHelper::Type) const;
   
