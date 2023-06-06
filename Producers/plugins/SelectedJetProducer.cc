@@ -621,14 +621,14 @@ std::vector<pat::Jet> SelectedJetProducer::GetCorrectedJets(const std::vector<pa
 
   //resulting corrected Jets
   std::vector<pat::Jet> outputJets;
-  std::cout << "success 21120" << std::endl;
+  // std::cout << "success 21120" << std::endl;
   //loop over input jets and correct each one
   // for (std::vector<pat::Jet>::const_iterator it = inputJets.begin(), ed = inputJets.end(); it != ed; ++it)
   for (const auto& jet: inputJets)
   {
     outputJets.push_back(GetCorrectedJet(jet, event, setup, genjets, iSysType, doJES, doJER, corrFactor, uncFactor));
   }
-  std::cout << "success 21121" << std::endl;
+  // std::cout << "success 21121" << std::endl;
   return outputJets;
 }
 
@@ -763,7 +763,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   using namespace edm;
   UpdateJetCorrectorUncertainties(iSetup);
 
-  std::cout << "success 1" << std::endl;
+  // std::cout << "success 1" << std::endl;
 
   edm::Handle<double> hRho;
   iEvent.getByToken(rhoToken, hRho);
@@ -817,13 +817,13 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   std::unique_ptr<pat::JetCollection> rawJets_general_ = std::make_unique<pat::JetCollection>(rawJets_general);
   iEvent.put(std::move(rawJets_general_), "rawJets");
 
-  std::cout << "success 2" << std::endl;
+  // std::cout << "success 2" << std::endl;
 
   for (size_t i = 0; i < ptMins.size(); i++)
   {
       // selected jets with jet ID cuts ( do this before jet energy correction !!! )
       const std::vector<pat::Jet> idJets = GetSelectedJets(*inputJets, 0., 9999., Jet_ID.at(i));
-      std::cout << "success 21" << std::endl;
+      // std::cout << "success 21" << std::endl;
       for (size_t j = 0; j < systematics.size(); j++)
       {
 
@@ -835,12 +835,12 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
             // std::cout << "success 2111" << std::endl;
             // Clean muons and electrons from jets
             std::vector<pat::Jet> cleanJets = GetDeltaRCleanedJets(rawJets, *inputMuons, *inputElectrons, leptonJetDr);
-            std::cout << "success 2112" << std::endl;
+            // std::cout << "success 2112" << std::endl;
             // Apply jet corrections
             // Get genjets for new JER recommendation (JER is done in extra producer SmearedJetProducer, the manual JER application is therefore disabled doJER=false)
             
             unsortedJets = GetCorrectedJets(cleanJets, iEvent, iSetup, genJets, systematics.at(j), doJES, doJER);
-            std::cout << "success 2113" << std::endl;
+            // std::cout << "success 2113" << std::endl;
             
         }
         // if no correction is to be applied, still remove jets close to a lepton
@@ -853,7 +853,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
 
         // loop over all jetcollections and each systematic and apply pt,eta as well as pujetid cut on them
 
-        std::cout << "success 22" << std::endl;
+        // std::cout << "success 22" << std::endl;
         //Get jet Collection which passes selections
         std::vector<pat::Jet> selectedJets_unsorted = GetSelectedJets(unsortedJets, ptMins.at(i), etaMaxs.at(i), JetID::None, PUJetID_WP.at(i));
         // sort the selected jets with respect to pt
@@ -862,7 +862,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
     }
   }
 
-  std::cout << "success 3" << std::endl;
+  // std::cout << "success 3" << std::endl;
 }
 
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
