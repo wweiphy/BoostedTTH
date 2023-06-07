@@ -39,9 +39,10 @@ config.Data.inputDBS = 'global'
 # config.Data.unitsPerJob = 2
 
 NJOB = 1500
-config.Data.totalUnits = config.Data.unitsPerJob * NJOB
+
 config.Data.splitting = 'EventBased'
 config.Data.unitsPerJob = 80000
+config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
