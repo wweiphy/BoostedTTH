@@ -21,7 +21,7 @@ config.JobType.numCores = 8
 #                               'systematicVariations=nominal', 'weight=3.42E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2018',
-                              'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=2.53E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+                              'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=7.61E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
@@ -33,16 +33,16 @@ config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunII
 config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
-# NJOB = 9000
-# config.Data.totalUnits = config.Data.unitsPerJob * NJOB
-# config.Data.splitting = 'FileBased'
-# config.Data.unitsPerJob = 2
-
-NJOB = 1500
-
-config.Data.splitting = 'EventBased'
-config.Data.unitsPerJob = 80000
+NJOB = 1669
+config.Data.splitting = 'FileBased'
+config.Data.unitsPerJob = 2
 config.Data.totalUnits = config.Data.unitsPerJob * NJOB
+
+# NJOB = 1500
+
+# config.Data.splitting = 'EventBased'
+# config.Data.unitsPerJob = 80000
+# config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
