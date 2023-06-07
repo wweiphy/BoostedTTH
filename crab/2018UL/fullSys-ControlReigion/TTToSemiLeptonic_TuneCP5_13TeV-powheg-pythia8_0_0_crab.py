@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2018_ntuple_0_0'
+config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2018_ntuple_0_0_2'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -35,8 +35,14 @@ config.Data.inputDBS = 'global'
 # config.Data.unitsPerJob = 5000
 # NJOB = 9000
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
-config.Data.splitting = 'FileBased'
-config.Data.unitsPerJob = 2
+# config.Data.splitting = 'FileBased'
+# config.Data.unitsPerJob = 2
+
+NJOB = 1500
+config.Data.totalUnits = config.Data.unitsPerJob * NJOB
+config.Data.splitting = 'EventBased'
+config.Data.unitsPerJob = 80000
+
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
