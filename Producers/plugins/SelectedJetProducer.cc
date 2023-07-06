@@ -283,9 +283,10 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   // JetID for UL
   // https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
 
-  switch (iJetID)
-  {
-  case JetID::Loose:
+  // switch (iJetID)
+  // {
+  if (iJetID == JetID::Loose){
+  // case JetID::Loose:
     if (era.find("2016") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.4)
@@ -354,10 +355,12 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    break;
+    // break;
 
-  case JetID::Tight:
+  }
 
+  // case JetID::Tight:
+  else if (iJetID == JetID::Tight){
     if (era.find("2016") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.4)
@@ -417,9 +420,12 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
           passesID2 = true;
       }
     }
-    break;
+    // break;
 
-  case JetID::TightLepVeto:
+  }
+
+  // case JetID::TightLepVeto:
+  if (iJetID == JetID::TightLepVeto){
     if (era.find("2016") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.4)
@@ -481,17 +487,24 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    break;
+    // break;
 
-  case JetID::None:
+  }
+
+  // case JetID::None:
+  else if (iJetID == JetID::None){
     passesID2 = true;
-    break;
-  default:
+    // break;
+  }
+  // default:
+  else{
     std::cerr << "\n\nERROR: Unknown Jet ID " << jetType << std::endl;
     std::cerr << "Please select 'loose' or 'tight'\n" << std::endl;
     throw std::exception();
-    break;
+    // break;
   }
+  // }
+  // passesID2 = true;
 
   // if (not passesID) return false;
   
