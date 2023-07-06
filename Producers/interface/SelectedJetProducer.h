@@ -25,17 +25,11 @@
 #include <vector>
 #include <utility>
 #include <fstream>
-#include <exception>
-#include <iostream>
-// #include <memory>
-#include <string>
-// #include <vector>
 
 // user include files
 #include "FWCore/Framework/interface/Frameworkfwd.h"
 #include "FWCore/Framework/interface/stream/EDProducer.h"
 #include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/EDProducer.h"
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/EventSetup.h"
@@ -68,7 +62,7 @@ T *ptr(T *obj) { return obj; } //obj is already pointer, return it!
 // class declaration
 //
 
-class SelectedJetProducer : public edm::EDProducer
+class SelectedJetProducer : public edm::stream::EDProducer<>
 {
 public:
   explicit SelectedJetProducer(const edm::ParameterSet &);
@@ -103,9 +97,9 @@ private:
   // virtual void produce(edm::Event &, const edm::EventSetup &) override;
   // virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
 
-  virtual void beginJob() override;
+  virtual void beginStream(edm::StreamID) override;
   virtual void produce(edm::Event &, const edm::EventSetup &) override;
-  virtual void endJob() override;
+  virtual void endStream() override;
   
   std::string systName(std::string name, SystematicsHelper::Type) const;
   
