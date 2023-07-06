@@ -240,11 +240,11 @@ std::vector<pat::Jet> SelectedJetProducer::GetSelectedJets(const std::vector<pat
   std::vector<pat::Jet> selectedJets;
   for (const auto& jet: inputJets )
   {
-    selectedJets.push_back(jet); // just a test
-    // if (isGoodJet(jet, iMinPt, iMaxAbsEta, iJetID, wp))
-    // {
-    //   selectedJets.push_back(jet);
-    // }
+    // selectedJets.push_back(jet); // just a test
+    if (isGoodJet(jet, iMinPt, iMaxAbsEta, iJetID, wp))
+    {
+      selectedJets.push_back(jet);
+    }
   }
   return selectedJets;
 }
