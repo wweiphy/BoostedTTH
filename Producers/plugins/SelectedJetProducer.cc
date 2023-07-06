@@ -283,10 +283,9 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
   // JetID for UL
   // https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL#Jet_Identification_for_the_13_Te
 
-  // switch (iJetID)
-  // {
-  if (iJetID == JetID::Loose){
-  // case JetID::Loose:
+  switch (iJetID)
+  {
+  case JetID::Loose:
     if (era.find("2016") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.4)
@@ -355,12 +354,10 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    // break;
+    break;
 
-  }
+  case JetID::Tight:
 
-  // case JetID::Tight:
-  else if (iJetID == JetID::Tight){
     if (era.find("2016") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.4)
@@ -420,12 +417,9 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
           passesID2 = true;
       }
     }
-    // break;
+    break;
 
-  }
-
-  // case JetID::TightLepVeto:
-  if (iJetID == JetID::TightLepVeto){
+  case JetID::TightLepVeto:
     if (era.find("2016") != std::string::npos)
     {
       if (fabs(iJet.eta()) <= 2.4)
@@ -487,24 +481,17 @@ bool SelectedJetProducer::isGoodJet(const pat::Jet &iJet, const float iMinPt, co
         if (iJet.neutralEmEnergyFraction() < 0.90 && iJet.neutralHadronEnergyFraction() > 0.2 && iJet.neutralMultiplicity() > 10) passesID2 = true;
       }
     }
-    // break;
+    break;
 
-  }
-
-  // case JetID::None:
-  else if (iJetID == JetID::None){
+  case JetID::None:
     passesID2 = true;
-    // break;
-  }
-  // default:
-  else{
+    break;
+  default:
     std::cerr << "\n\nERROR: Unknown Jet ID " << jetType << std::endl;
     std::cerr << "Please select 'loose' or 'tight'\n" << std::endl;
     throw std::exception();
-    // break;
+    break;
   }
-  // }
-  // passesID2 = true;
 
   // if (not passesID) return false;
   
@@ -865,15 +852,14 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   // std::cout << "success 3" << std::endl;
 }
 
-
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
 void
-    SelectedJetProducer::beginStream(edm::StreamID)
+    SelectedJetProducer::beginJob()
 {
 }
 
 // ------------ method called once each stream after processing all runs, lumis and events  ------------
-void SelectedJetProducer::endStream()
+void SelectedJetProducer::endJob()
 {
 }
 
