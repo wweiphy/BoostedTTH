@@ -868,7 +868,7 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
 
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
 void
-    SelectedJetProducer::beginStream()
+    SelectedJetProducer::beginStream(edm::StreamID)
 {
 }
 
