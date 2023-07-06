@@ -865,14 +865,15 @@ void SelectedJetProducer::produce(edm::Event &iEvent, const edm::EventSetup &iSe
   // std::cout << "success 3" << std::endl;
 }
 
+
 // ------------ method called once each stream before processing any runs, lumis or events  ------------
 void
-    SelectedJetProducer::beginJob()
+    SelectedJetProducer::beginStream()
 {
 }
 
 // ------------ method called once each stream after processing all runs, lumis and events  ------------
-void SelectedJetProducer::endJob()
+void SelectedJetProducer::endStream()
 {
 }
 
