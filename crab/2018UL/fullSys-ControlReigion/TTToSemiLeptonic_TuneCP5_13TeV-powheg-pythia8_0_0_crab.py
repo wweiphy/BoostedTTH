@@ -22,6 +22,7 @@ config.JobType.numCores = 8
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2018',
                               'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=7.61E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+# Note the weight 7.61E-06 was modified with only 1/3 of 2018 TTSL dataset 
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
