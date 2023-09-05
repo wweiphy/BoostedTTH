@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'SingleElectronF_2017F_ntuple_0_0'
+config.General.requestName = 'SingleElectronF_2017F_ntuple_0_0_2'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
