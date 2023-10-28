@@ -231,7 +231,7 @@ elif "2018" in options.dataEra:
     process.prefiringweight = l1PrefiringWeightProducer.clone(
         TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
-        DataEraECAL=cms.string("2017BtoF"),
+        DataEraECAL=cms.string("None"),
         DataEraMuon = cms.string("20172018"),
         UseJetEMPt = cms.bool(False),
         PrefiringRateSystematicUnctyECAL = cms.double(0.2),
