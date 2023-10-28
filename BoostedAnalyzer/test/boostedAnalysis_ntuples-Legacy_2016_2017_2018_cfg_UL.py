@@ -30,7 +30,10 @@ import os
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=40000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/SingleMuon/MINIAOD/UL2018_MiniAODv2-v3/2530000/002A113D-FB15-1341-A170-638E53A7261F.root
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=40000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/SingleMuon/MINIAOD/UL2018_MiniAODv2-v3/2530000/002A113D-FB15-1341-A170-638E53A7261F.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=640000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/SingleMuon/MINIAOD/UL2018_MiniAODv2-v3/2530000/002A113D-FB15-1341-A170-638E53A7261F.root
+
+# 2017 data
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=6400 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2017B/SingleElectron/MINIAOD/UL2017_MiniAODv2-v1/270000/00E7B0AA-E2D6-7245-9407-D6661A8BB74B.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=10000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/EGamma/MINIAOD/UL2018_MiniAODv2-v1/230000/1DC29AF8-7091-4245-A0D8-CFDF650310CC.root
 
@@ -646,8 +649,10 @@ for s in systsJES:
 # load and run the boosted analyzer
 if options.isData:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_data_cfi import *
-    if "2016" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016
+    if "2016preVFP" in options.dataEra:
+        process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
+    if "2016postVFP" in options.dataEra:
+        process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
     elif "2017" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2017
     elif "2018" in options.dataEra:
