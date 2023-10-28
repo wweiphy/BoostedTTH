@@ -91,8 +91,8 @@ DiLeptonMETSelection = cms.PSet(
 JetTagSelection = cms.PSet(
     minJets = cms.vint32(4),
     maxJets = cms.vint32(-1),
-    minTags = cms.vint32(2),
-    maxTags = cms.vint32(2)
+    minTags = cms.vint32(3),
+    maxTags = cms.vint32(-1)
 ) # for control region study
 
 # TODO - update the trigger for data when later include it
