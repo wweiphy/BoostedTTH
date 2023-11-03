@@ -23,7 +23,7 @@ config.JobType.numCores = 8
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2018',
                               'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=1.68E-04', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 # Note the weight 1.68E-04 was modified with only 1/20 of 2018 TTDL dataset
-config.JobType.sendPythonFolder=True
+# config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM'

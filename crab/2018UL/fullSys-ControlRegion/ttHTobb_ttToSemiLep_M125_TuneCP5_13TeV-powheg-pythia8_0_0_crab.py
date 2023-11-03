@@ -17,7 +17,7 @@ config.JobType.numCores = 8
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=ntuples', 'dataEra=2018',
                               'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=5.77E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
-config.JobType.sendPythonFolder=True
+# config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/ttHTobb_ttToSemiLep_M125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2/MINIAODSIM'
