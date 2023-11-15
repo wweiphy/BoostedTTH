@@ -29,7 +29,7 @@ config.Data.inputDBS = 'global'
 
 # config.Data.unitsPerJob = 1000
 # config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 2
+config.Data.unitsPerJob = 3
 config.Data.splitting = 'FileBased'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
