@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8_2018_ntuple_0_0_4'
+config.General.requestName = 'TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8_2018_ntuple_0_0_7'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'

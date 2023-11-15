@@ -18,7 +18,7 @@ config.JobType.numCores = 8
 
 # config.JobType.pyCfgParams = ['isData=True', 'maxEvents=9999999999', 'outName=ntuples', 'dataEra=2018B', 'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=8.34E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 config.JobType.pyCfgParams = ['isData=True', 'maxEvents=99999999999', 'outName=ntuples', 'dataEra=2018B', 'systematicVariations=nominal', 'weight=8.34E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
-config.JobType.sendPythonFolder=True
+# config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/SingleMuon/Run2018B-UL2018_MiniAODv2-v2/MINIAOD'
