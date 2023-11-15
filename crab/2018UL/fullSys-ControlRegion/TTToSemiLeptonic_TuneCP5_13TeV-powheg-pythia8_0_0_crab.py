@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2018_ntuple_0_0_5'
+config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2018_ntuple_0_0_6'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -12,8 +12,8 @@ config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutf
                             #   "ntuples_JESRelativeSampleyeardown_Tree.root", "ntuples_JESRelativeSampleyeardown_Cutflow.txt", "ntuples_JESEC2yearup_Tree.root", "ntuples_JESEC2yearup_Cutflow.txt", "ntuples_JESEC2yeardown_Tree.root", "ntuples_JESEC2yeardown_Cutflow.txt", "ntuples_JESHFyearup_Tree.root", "ntuples_JESHFyearup_Cutflow.txt", "ntuples_JESHFyeardown_Tree.root", "ntuples_JESHFyeardown_Cutflow.txt", "ntuples_JESAbsoluteyearup_Tree.root", "ntuples_JESAbsoluteyearup_Cutflow.txt", "ntuples_JESAbsoluteyeardown_Tree.root", "ntuples_JESAbsoluteyeardown_Cutflow.txt"]
 
 config.JobType.maxJobRuntimeMin = 2750
-config.JobType.maxMemoryMB = 20000
-config.JobType.numCores = 8
+config.JobType.maxMemoryMB = 10000
+config.JobType.numCores = 4
 # config.JobType.maxMemoryMB = 4000
 
 

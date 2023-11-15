@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8_2018_ntuple_0_0_3'
+config.General.requestName = 'TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8_2018_ntuple_0_0_4'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -12,8 +12,8 @@ config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutf
                             #   "ntuples_JESRelativeSampleyeardown_Tree.root", "ntuples_JESRelativeSampleyeardown_Cutflow.txt", "ntuples_JESEC2yearup_Tree.root", "ntuples_JESEC2yearup_Cutflow.txt", "ntuples_JESEC2yeardown_Tree.root", "ntuples_JESEC2yeardown_Cutflow.txt", "ntuples_JESHFyearup_Tree.root", "ntuples_JESHFyearup_Cutflow.txt", "ntuples_JESHFyeardown_Tree.root", "ntuples_JESHFyeardown_Cutflow.txt", "ntuples_JESAbsoluteyearup_Tree.root", "ntuples_JESAbsoluteyearup_Cutflow.txt", "ntuples_JESAbsoluteyeardown_Tree.root", "ntuples_JESAbsoluteyeardown_Cutflow.txt"]
 
 config.JobType.maxJobRuntimeMin = 2750
-config.JobType.maxMemoryMB = 20000
-config.JobType.numCores = 8
+config.JobType.maxMemoryMB = 10000
+config.JobType.numCores = 4
 # config.JobType.maxMemoryMB = 4000
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=ntuples', 'dataEra=2018',
