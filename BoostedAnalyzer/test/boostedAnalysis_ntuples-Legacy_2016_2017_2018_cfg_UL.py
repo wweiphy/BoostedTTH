@@ -396,8 +396,8 @@ elif "2017" in options.dataEra:
     # EG_vid = False
 elif "2018" in options.dataEra:
     EG_era = '2018-UL'
-    EG_corrections = False
-    # EG_corrections = True
+    # EG_corrections = Fa
+    EG_corrections = True
     EG_vid = False
 else:
     raise Exception( "dataEra "+options.dataEra+" not supported for Egamma tools: USE dataEra=2016/2017/2018")
@@ -414,8 +414,8 @@ setupEgammaPostRecoSeq(process,
 
 ### some standard collections ####
 #if not options.isData:
-# electronCollection = cms.InputTag("slimmedElectrons")
-electronCollection = cms.InputTag("slimmedElectrons", "", process.name_()) if not "2018" in options.dataEra else cms.InputTag("slimmedElectrons")
+electronCollection = cms.InputTag("slimmedElectrons")
+# electronCollection = cms.InputTag("slimmedElectrons", "", process.name_()) if not "2018" in options.dataEra else cms.InputTag("slimmedElectrons")
 photonCollection   = cms.InputTag("slimmedPhotons")
 muonCollection     = cms.InputTag("slimmedMuons")
 tauCollection      = cms.InputTag("slimmedTaus")
