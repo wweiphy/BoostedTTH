@@ -678,7 +678,7 @@ else:
         # if options.applyTrigger:
             # process.BoostedAnalyzer = BoostedAnalyzer2017
         # else:
-        process.BoostedAnalyzer = BoostedAnalyzer2017test
+        process.BoostedAnalyzer = BoostedAnalyzer2017
     elif "2018" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2018
     

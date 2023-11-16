@@ -16,7 +16,7 @@ config.JobType.numCores = 8
 
 
 
-config.JobType.pyCfgParams = ['isData=True', 'maxEvents=99999999999', 'outName=ntuples', 'dataEra=2018A', 'systematicVariations=nominal', 'weight=4.14E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+config.JobType.pyCfgParams = ['isData=True', 'maxEvents=99999999999', 'outName=ntuples', 'dataEra=2018', 'systematicVariations=nominal', 'weight=4.14E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 # config.JobType.pyCfgParams = ['isData=True', 'maxEvents=9999999999', 'outName=ntuples', 'dataEra=2018A', 'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=4.14E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True

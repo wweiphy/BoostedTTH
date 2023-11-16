@@ -15,7 +15,7 @@ config.JobType.numCores = 8
 # config.JobType.maxMemoryMB = 4000
 
 
-config.JobType.pyCfgParams = ['isData=True', 'maxEvents=999999999', 'outName=ntuples', 'dataEra=2018A',
+config.JobType.pyCfgParams = ['isData=True', 'maxEvents=999999999', 'outName=ntuples', 'dataEra=2018',
                               'systematicVariations=nominal', 'weight=2.95E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 # config.JobType.pyCfgParams = ['isData=True', 'maxEvents=9999999999', 'outName=ntuples', 'dataEra=2018A', 'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=2.95E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
