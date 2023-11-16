@@ -410,7 +410,8 @@ setupEgammaPostRecoSeq(process,
 
 ### some standard collections ####
 #if not options.isData:
-electronCollection = cms.InputTag("slimmedElectrons")
+# electronCollection = cms.InputTag("slimmedElectrons")
+electronCollection = cms.InputTag("slimmedElectrons", "", process.name_()) if not "2018" in options.dataEra else cms.InputTag("slimmedElectrons")
 photonCollection   = cms.InputTag("slimmedPhotons")
 muonCollection     = cms.InputTag("slimmedMuons")
 tauCollection      = cms.InputTag("slimmedTaus")
