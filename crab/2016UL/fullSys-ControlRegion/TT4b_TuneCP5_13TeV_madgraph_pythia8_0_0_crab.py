@@ -20,7 +20,7 @@ config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=nt
 
 # config.JobType.pyCfgParams = ['isData=FALSE','maxEvents=999999999','outName=ntuples', 'dataEra=2018','systematicVariations=nominal','weight=3.12E-05','ProduceMemNtuples=False', 'deterministicSeeds=False']
 
-config.JobType.sendPythonFolder=True
+# config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/TT4b_TuneCP5_13TeV_madgraph_pythia8/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17-v2/MINIAODSIM'
