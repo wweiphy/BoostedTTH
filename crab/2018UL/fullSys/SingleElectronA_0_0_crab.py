@@ -19,7 +19,7 @@ config.JobType.pyCfgParams = ['isData=True', 'maxEvents=999999999', 'outName=ntu
                               'systematicVariations=nominal', 'weight=2.95E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 # config.JobType.pyCfgParams = ['isData=True', 'maxEvents=9999999999', 'outName=ntuples', 'dataEra=2018A', 'systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear', 'weight=2.95E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
-config.JobType.sendPythonFolder=True
+# config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '/EGamma/Run2018A-UL2018_MiniAODv2-v1/MINIAOD'
