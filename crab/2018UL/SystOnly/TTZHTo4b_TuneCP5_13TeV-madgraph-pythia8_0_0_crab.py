@@ -16,7 +16,7 @@ config.JobType.numCores = 8
 # config.JobType.maxMemoryMB = 4000
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=999999999', 'outName=ntuples', 'dataEra=2018',
                               'systematicVariations=nominal,JES,JER', 'weight=1.37E-08', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
-config.JobType.sendPythonFolder=True
+# config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
 # config.Data.userInputFiles = ['/store/group/lpctthrun2/wwei/TTZH_TuneCP5_13TeV-madgraph-pythia8/sl_skims_MC_94X_LEG_2017/220311_034726/0000/Skim_1.root',
