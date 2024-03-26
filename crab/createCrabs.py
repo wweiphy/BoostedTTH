@@ -113,7 +113,7 @@ def split_for_systematic_variations(variations,nvariations):
     return systs
 
 
- 
+lumimask = ''
 for row in reader:
     if not ("#" or "") in row["name"]:
         #print variation_list
