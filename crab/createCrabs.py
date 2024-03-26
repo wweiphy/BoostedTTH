@@ -135,9 +135,9 @@ for row in reader:
             datasets=row['boosted_dataset'].split(",")
             print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
 
-            if row['run'] == '2018':
+            if row['run'] == 2018:
                 lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt'
-            elif row['run'] == "2017":
+            elif row['run'] == 2017:
                 lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions17/13TeV/Legacy_2017/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt'
             elif row['run'] == "2016preVFP" or row['run'] == "2016postVFP":
                 lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions16/13TeV/Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt'
@@ -169,6 +169,7 @@ for row in reader:
                     # dataSetTag = 'sl_LEG_NTUPLETAG_DATAERA'
                     splitting = 'EventAwareLumiBased'
                     units = '80000'
+                    repl('LUMIMASK',lumimask,out)
                 else:
                     # dataSetTag = 'sl_skims_MC_'+rel+'_LEG_DATAERA'
                     splitting = 'FileBased'
@@ -203,7 +204,7 @@ for row in reader:
                 repl('DBSINSTANCE',dbsinstance,out)
                 repl('OUTNAME',cmsoutname,out)
 
-                if row['isData']=='True':
-                    repl('LUMIMASK',lumimask,out)
+                # if row['isData']=='True':
+                    
 
 
