@@ -16,7 +16,7 @@ config.JobType.pyCfgParams = ['isData=ISDATA','maxEvents=999999999','outName=OUT
 config.Data.inputDataset = 'THEINPUTDATASET'
 config.Data.inputDBS = 'DBSINSTANCE'
 # config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 3
+config.Data.unitsPerJob = 'UNITSPERJOB'
 config.Data.splitting = 'SPLITTING'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
