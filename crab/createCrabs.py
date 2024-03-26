@@ -1,4 +1,4 @@
-# python createCrabs_wei.py -i ttHH_UL_samples_2017.csv -o ttHH_full_sys --ntuple
+# python createCrabs.py -i ttHH_UL_samples_2017.csv -o ttHH_full_sys --ntuple
 
 import csv
 import os
@@ -20,7 +20,7 @@ parser.add_option("-o", "--outname", dest="outName",default="",
         help="Name of Output Folder containing crab configs, default: CSVname+'_configs'", metavar="outName")
 parser.add_option("--ntuple", action="store_true", dest="ntuple" ,default=False,
         help="Specifiy, if you want to create crabConfigs for NTupling, default=False. ", metavar="ntuple")
-parser.add_option("--systs", action="store_true", dest="systs" ,default=False,
+parser.add_option("--systematics", action="store_true", dest="systematics" ,default=False,
         help="Specifiy, if you want to create crabConfigs for systematics, default=False. ", metavar="systs")
 parser.add_option("--nsysts", dest="nsysts" ,default=100, type=int,
         help="Specifiy, how many systematic variations should be processed in a single crab job, default=100", metavar="nsysts")
@@ -117,12 +117,12 @@ def split_for_systematic_variations(variations,nvariations):
 for row in reader:
     if not ("#" or "") in row["name"]:
         #print variation_list
-        if ntuple and not systs:
+        if ntuple and not options.systematics:
             src='common/template_cfg_ntuple.py'
             datasets=row['boosted_dataset'].split(",")
             variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
             print("Creating crab configs to Ntuple without systs, therefore using common/systematicVariationsNone.txt")
-        elif ntuple and systs:
+        elif ntuple and options.systematics:
             src='common/template_cfg_ntuple.py'
             datasets=row['boosted_dataset'].split(",")
             variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
@@ -142,7 +142,7 @@ for row in reader:
                 # out='configs_ntuples/'+row['name']+'_'+str(i)+"_"+str(l)+'_crab.py'
                 out= outname+'/'+row['name']+'_'+str(i)+"_"+str(l)+'_crab.py'
                 filenames = []
-                if ntuple and systs:
+                if ntuple and options.systematics:
                     for filename in variations.split(","):
                         if filename=="nominal":
                             filenames.append("ntuples_"+filename+"_Tree.root")
