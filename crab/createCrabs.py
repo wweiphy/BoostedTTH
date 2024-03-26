@@ -1,4 +1,4 @@
-# python createCrabs_wei.py -i ttH_legacy_samples_2017.csv -o ttHH_full_sys --ntuple
+# python createCrabs_wei.py -i ttHH_UL_samples_2017.csv -o ttHH_full_sys --ntuple
 
 import csv
 import os
@@ -19,13 +19,13 @@ parser.add_option("-i", "--inputCSV", dest="csvFile",default="ttH_legacy_samples
 parser.add_option("-o", "--outname", dest="outName",default="",
         help="Name of Output Folder containing crab configs, default: CSVname+'_configs'", metavar="outName")
 parser.add_option("--ntuple", action="store_true", dest="ntuple" ,default=False,
-        help="Specifiy, if you want to create crabConfigs for NTupling, default=False. Will use skimmed samples in boosted_datasets column of csvFile", metavar="ntuple")
-parser.add_option("--slimmed", action="store_true", dest="slimmed" ,default=False,
-        help="Specifiy, if you want to create crabConfigs for slimmedNTuples, default=False. Will use skimmed samples in boosted_datasets column of csvFile", metavar="slimmed")
+        help="Specifiy, if you want to create crabConfigs for NTupling, default=False. ", metavar="ntuple")
+parser.add_option("--systs", action="store_true", dest="systs" ,default=False,
+        help="Specifiy, if you want to create crabConfigs for systematics, default=False. ", metavar="systs")
 parser.add_option("--nsysts", dest="nsysts" ,default=100, type=int,
         help="Specifiy, how many systematic variations should be processed in a single crab job, default=100", metavar="nsysts")
-parser.add_option("--runconfig", dest="runconfig" ,default="boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg.py",
-        help="Specifiy the cmsRun config, default=boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg.py", metavar="runconfig")
+parser.add_option("--runconfig", dest="runconfig" ,default="boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py",
+        help="Specifiy the cmsRun config, default=boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py", metavar="runconfig")
 
 
 
@@ -38,35 +38,35 @@ if options.outName=="":
     outname = options.csvFile.partition('.')[0]+"_configs"
 else:
     outname = options.outName
-workarea = "crab_skims"
-dbsinstance = "global"
-ntuple=False
-slimmed=False
-ntupletag=""
-cmsoutname = "skim"
 
-if options.slimmed:
-    ntuple=True
-    slimmed=True
-    workarea = "crab_slims"
-    outname+="_slimmedntuple"
-    ntupletag = "MEM_slimmed_ntuples"
-    cmsoutname = "MEM"
+# workarea = "crab_skims"
+# dbsinstance = "global"
+# ntuple=False
+# slimmed=False
+# ntupletag=""
+# cmsoutname = "skim"
+
+# if options.slimmed:
+#     ntuple=True
+#     slimmed=True
+#     workarea = "crab_slims"
+#     outname+="_slimmedntuple"
+#     ntupletag = "MEM_slimmed_ntuples"
+#     cmsoutname = "MEM"
 
 if options.ntuple:
     ntuple = True
-    slimmed=False
     workarea = "crab_ntuple"
     outname+="_ntuple"
     ntupletag = "ntuple"
-    dbsinstance = "phys03"
+    dbsinstance = "global"
     cmsoutname = "ntuples"
 
 
 print outname
 os.system("mkdir -p " + outname)
 
-release = "CMSSW_10_6_27"
+release = "CMSSW_10_6_29"
 rel = "106X"
 
 def repl(old,new,filename):
@@ -87,9 +87,9 @@ def get_list_of_systematics(filename):
         #print "WARNING: no 'nominal' variation specified...adding it"
         good_systs.insert(0,"nominal")
 
-    #print "Systematic variations:"
-    #for syst in good_systs:
-        #print "  '"+syst+"'"
+    print "Systematic variations:"
+    for syst in good_systs:
+        print "  '"+syst+"'"
 
     return good_systs
 
@@ -117,18 +117,18 @@ def split_for_systematic_variations(variations,nvariations):
 for row in reader:
     if not ("#" or "") in row["name"]:
         #print variation_list
-        if ntuple and not slimmed:
+        if ntuple and not systs:
+            src='common/template_cfg_ntuple.py'
+            datasets=row['boosted_dataset'].split(",")
+            variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
+            print("Creating crab configs to Ntuple without systs, therefore using common/systematicVariationsNone.txt")
+        elif ntuple and systs:
             src='common/template_cfg_ntuple.py'
             datasets=row['boosted_dataset'].split(",")
             variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
-            print("Creating crab configs to Ntuple, therefore using common/systematicVariations.txt and skimmed datasets")
-        elif slimmed:
-            src='common/template_cfg_ntuple.py'
-            datasets=row['dataset'].split(",")
-            variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
-            print("Creating crab configs to Ntuple, therefore using common/systematicVariations.txt and unskimmed dataset")
+            print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
         else:
-            src='common/template_cfg.py'
+            src='common/template_cfg_ntuple.py'
             datasets=row['dataset'].split(",")
             variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
 
@@ -142,7 +142,7 @@ for row in reader:
                 # out='configs_ntuples/'+row['name']+'_'+str(i)+"_"+str(l)+'_crab.py'
                 out= outname+'/'+row['name']+'_'+str(i)+"_"+str(l)+'_crab.py'
                 filenames = []
-                if ntuple and not slimmed:
+                if ntuple and systs:
                     for filename in variations.split(","):
                         if filename=="nominal":
                             filenames.append("ntuples_"+filename+"_Tree.root")
@@ -152,32 +152,29 @@ for row in reader:
                             filenames.append("ntuples_"+filename+"up"+"_Cutflow.txt")
                             filenames.append("ntuples_"+filename+"down"+"_Tree.root")
                             filenames.append("ntuples_"+filename+"down"+"_Cutflow.txt")
-                elif slimmed:
-                    filenames.append("MEM_slimmed_ntuples_Tree.root")
+                # elif slimmed:
+                #     filenames.append("MEM_slimmed_ntuples_Tree.root")
                 shutil.copy(src,out)
                 
-                if "2018" in row["run"]:
-                    release = "CMSSW_10_2_13"
-                    rel = "102X"
+                # if "2018" in row["run"]:
+                #     release = "CMSSW_10_6_29"
+                #     rel = "106X"
 
                 if row['isData']=='TRUE':
-                    dataSetTag = 'sl_skims_DATA_'+rel+'_LEG_DATAERA'
-                    splitting = 'EventAwattHTobb_M125_TuneCP5_13TeV-powheg-pythia8_0_0_crab.pyLumiBased'
+                    # dataSetTag = 'sl_LEG_NTUPLETAG_DATAERA'
+                    splitting = 'EventAwareLumiBased'
                     units = '80000'
                 else:
-                    dataSetTag = 'sl_skims_MC_'+rel+'_LEG_DATAERA'
+                    # dataSetTag = 'sl_skims_MC_'+rel+'_LEG_DATAERA'
                     splitting = 'FileBased'
                     units = '2'
 
-                if ntuple and not slimmed:
+
+                if ntuple:
                     requestName = row['name']+"_"+row["run"]+"_ntuple_"+str(i)+"_"+str(l)
-                elif slimmed:
-                    requestName = row['name']+"_"+row["run"]+"_slim_"+str(i)+"_"+str(l)
-                else:
-                    requestName = row['name']+"_"+row["run"]+"_skim_"+str(i)+"_"+str(l)
 
                 repl('THEREQUESTNAME',requestName,out)
-                repl('OUTPUTDATASETTAG',dataSetTag,out)
+                # repl('OUTPUTDATASETTAG',dataSetTag,out)
                 repl('THEINPUTDATASET',dataset,out)
                 repl('NTUPLETAG',ntupletag,out)
                 repl('DATAERA',row['run'],out)
@@ -185,8 +182,8 @@ for row in reader:
                 repl('ISDATA',row['isData'],out)
                 repl('SPLITTING',splitting,out)
                 repl('UNITSPERJOB',units,out)
-                repl('SLIMMED',str(slimmed),out)
-                repl('SEEDS',str(slimmed),out)
+                # repl('SLIMMED',str(slimmed),out)
+                # repl('SEEDS',str(slimmed),out)
                 #repl('GENERATORNAME',row['generator'],out)
                 repl('WEIGHT',row['weight'],out)
                 repl('SYSTEMATICVARIATIONS',variations,out)

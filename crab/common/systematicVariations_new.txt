@@ -2,25 +2,5 @@
 JES		
 JER			
 
-# individual JEC uncertainties (according to AN Sep23 2019)
-JESFlavorQCD
-JESRelativeBal
-JESHF
-JESBBEC1
-JESEC2
-JESAbsolute
-JESBBEC1year
-JESRelativeSampleyear
-JESEC2year
-JESHFyear
-JESAbsoluteyear
-
-# JER 
-JEReta0
-JEReta1
-JERpt0eta2
-JERpt1eta2
-JERpt0eta3
-JERpt1eta3
 
 
