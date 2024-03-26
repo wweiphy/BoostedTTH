@@ -14,6 +14,7 @@ config.JobType.pyCfgParams = ['isData=ISDATA','maxEvents=999999999','outName=OUT
 # config.JobType.sendPythonFolder=True
 
 config.Data.inputDataset = 'THEINPUTDATASET'
+config.Data.lumiMask = 'LUMIMASK'
 config.Data.inputDBS = 'DBSINSTANCE'
 # config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 'UNITSPERJOB'

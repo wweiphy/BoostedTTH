@@ -117,24 +117,34 @@ def split_for_systematic_variations(variations,nvariations):
 for row in reader:
     if not ("#" or "") in row["name"]:
         #print variation_list
-        if ntuple and not options.systematics:
-            src='common/template_cfg_ntuple.py'
-            datasets=row['boosted_dataset'].split(",")
-            variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
-            print("Creating crab configs to Ntuple without systs, therefore using common/systematicVariationsNone.txt")
-        elif ntuple and options.systematics:
-            src='common/template_cfg_ntuple.py'
-            datasets=row['boosted_dataset'].split(",")
-            variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
-            print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
+        if row['isData']=='False':
+            if ntuple and not options.systematics:
+                src='common/template_cfg_ntuple.py'
+                datasets=row['boosted_dataset'].split(",")
+                variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
+                print("Creating crab configs to Ntuple without systs, therefore using common/systematicVariationsNone.txt")
+            elif ntuple and options.systematics:
+                src='common/template_cfg_ntuple.py'
+                datasets=row['boosted_dataset'].split(",")
+                variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
+                print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
         else:
-            src='common/template_cfg_ntuple.py'
-            datasets=row['dataset'].split(",")
-            variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
+            variations_list = ['nominal']
+            src='common/template_cfg_data_ntuple.py'
+            datasets=row['boosted_dataset'].split(",")
+            print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
+
+            if row['run'] == '2018':
+                lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt'
+            elif row['run'] == "2017":
+                lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions17/13TeV/Legacy_2017/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt'
+            elif row['run'] == "2016preVFP" or row['run'] == "2016postVFP":
+                lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions16/13TeV/Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt'
+
+            repl('LUMIMASK',lumimask,out)
 
         variations_list = split_for_systematic_variations(variation_list,options.nsysts)
-        if row['isData']=='True':
-            variations_list = ['nominal']
+
         for variations,l in zip(variations_list,range(len(variations_list))):
             print "looking at systematic sources ",variations
             for dataset,i in zip(datasets,range(len(datasets))):
@@ -142,23 +152,19 @@ for row in reader:
                 # out='configs_ntuples/'+row['name']+'_'+str(i)+"_"+str(l)+'_crab.py'
                 out= outname+'/'+row['name']+'_'+str(i)+"_"+str(l)+'_crab.py'
                 filenames = []
-                if ntuple and options.systematics:
-                    for filename in variations.split(","):
-                        if filename=="nominal":
-                            filenames.append("ntuples_"+filename+"_Tree.root")
-                            filenames.append("ntuples_"+filename+"_Cutflow.txt")
-                        else: 
-                            filenames.append("ntuples_"+filename+"up"+"_Tree.root")
-                            filenames.append("ntuples_"+filename+"up"+"_Cutflow.txt")
-                            filenames.append("ntuples_"+filename+"down"+"_Tree.root")
-                            filenames.append("ntuples_"+filename+"down"+"_Cutflow.txt")
-                # elif slimmed:
-                #     filenames.append("MEM_slimmed_ntuples_Tree.root")
+                # if ntuple and options.systematics:
+                for filename in variations.split(","):
+                    if filename=="nominal":
+                        filenames.append("ntuples_"+filename+"_Tree.root")
+                        filenames.append("ntuples_"+filename+"_Cutflow.txt")
+                    else: 
+                        filenames.append("ntuples_"+filename+"up"+"_Tree.root")
+                        filenames.append("ntuples_"+filename+"up"+"_Cutflow.txt")
+                        filenames.append("ntuples_"+filename+"down"+"_Tree.root")
+                        filenames.append("ntuples_"+filename+"down"+"_Cutflow.txt")
+
                 shutil.copy(src,out)
                 
-                # if "2018" in row["run"]:
-                #     release = "CMSSW_10_6_29"
-                #     rel = "106X"
 
                 if row['isData']=='TRUE':
                     # dataSetTag = 'sl_LEG_NTUPLETAG_DATAERA'
@@ -173,6 +179,8 @@ for row in reader:
                 if ntuple:
                     requestName = row['name']+"_"+row["run"]+"_ntuple_"+str(i)+"_"+str(l)
 
+
+
                 repl('THEREQUESTNAME',requestName,out)
                 # repl('OUTPUTDATASETTAG',dataSetTag,out)
                 repl('THEINPUTDATASET',dataset,out)
@@ -182,6 +190,7 @@ for row in reader:
                 repl('ISDATA',row['isData'],out)
                 repl('SPLITTING',splitting,out)
                 repl('UNITSPERJOB',units,out)
+
                 # repl('SLIMMED',str(slimmed),out)
                 # repl('SEEDS',str(slimmed),out)
                 #repl('GENERATORNAME',row['generator'],out)
