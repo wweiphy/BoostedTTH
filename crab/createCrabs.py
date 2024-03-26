@@ -117,7 +117,7 @@ lumimask = ''
 for row in reader:
     if not ("#" or "") in row["name"]:
         #print variation_list
-        if row['isData']=='False':
+        if row['isData']=='FALSE':
             if ntuple and not options.systematics:
                 src='common/template_cfg_ntuple.py'
                 datasets=row['boosted_dataset'].split(",")
