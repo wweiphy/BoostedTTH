@@ -5,7 +5,7 @@ config.General.requestName = 'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_2018
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
-config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py'
+config.JobType.psetName = '/uscms/home/wwei/nobackup/SM_TTHH/Summer20UL/CMSSW_10_6_29/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_btag.py'
 config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutflow.txt"]
 
 # config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutflow.txt", "ntuples_JESup_Tree.root", "ntuples_JESup_Cutflow.txt", "ntuples_JESdown_Tree.root", "ntuples_JESdown_Cutflow.txt", "ntuples_JERup_Tree.root", "ntuples_JERup_Cutflow.txt", "ntuples_JERdown_Tree.root", "ntuples_JERdown_Cutflow.txt"]
@@ -33,9 +33,9 @@ config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
 
-NJOB = 125
+NJOB = 50
+config.Data.unitsPerJob = 1
 config.Data.splitting = 'FileBased'
-config.Data.unitsPerJob = 2
 config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 
 # config.Data.splitting = 'Automatic'

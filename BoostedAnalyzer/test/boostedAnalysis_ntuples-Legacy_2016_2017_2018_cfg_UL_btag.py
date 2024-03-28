@@ -5,15 +5,43 @@ import os
 
 # To execute test, run
 
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_test.py isData=False outName=ntuples maxEvents=9999999 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ttHH maxEvents=200 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/05CB1A7E-2A10-514E-8E1F-76E9749EE10D.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=test maxEvents=10000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/21D89C30-2062-1E4C-A4C5-7A290C65EBD4.root
 
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=3000 systematicVariations=nominal dataEra=2017 applyTrigger=True ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/8B706D29-F67A-B64A-AF01-42FCADC912E0.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
+
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/80000/028BD0B4-CE7A-3441-B63F-4295074287E8.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal dataEra=2017 applyTrigger=False ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/120000/1C62027C-288F-CE4C-9A62-602C92963E9F.root
+
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=3000 systematicVariations=nominal dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL17MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v2/2560000/8B706D29-F67A-B64A-AF01-42FCADC912E0.root
 
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
 
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2000 systematicVariations=nominal,JES  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
+
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=40000 systematicVariations=nominal dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/SingleMuon/MINIAOD/UL2018_MiniAODv2-v3/2530000/002A113D-FB15-1341-A170-638E53A7261F.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=640000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/SingleMuon/MINIAOD/UL2018_MiniAODv2-v3/2530000/002A113D-FB15-1341-A170-638E53A7261F.root
+
+# 2017 data
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=6400 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2017 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2017B/SingleElectron/MINIAOD/UL2017_MiniAODv2-v1/270000/00E7B0AA-E2D6-7245-9407-D6661A8BB74B.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=10000 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/EGamma/MINIAOD/UL2018_MiniAODv2-v1/230000/1DC29AF8-7091-4245-A0D8-CFDF650310CC.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear  dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
+
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ttsl maxEvents=4000000 systematicVariations=nominal,JES,JER dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/120000/006455CD-9CDB-B843-B50D-5721C39F30CE.root,/store/mc/RunIISummer20UL17MiniAODv2/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/00000/02071E82-445C-2647-B4F6-3E8C0546381C.root,/store/mc/RunIISummer20UL17MiniAODv2/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/00000/0074902D-0DEC-7946-9901-309B04400A3F.root
 
 
 
@@ -31,7 +59,7 @@ options.register( "weight", 0.01, VarParsing.multiplicity.singleton, VarParsing.
 options.register( "skipEvents", 0, VarParsing.multiplicity.singleton, VarParsing.varType.int, "Number of events to skip" )
 options.register( "isData", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "is it data or MC?" )
 # options.register("applyTrigger", True, VarParsing.multiplicity.singleton,
-                 # VarParsing.varType.bool, "Apply Trigger selection or not")
+                #  VarParsing.varType.bool, "Apply Trigger selection or not")
 options.register( "isBoostedMiniAOD", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool, "has the file been prepared with the BoostedProducer ('custom' MiniAOD)?" )
 options.register( "generatorName", "MadGraph", VarParsing.multiplicity.singleton, VarParsing.varType.string, "'POWHEG','aMC', 'MadGraph' or 'pythia8'" )
 options.register("globalTag", "106X_mc2017_realistic_v9",
@@ -89,25 +117,25 @@ if not options.inputFiles:
 
 # checks for correct values and consistency
 if "data" in options.globalTag.lower() and not options.isData:
-    print "\n\nConfig ERROR: GT contains seems to be for data but isData==False\n\n"
+    print ("\n\nConfig ERROR: GT contains seems to be for data but isData==False\n\n")
     sys.exit()
 if "mc" in options.globalTag.lower() and options.isData:
-    print "\n\nConfig ERROR: GT contains seems to be for MC but isData==True\n\n"
+    print ("\n\nConfig ERROR: GT contains seems to be for MC but isData==True\n\n")
     sys.exit()
 if not options.inputFiles:
-    print "\n\nConfig ERROR: no inputFiles specified\n\n"
+    print ("\n\nConfig ERROR: no inputFiles specified\n\n")
     sys.exit()
 if not options.dataset in datasets:
-    print options.dataset,'not an allowed dataset, options are',datasets
+    print (options.dataset,'not an allowed dataset, options are',datasets)
     sys.exit()
 
 # print settings
-print "\n\n***** JOB SETUP *************************"
+print ("\n\n***** JOB SETUP *************************")
 for key in options._register:
     # do not print unused default options
     if key not in ["secondaryInputFiles","section","tag","totalSections","outputFile","secondaryOutputFile","filePrepend"]:
-        print str(key)+" : "+str( options.__getattr__(key) )
-print "*****************************************\n\n"
+        print (str(key)+" : "+str( options.__getattr__(key) ))
+print ("*****************************************\n\n")
 
 writeNominal=False
 systsJES=[] 
@@ -125,7 +153,7 @@ if options.systematicVariations:
             systsJER.append( var+"up" )
             systsJER.append( var+"down")
         else:
-            print "ERROR: unknown variation '"+var+"'"
+            print ("ERROR: unknown variation '"+var+"'")
             sys.exit()
 systs=systsJER+systsJES
 
@@ -146,8 +174,8 @@ process.load("CondCore.CondDB.CondDB_cfi")
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(False)
 
-# process.options.numberOfThreads = cms.untracked.uint32(8)
-# process.options.numberOfStreams = cms.untracked.uint32(8)
+process.options.numberOfThreads = cms.untracked.uint32(8)
+process.options.numberOfStreams = cms.untracked.uint32(8)
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.maxEvents)))
 process.source = cms.Source(  "PoolSource",
@@ -205,7 +233,7 @@ elif "2018" in options.dataEra:
     process.prefiringweight = l1PrefiringWeightProducer.clone(
         TheJets=cms.InputTag("CorrectedJetProducerAK4:correctedJetsAK4"),
         # TheJets = cms.InputTag("updatedPatJetsUpdatedJEC"), #this should be the slimmedJets collection with up to date JECs !
-        DataEraECAL=cms.string("2017BtoF"),
+        DataEraECAL=cms.string("None"),
         DataEraMuon = cms.string("20172018"),
         UseJetEMPt = cms.bool(False),
         PrefiringRateSystematicUnctyECAL = cms.double(0.2),
@@ -352,11 +380,13 @@ EG_corrections = None
 EG_vid = None
 if "2016preVFP" in options.dataEra:
     EG_era = '2016preVFP-UL'
-    EG_corrections = True
+    EG_corrections = False
+    # EG_corrections = True
     EG_vid = False
 elif "2016postVFP" in options.dataEra:
     EG_era = '2016postVFP-UL'
-    EG_corrections = True
+    EG_corrections = False
+    # EG_corrections = True
     EG_vid = False
 elif "2017" in options.dataEra:
     EG_era = '2017-UL'
@@ -366,6 +396,7 @@ elif "2017" in options.dataEra:
     # EG_vid = False
 elif "2018" in options.dataEra:
     EG_era = '2018-UL'
+    # EG_corrections = False
     EG_corrections = True
     EG_vid = False
 else:
@@ -384,6 +415,7 @@ setupEgammaPostRecoSeq(process,
 ### some standard collections ####
 #if not options.isData:
 electronCollection = cms.InputTag("slimmedElectrons")
+# electronCollection = cms.InputTag("slimmedElectrons", "", process.name_()) if not "2018" in options.dataEra else cms.InputTag("slimmedElectrons")
 photonCollection   = cms.InputTag("slimmedPhotons")
 muonCollection     = cms.InputTag("slimmedMuons")
 tauCollection      = cms.InputTag("slimmedTaus")
@@ -623,28 +655,30 @@ for s in systsJES:
 # load and run the boosted analyzer
 if options.isData:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_data_cfi import *
-    if "2016" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016
+    if "2016preVFP" in options.dataEra:
+        process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
+    if "2016postVFP" in options.dataEra:
+        process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
     elif "2017" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2017
     elif "2018" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2018
     
     
-    process.BoostedAnalyzer.filterBits=cms.InputTag("TriggerResults::RECO")
+    process.BoostedAnalyzer.filterBits=cms.InputTag("TriggerResults::PAT")
     process.BoostedAnalyzer.dataEra=options.dataEra
 
 else:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_cfi import *
     if "2016preVFP" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
-    if "2016postVFP" in options.dataEra:
+    elif "2016postVFP" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
     elif "2017" in options.dataEra:
         # if options.applyTrigger:
             # process.BoostedAnalyzer = BoostedAnalyzer2017
         # else:
-        process.BoostedAnalyzer = BoostedAnalyzer2017test
+        process.BoostedAnalyzer = BoostedAnalyzer2017
     elif "2018" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2018
     
@@ -680,11 +714,14 @@ if options.isData and options.useJson:
     # https://twiki.cern.ch/twiki/bin/view/CMS/LumiRecommendationsRun2#2018
     import FWCore.PythonUtilities.LumiList as LumiList
     if "2016" in options.dataEra:
-        process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_271036-284044_13TeV_ReReco_07Aug2017_Collisions16_JSON.txt").getVLuminosityBlockRange()
+        process.source.lumisToProcess = LumiList.LumiList(filename=os.getenv(
+            'CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt").getVLuminosityBlockRange()
     elif "2017" in options.dataEra:
-        process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt").getVLuminosityBlockRange()
+        process.source.lumisToProcess = LumiList.LumiList(filename=os.getenv(
+            'CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt").getVLuminosityBlockRange()
     elif "2018" in options.dataEra:
-        process.source.lumisToProcess = LumiList.LumiList(filename = os.getenv('CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt").getVLuminosityBlockRange()
+        process.source.lumisToProcess = LumiList.LumiList(filename=os.getenv(
+            'CMSSW_BASE')+"/src/BoostedTTH/BoostedAnalyzer/data/lumi_jsons/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt").getVLuminosityBlockRange()
 
 if options.isData:
   process.BoostedAnalyzer.dataset=cms.string(options.dataset)
@@ -704,23 +741,23 @@ if options.isData:
   process.BoostedAnalyzer.processorNames=cms.vstring(
   "WeightProcessor",
   "essentialBasicVarProcessor",
-  "essentialMVAVarProcessor",
-  "essentialRecoVarProcessor",
+  # "essentialMVAVarProcessor",
+  # "essentialRecoVarProcessor",
   "TriggerVarProcessor",
-  "JABDTttbarProcessor",
-  "JABDTthhProcessor",  
+  # "JABDTttbarProcessor",
+  # "JABDTthhProcessor",  
 #  "JABDTtthProcessor",
   )
 else:
   process.BoostedAnalyzer.processorNames=cms.vstring(
-#   "WeightProcessor",
-#   "MCMatchVarProcessor",
+  "WeightProcessor",
+  "MCMatchVarProcessor",
   "essentialBasicVarProcessor",
-#   "essentialMVAVarProcessor",
-#   "essentialRecoVarProcessor",
-#   "TriggerVarProcessor",
-#   "JABDTttbarProcessor",
-#   "JABDTthhProcessor",
+  # "essentialMVAVarProcessor",
+  # "essentialRecoVarProcessor",
+  "TriggerVarProcessor",
+  # "JABDTttbarProcessor",
+  # "JABDTthhProcessor",
 #  "JABDTtthProcessor",
   )
 if (process.BoostedAnalyzer.taggingSelection): process.BoostedAnalyzer.processorNames.append("SelectionTagProcessor")
@@ -808,4 +845,4 @@ process.p += process.prefiringweight
 if printContent:
     process.p *= process.content
 
-process.p *= process.BoostedAnalyzer
+process.p *= process.BoostedAnalyzer 
