@@ -23,7 +23,7 @@ config.JobType.allowUndistributedCMSSW = True
 #      '/store/group/lpctthrun2/wwei/TTZH_TuneCP5_13TeV-madgraph-pythia8/sl_skims_MC_94X_LEG_2017/220311_034726/0000/Skim_2.root',
 #      '/store/group/lpctthrun2/wwei/TTZH_TuneCP5_13TeV-madgraph-pythia8/sl_skims_MC_94X_LEG_2017/220311_034726/0000/Skim_3.root']
      
-config.Data.inputDataset = 'TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM'
+config.Data.inputDataset = '/TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM'
 config.Data.inputDBS = 'global'
 
 # config.Data.unitsPerJob = 1000
