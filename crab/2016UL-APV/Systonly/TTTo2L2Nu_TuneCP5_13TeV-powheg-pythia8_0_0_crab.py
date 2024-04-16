@@ -20,7 +20,7 @@ config.JobType.numCores = 8
 #                               'systematicVariations=nominal', 'weight=1.15E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2016preVFP',
-                              'systematicVariations=nominal,JES,JER', 'weight=3.27E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+                              'systematicVariations=nominal,JES,JER', 'weight=6.54E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 # config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
@@ -30,11 +30,11 @@ config.Data.inputDataset = '/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIISummer2
 config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
-# NJOB = 9000
+NJOB = 99
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 3
-# config.Data.totalUnits = config.Data.unitsPerJob * NJOB
+config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'

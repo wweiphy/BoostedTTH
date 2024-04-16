@@ -20,7 +20,7 @@ config.JobType.numCores = 8
 #                               'systematicVariations=nominal', 'weight=3.42E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2016preVFP',
-                              'systematicVariations=nominal,JES,JER', 'weight=9.19E-06', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+                              'systematicVariations=nominal,JES,JER', 'weight=1.83709E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 # config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
@@ -32,10 +32,11 @@ config.Data.inputDataset = '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunII
 config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
-# NJOB = 9000
-# config.Data.totalUnits = config.Data.unitsPerJob * NJOB
-config.Data.splitting = 'FileBased'
+NJOB = 330
 config.Data.unitsPerJob = 3
+config.Data.totalUnits = config.Data.unitsPerJob * NJOB
+config.Data.splitting = 'FileBased'
+
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
@@ -46,4 +47,5 @@ config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2016pre/ntuple'
 
 config.Site.storageSite = 'T3_US_FNALLPC'
 # config.Site.blacklist = 'T1_US_FNAL'
+config.Site.blacklist = ['T2_US_Purdue','T2_US_UCSD','T2_US_Florida','T2_US_Caltech']
 
