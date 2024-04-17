@@ -20,7 +20,7 @@ config.JobType.numCores = 8
 #                               'systematicVariations=nominal', 'weight=1.15E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2018',
-                              'systematicVariations=nominal,JES,JER', 'weight=1.68E-04', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+                              'systematicVariations=nominal,JES,JER', 'weight=1.26E-04', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 # config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
@@ -31,7 +31,7 @@ config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
 
-NJOB = 77
+NJOB = 58 
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 2
 config.Data.totalUnits = config.Data.unitsPerJob * NJOB
