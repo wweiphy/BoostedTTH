@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_2018_ntuple_0_0_3'
+config.General.requestName = 'TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_2018_ntuple_0_0_4'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -20,7 +20,7 @@ config.JobType.numCores = 8
 #                               'systematicVariations=nominal', 'weight=1.15E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 
 config.JobType.pyCfgParams = ['isData=FALSE', 'maxEvents=99999999', 'outName=ntuples', 'dataEra=2018',
-                              'systematicVariations=nominal,JES,JER', 'weight=8.39E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
+                              'systematicVariations=nominal,JES,JER', 'weight=2.52E-05', 'ProduceMemNtuples=False', 'deterministicSeeds=False']
 # config.JobType.sendPythonFolder=True
 config.JobType.allowUndistributedCMSSW = True
 
@@ -31,9 +31,9 @@ config.Data.inputDBS = 'global'
 # config.Data.splitting = 'EventAwareLumiBased'
 # config.Data.unitsPerJob = 5000
 
-NJOB = 87 
+NJOB = 341 
 config.Data.splitting = 'FileBased'
-config.Data.unitsPerJob = 2
+config.Data.unitsPerJob = 3
 config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
