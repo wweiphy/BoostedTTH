@@ -89,7 +89,7 @@ Do for example:
 
     # install miniaod and boostedtth
     cd $CMSSWSRCDIR
-    git clone -b Legacy_2016_2017_2018_Devel https://github.com/cms-ttH/MiniAOD.git
+    git clone -b TTHHUL2 https://github.com/wweiphy/MiniAOD.git
     git clone -b ttHH_Run2 https://github.com/wweiphy/BoostedTTH.git
 
     # Download the JER correction files
