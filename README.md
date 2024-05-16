@@ -70,14 +70,16 @@ Do for example:
     mkdir TTH
     cd TTH
     git clone https://gitlab.cern.ch/wewei/CommonClassifier.git CommonClassifier -b ttHH_Run2
-    git clone https://gitlab.cern.ch/algomez/MEIntegratorStandalone.git MEIntegratorStandalone -b 10_2_X
+    git clone https://gitlab.cern.ch/wewei/MEIntegratorStandalone.git MEIntegratorStandalone -b ttHH_Run2
     
     # mkdir -p $CMSSW_BASE/lib/$SCRAM_ARCH/
     cp -R MEIntegratorStandalone/libs/* $CMSSW_BASE/lib/$SCRAM_ARCH/
     scram setup lhapdf
+    
     # modify gsl.xml file: <environment name="GSL_BASE" default="/cvmfs/cms.cern.ch/slc7_amd64_gcc700/external/gsl/2.2.1-omkpbe2"/>
-    scram setup MEIntegratorStandalone/deps/gsl.xml
     # modify gsl.xml file: <tool name="gsl" version="2.2.1">
+    scram setup MEIntegratorStandalone/deps/gsl.xml
+    
     # use recent version of LHAPDF header
     sed -i '6i#include "LHAPDF/LHAPDF.h"' MEIntegratorStandalone/interface/Integrand.h
     sed -i '32i /*' MEIntegratorStandalone/interface/Integrand.h
