@@ -206,11 +206,11 @@ for row in reader:
 
                 if row['isData']=='TRUE':
 
-                    repl('ISDATA',True,out)
+                    repl('ISDATA','True',out)
 
                 if row['isData']=='FALSE':
 
-                    repl('ISDATA',False,out)
+                    repl('ISDATA','False',out)
 
 
                     
