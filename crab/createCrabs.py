@@ -168,7 +168,7 @@ for row in reader:
                 if row['isData']=='TRUE':
                     # dataSetTag = 'sl_LEG_NTUPLETAG_DATAERA'
                     splitting = 'EventAwareLumiBased'
-                    units = 80000
+                    units = '80000'
                     repl('LUMIMASK',lumimask,out)
                 else:
                     # dataSetTag = 'sl_skims_MC_'+rel+'_LEG_DATAERA'
@@ -189,7 +189,7 @@ for row in reader:
                 repl('GLOBALTAG',row['globalTag'],out)
                 
                 repl('SPLITTING',splitting,out)
-                repl('UNITSPERJOB',units,out)
+                # repl('UNITSPERJOB',units,out)
 
                 # repl('SLIMMED',str(slimmed),out)
                 # repl('SEEDS',str(slimmed),out)
