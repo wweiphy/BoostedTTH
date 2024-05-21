@@ -25,5 +25,6 @@ config.Data.outputDatasetTag = 'sl_LEG_NTUPLETAG_DATAERA'
 config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/DATAERA/ntuple'
 
 config.Site.storageSite = 'T3_US_FNALLPC'
+config.Site.blacklist = ['T2_CH_CERN','T2_US_Wisconsin','T2_US_Purdue','T2_US_Nebraska']
 
 
