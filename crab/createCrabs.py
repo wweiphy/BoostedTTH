@@ -121,18 +121,21 @@ for row in reader:
             if ntuple and not options.systematics:
                 src='common/template_cfg_ntuple.py'
                 datasets=row['boosted_dataset'].split(",")
+                datasets=datasets.replace(" ","")
                 variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
                 print("Creating crab configs to Ntuple without systs, therefore using common/systematicVariationsNone.txt")
             elif ntuple and options.systematics:
                 src='common/template_cfg_ntuple.py'
                 datasets=row['boosted_dataset'].split(",")
+                datasets=datasets.replace(" ","")
                 variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
                 print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
         else:
             variations_list = ['nominal']
             src='common/template_cfg_data_ntuple.py'
-            variation_list = get_list_of_systematics("common/systematicVariationsNone.txt")
+            variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
             datasets=row['boosted_dataset'].split(",")
+            datasets=datasets.replace(" ","")
             print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
             print(row['run'])
             if row['run'] == '2018':
