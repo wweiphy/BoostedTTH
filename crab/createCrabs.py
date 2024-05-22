@@ -131,6 +131,7 @@ for row in reader:
                 variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
                 print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
         else:
+            print("Do data")
             variations_list = ['nominal']
             src='common/template_cfg_data_ntuple.py'
             variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
