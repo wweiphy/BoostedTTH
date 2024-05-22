@@ -87,7 +87,7 @@ def get_list_of_systematics(filename):
         #print "WARNING: no 'nominal' variation specified...adding it"
         good_systs.insert(0,"nominal")
 
-    print "Systematic variations:"
+    # print "Systematic variations:"
     for syst in good_systs:
         print "  '"+syst+"'"
 
@@ -135,7 +135,7 @@ for row in reader:
             print("Do data")
             variations_list = ['nominal']
             src='common/template_cfg_data_ntuple.py'
-            variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
+            # variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
             datasets=row['boosted_dataset'].split(",")
             # datasets=datasets.replace(" ","")
             print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
