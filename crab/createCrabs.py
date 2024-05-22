@@ -1,4 +1,4 @@
-# python createCrabs.py -i ttHH_UL_samples_2017.csv -o ttHH_full_sys --ntuple
+# python createCrabs.py -i ttHH_UL_samples_2017.csv -o ttHH_full_sys --ntuple --systematics
 
 import csv
 import os
@@ -138,8 +138,8 @@ for row in reader:
             # variation_list = get_list_of_systematics("common/systematicVariations_new.txt")
             datasets=row['boosted_dataset'].split(",")
             # datasets=datasets.replace(" ","")
-            print("Creating crab configs to Ntuple with systs, therefore using common/systematicVariations_new.txt")
-            print(row['run'])
+            print("Creating crab configs to Ntuple with data")
+            # print(row['run'])
             if row['run'] == '2018':
                 lumimask = 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt'
             elif row['run'] == '2017':
