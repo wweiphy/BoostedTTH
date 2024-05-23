@@ -234,11 +234,16 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
     long evt_id = input.eventInfo.evt;
     long run_id = input.eventInfo.run;
     long lumi_section = input.eventInfo.lumiBlock;
+    float rho = input.eventInfo.rho;
+    int n_interactions = input.eventInfo.numTruePV;
 
     vars.FillIntVar("Evt_ID",evt_id);
     vars.FillIntVar("Evt_Odd",evt_id%2);
     vars.FillIntVar("Evt_Run",run_id);
     vars.FillIntVar("Evt_Lumi",lumi_section);
+    vars.FillIntVar("Evt_rho",rho);
+    vars.FillIntVar("Evt_TruePV",n_interactions);
+
 
 
     
