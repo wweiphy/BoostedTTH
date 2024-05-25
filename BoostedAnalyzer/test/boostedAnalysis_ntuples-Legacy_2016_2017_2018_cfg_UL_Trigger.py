@@ -656,13 +656,13 @@ for s in systsJES:
 if options.isData:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_data_cfi import *
     if "2016preVFP" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
+        process.BoostedAnalyzer = BoostedAnalyzer2016preVFPTrigger
     if "2016postVFP" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
+        process.BoostedAnalyzer = BoostedAnalyzer2016postVFPTrigger
     elif "2017" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2017
+        process.BoostedAnalyzer = BoostedAnalyzer2017Trigger
     elif "2018" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2018
+        process.BoostedAnalyzer = BoostedAnalyzer2018Trigger
     
     
     process.BoostedAnalyzer.filterBits=cms.InputTag("TriggerResults::PAT")
@@ -671,16 +671,16 @@ if options.isData:
 else:
     from BoostedTTH.BoostedAnalyzer.BoostedAnalyzer_cfi import *
     if "2016preVFP" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016preVFP
+        process.BoostedAnalyzer = BoostedAnalyzer2016preVFPTrigger
     elif "2016postVFP" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2016postVFP
+        process.BoostedAnalyzer = BoostedAnalyzer2016postVFPTrigger
     elif "2017" in options.dataEra:
         # if options.applyTrigger:
             # process.BoostedAnalyzer = BoostedAnalyzer2017
         # else:
-        process.BoostedAnalyzer = BoostedAnalyzer2017
+        process.BoostedAnalyzer = BoostedAnalyzer2017Trigger
     elif "2018" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2018
+        process.BoostedAnalyzer = BoostedAnalyzer2018Trigger
     
     if not options.isBoostedMiniAOD:
         # Supplies PDG ID to real name resolution of MC particles

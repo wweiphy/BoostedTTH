@@ -95,3 +95,32 @@ BoostedAnalyzer2018 = BoostedAnalyzer2017.clone(
     JetAssignmentOptions=JetAssignment2018,
 
 )
+
+
+BoostedAnalyzer2016preVFPTrigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2016Trigger,    
+    dataEra = cms.string("2016preVFP"),
+    METfilters = filtersData16,
+    JetAssignmentOptions=JetAssignment2016preVFP,
+
+)
+
+BoostedAnalyzer2016postVFPTrigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2016Trigger,    
+    dataEra = cms.string("2016preVFP"),
+    METfilters = filtersData16,
+    JetAssignmentOptions=JetAssignment2016postVFP,
+
+)
+
+BoostedAnalyzer2018Trigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2018Trigger,    
+    dataEra = cms.string("2018"),
+    METfilters = filtersData1718,
+    JetAssignmentOptions=JetAssignment2018,
+
+)
+
+BoostedAnalyzer2017Trigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2017Trigger
+)

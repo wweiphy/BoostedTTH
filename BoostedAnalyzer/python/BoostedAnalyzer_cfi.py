@@ -107,3 +107,42 @@ BoostedAnalyzer2018 = BoostedAnalyzer2017.clone(
 
     
 )
+
+BoostedAnalyzer2016preVFPTrigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionMC2016Trigger,    
+    dataEra = cms.string("2016preVFP"),
+    bTagSFs = BTagSFs94XDeepJet2016preVFP,
+    leptonTriggerSFInfos = TriggerSFs2016preVFP,
+    nominalPUWeight=NominalPUWeight2016preVFP,
+    additionalPUWeights=AdditionalPUWeights2016preVFP,
+    METfilters = filtersMC16,
+    JetAssignmentOptions=JetAssignment2016preVFP,
+
+)
+BoostedAnalyzer2016postVFPTrigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionMC2016Trigger,    
+    dataEra = cms.string("2016postVFP"),
+    bTagSFs = BTagSFs94XDeepJet2016postVFP,
+    leptonTriggerSFInfos=TriggerSFs2016postVFP,
+    nominalPUWeight=NominalPUWeight2016postVFP,
+    additionalPUWeights=AdditionalPUWeights2016postVFP,
+    METfilters = filtersMC16,
+    JetAssignmentOptions = JetAssignment2016postVFP,
+
+)
+
+BoostedAnalyzer2018Trigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionMC2018Trigger,
+    dataEra = cms.string("2018"),
+    bTagSFs = BTagSFs94XDeepJet2018,
+    leptonTriggerSFInfos = TriggerSFs2018,
+    nominalPUWeight = NominalPUWeight2018,
+    additionalPUWeights = AdditionalPUWeights2018,
+    JetAssignmentOptions = JetAssignment2018,
+
+    
+)
+
+BoostedAnalyzer2017Trigger = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionMC2017Trigger    
+)
