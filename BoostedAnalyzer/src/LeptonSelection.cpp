@@ -124,7 +124,7 @@ bool LeptonSelection::IsSelected(const InputCollections& input,Cutflow& cutflow)
       }
       if (step < 0 || step == 4)
       {
-        if (!(muonTriggered && nmuonsloose == 1 && nmuons == 1 & electronTriggered && nelectronsloose == 1 && nelectrons == 1 ))
+        if (!(muonTriggered && nmuonsloose == 1 && nmuons == 1 && electronTriggered && nelectronsloose == 1 && nelectrons == 1 ))
           return false;
         else
           cutflow.EventSurvivedStep("== 1 tight muon and == 1 tight electron", input.weights.at("Weight"));
