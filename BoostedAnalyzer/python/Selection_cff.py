@@ -11,6 +11,11 @@ LeptonSelectionData2016 = cms.PSet(
     electronTriggers = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
     channel = cms.string("both")
 )
+LeptonSelectionData2016Trigger = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
+    electronTriggers = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
+    channel = cms.string("both-TriggerEff")
+)
 
 LeptonSelectionData2017 = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu27_v*"),
@@ -18,10 +23,21 @@ LeptonSelectionData2017 = cms.PSet(
     channel = cms.string("both")
 )
 
+LeptonSelectionData2017Trigger = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu27_v*"),
+    electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
+    channel = cms.string("both-TriggerEff")
+)
+
 LeptonSelectionData2018 = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
     electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
     channel = cms.string("both")
+)
+LeptonSelectionData2018Trigger = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
+    electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
+    channel = cms.string("both-TriggerEff")
 )
 
 
@@ -41,6 +57,23 @@ LeptonSelectionMC2018 = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
     electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
     channel = cms.string("both")
+)
+LeptonSelectionMC2016Trigger = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
+    electronTriggers = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
+    channel = cms.string("both-TriggerEff")
+)
+
+LeptonSelectionMC2017Trigger = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu27_v*"),
+    electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
+    channel = cms.string("both-TriggerEff")
+)
+
+LeptonSelectionMC2018Trigger = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
+    electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
+    channel = cms.string("both-TriggerEff")
 )
 
 DiLeptonSelectionNoTrigger  = cms.PSet(

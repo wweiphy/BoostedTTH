@@ -99,6 +99,38 @@ bool LeptonSelection::IsSelected(const InputCollections& input,Cutflow& cutflow)
       else cutflow.EventSurvivedStep("== 0 loose leptons different flavor",input.weights.at("Weight"));
     }
   }
+  else if
+    if (channel == "both-TriggerEff")
+    {
+      if (step < 0 || step == 1)
+      {
+        if (!muonTriggered && !electronTriggered)
+          return false;
+        else
+          cutflow.EventSurvivedStep("Single lepton trigger", input.weights.at("Weight"));
+      }
+      if (step < 0 || step == 2)
+      {
+        if (!((muonTriggered && nmuonsloose == 1) || (electronTriggered && nelectronsloose == 1)))
+          return false;
+        else
+          cutflow.EventSurvivedStep("== 1 loose lepton same flavor", input.weights.at("Weight"));
+      }
+      if (step < 0 || step == 3)
+      {
+        if (!((muonTriggered && nmuonsloose == 1 && nmuons == 1) || (electronTriggered && nelectronsloose == 1 && nelectrons == 1)))
+          return false;
+        else
+          cutflow.EventSurvivedStep("== 1 tight lepton same flavor", input.weights.at("Weight"));
+      }
+      if (step < 0 || step == 4)
+      {
+        if (!(muonTriggered && nmuonsloose == 1 && nmuons == 1 & electronTriggered && nelectronsloose == 1 && nelectrons == 1 ))
+          return false;
+        else
+          cutflow.EventSurvivedStep("== 1 tight muon and == 1 tight electron", input.weights.at("Weight"));
+      }
+    }
   else {
     throw cms::Exception("BadSelection")
       << "channel '" << channel << "' of lepton selection does not exist!\n"
