@@ -14,7 +14,7 @@ LeptonSelectionData2016 = cms.PSet(
 LeptonSelectionData2016Trigger = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
     electronTriggers = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
-    channel = cms.string("both-TriggerEff")
+    channel = cms.string("el-TriggerEff")
 )
 
 LeptonSelectionData2017 = cms.PSet(
@@ -26,7 +26,7 @@ LeptonSelectionData2017 = cms.PSet(
 LeptonSelectionData2017Trigger = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu27_v*"),
     electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
-    channel = cms.string("both-TriggerEff")
+    channel = cms.string("el-TriggerEff")
 )
 
 LeptonSelectionData2018 = cms.PSet(
@@ -37,7 +37,7 @@ LeptonSelectionData2018 = cms.PSet(
 LeptonSelectionData2018Trigger = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
     electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
-    channel = cms.string("both-TriggerEff")
+    channel = cms.string("el-TriggerEff")
 )
 
 
@@ -61,19 +61,19 @@ LeptonSelectionMC2018 = cms.PSet(
 LeptonSelectionMC2016Trigger = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
     electronTriggers = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
-    channel = cms.string("both-TriggerEff")
+    channel = cms.string("el-TriggerEff")
 )
 
 LeptonSelectionMC2017Trigger = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu27_v*"),
     electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
-    channel = cms.string("both-TriggerEff")
+    channel = cms.string("el-TriggerEff")
 )
 
 LeptonSelectionMC2018Trigger = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
     electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
-    channel = cms.string("both-TriggerEff")
+    channel = cms.string("el-TriggerEff")
 )
 
 DiLeptonSelectionNoTrigger  = cms.PSet(

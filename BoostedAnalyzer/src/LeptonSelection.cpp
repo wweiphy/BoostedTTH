@@ -99,36 +99,36 @@ bool LeptonSelection::IsSelected(const InputCollections& input,Cutflow& cutflow)
       else cutflow.EventSurvivedStep("== 0 loose leptons different flavor",input.weights.at("Weight"));
     }
   }
-  else if (channel == "both-TriggerEff")
+  else if (channel == "el-TriggerEff")
     {
       if (step < 0 || step == 1)
       {
-        if (!muonTriggered && !electronTriggered)
+        if (!electronTriggered)
           return false;
         else
           cutflow.EventSurvivedStep("Single lepton trigger", input.weights.at("Weight"));
       }
       if (step < 0 || step == 2)
       {
-        if (!((muonTriggered && nmuonsloose == 1) || (electronTriggered && nelectronsloose == 1)))
+        if (nelectronsloose != 1)
           return false;
         else
           cutflow.EventSurvivedStep("== 1 loose lepton same flavor", input.weights.at("Weight"));
       }
       if (step < 0 || step == 3)
       {
-        if (!((muonTriggered && nmuonsloose == 1 && nmuons == 1) || (electronTriggered && nelectronsloose == 1 && nelectrons == 1)))
+        if (nelectrons != 1)
           return false;
         else
           cutflow.EventSurvivedStep("== 1 tight lepton same flavor", input.weights.at("Weight"));
       }
-      if (step < 0 || step == 4)
-      {
-        if (!(muonTriggered && nmuonsloose == 1 && nmuons == 1 && electronTriggered && nelectronsloose == 1 && nelectrons == 1 ))
-          return false;
-        else
-          cutflow.EventSurvivedStep("== 0 loose leptons different flavor", input.weights.at("Weight"));
-      }
+      // if (step < 0 || step == 4)
+      // {
+      //   if (nmuonsloose != 0)
+      //     return false;
+      //   else
+      //     cutflow.EventSurvivedStep("== 0 loose leptons different flavor", input.weights.at("Weight"));
+      // }
     }
   else {
     throw cms::Exception("BadSelection")
