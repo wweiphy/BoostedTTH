@@ -99,8 +99,7 @@ bool LeptonSelection::IsSelected(const InputCollections& input,Cutflow& cutflow)
       else cutflow.EventSurvivedStep("== 0 loose leptons different flavor",input.weights.at("Weight"));
     }
   }
-  else if
-    if (channel == "both-TriggerEff")
+  else if (channel == "both-TriggerEff")
     {
       if (step < 0 || step == 1)
       {
