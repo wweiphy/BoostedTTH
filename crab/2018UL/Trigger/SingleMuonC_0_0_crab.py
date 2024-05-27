@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'SingleMuonC_2018C_ntuple_0_0_2'
+config.General.requestName = 'SingleMuonC_2018C_ntuple_0_0_3'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
