@@ -15,9 +15,9 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVar("Evt_Odd","I");
     vars.InitVar("Evt_Run","I");
     vars.InitVar("Evt_Lumi","I");
+    vars.InitVar("Evt_rho", "I");
 
-    
-    
+
     vars.InitVar( "N_Jets","I" );
     vars.InitVar( "N_LooseJets","I" );
     vars.InitVar( "N_TightLeptons","I" );
@@ -242,7 +242,7 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
     vars.FillIntVar("Evt_Run",run_id);
     vars.FillIntVar("Evt_Lumi",lumi_section);
     vars.FillIntVar("Evt_rho",rho);
-    vars.FillIntVar("Evt_TruePV",n_interactions);
+    // vars.FillIntVar("Evt_TruePV",n_interactions);
 
 
 
