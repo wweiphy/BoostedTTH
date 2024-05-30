@@ -7,7 +7,7 @@ config.General.workArea = 'WORKAREA'
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'CMSSWPATH/RUNCONFIG'
 config.JobType.outputFiles = OUTPUTFILES
-config.JobType.maxJobRuntimeMin = 2750
+# config.JobType.maxJobRuntimeMin = 1200
 config.JobType.maxMemoryMB = 10000 
 config.JobType.numCores = 4
 config.JobType.pyCfgParams = ['isData=ISDATA','maxEvents=999999999','outName=OUTNAME', 'dataEra=DATAERA','systematicVariations=SYSTEMATICVARIATIONS','weight=WEIGHT','ProduceMemNtuples=False', 'deterministicSeeds=False']
@@ -16,8 +16,9 @@ config.JobType.pyCfgParams = ['isData=ISDATA','maxEvents=999999999','outName=OUT
 config.Data.inputDataset = 'THEINPUTDATASET'
 config.Data.inputDBS = 'DBSINSTANCE'
 # config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 30
-config.Data.splitting = 'SPLITTING'
+# config.Data.unitsPerJob = 6 # Trigger
+# config.Data.splitting = 'SPLITTING'
+config.Data.splitting = 'Automatic'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'
 config.Data.outputDatasetTag = 'sl_LEG_NTUPLETAG_DATAERA'
