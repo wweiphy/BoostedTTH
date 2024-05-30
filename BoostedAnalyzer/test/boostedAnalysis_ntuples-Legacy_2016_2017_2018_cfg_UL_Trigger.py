@@ -5,7 +5,7 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_Trigger.py isData=False outName=ntuples maxEvents=8000 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/00000/04A0B676-D63A-6D41-B47F-F4CF8CBE7DB8.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_Trigger.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/00000/04A0B676-D63A-6D41-B47F-F4CF8CBE7DB8.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
 
@@ -174,8 +174,8 @@ process.load("CondCore.CondDB.CondDB_cfi")
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(False)
 
-process.options.numberOfThreads = cms.untracked.uint32(8)
-process.options.numberOfStreams = cms.untracked.uint32(8)
+process.options.numberOfThreads = cms.untracked.uint32(4)
+process.options.numberOfStreams = cms.untracked.uint32(4)
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.maxEvents)))
 process.source = cms.Source(  "PoolSource",
@@ -328,12 +328,12 @@ if options.isData:
     # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription#Instructions_for_2017_data_with
     # https://twiki.cern.ch/twiki/bin/view/CMS/JetMET#Quick_links_to_current_recommend
    
-    # from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
-    # runMetCorAndUncFromMiniAOD(process,
-    #                            isData=options.isData,
-    #                            fixEE2017 = True if "2017" in options.dataEra else False,
-    #                            fixEE2017Params = {'userawPt': True, 'ptThreshold':50.0, 'minEtaThreshold':2.65, 'maxEtaThreshold': 3.139} 
-    #                            )
+# from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
+# runMetCorAndUncFromMiniAOD(process,
+#                             isData=options.isData,
+#                             fixEE2017 = True if "2017" in options.dataEra else False,
+#                             fixEE2017Params = {'userawPt': True, 'ptThreshold':50.0, 'minEtaThreshold':2.65, 'maxEtaThreshold': 3.139} 
+#                             )
 #METCollection      = cms.InputTag("slimmedMETs", "", process.name_())
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------- #

@@ -9,7 +9,7 @@ config.JobType.psetName = 'CMSSWPATH/RUNCONFIG'
 config.JobType.outputFiles = OUTPUTFILES
 config.JobType.maxJobRuntimeMin = 2750
 config.JobType.maxMemoryMB = 10000 
-config.JobType.numCores = 8
+config.JobType.numCores = 4
 config.JobType.pyCfgParams = ['isData=ISDATA','maxEvents=999999999','outName=OUTNAME', 'dataEra=DATAERA','systematicVariations=SYSTEMATICVARIATIONS','weight=WEIGHT','ProduceMemNtuples=False', 'deterministicSeeds=False']
 # config.JobType.sendPythonFolder=True
 
@@ -17,7 +17,7 @@ config.Data.inputDataset = 'THEINPUTDATASET'
 config.Data.lumiMask = 'LUMIMASK'
 config.Data.inputDBS = 'DBSINSTANCE'
 # config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 160000
+config.Data.unitsPerJob = 3200000
 config.Data.splitting = 'SPLITTING'
 config.Data.publication = False
 config.Data.publishDBS = 'phys03'

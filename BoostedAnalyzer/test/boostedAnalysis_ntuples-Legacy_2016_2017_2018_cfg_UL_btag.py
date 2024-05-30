@@ -174,8 +174,8 @@ process.load("CondCore.CondDB.CondDB_cfi")
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(False) )
 process.options.allowUnscheduled = cms.untracked.bool(False)
 
-process.options.numberOfThreads = cms.untracked.uint32(8)
-process.options.numberOfStreams = cms.untracked.uint32(8)
+process.options.numberOfThreads = cms.untracked.uint32(4)
+process.options.numberOfStreams = cms.untracked.uint32(4)
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.maxEvents)))
 process.source = cms.Source(  "PoolSource",
@@ -324,16 +324,16 @@ if options.isData:
 # ------------------------------------------------------------------------------------------------------------------------------------------------- #
   
 # if options.recorrectMET:
-    # This is EE noise in JET, not needed in UL
-    # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription#Instructions_for_2017_data_with
-    # https://twiki.cern.ch/twiki/bin/view/CMS/JetMET#Quick_links_to_current_recommend
+#     # This is EE noise in JET, not needed in UL
+#     # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription#Instructions_for_2017_data_with
+#     # https://twiki.cern.ch/twiki/bin/view/CMS/JetMET#Quick_links_to_current_recommend
    
-    # from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
-    # runMetCorAndUncFromMiniAOD(process,
-    #                            isData=options.isData,
-    #                            fixEE2017 = True if "2017" in options.dataEra else False,
-    #                            fixEE2017Params = {'userawPt': True, 'ptThreshold':50.0, 'minEtaThreshold':2.65, 'maxEtaThreshold': 3.139} 
-    #                            )
+#     from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
+#     runMetCorAndUncFromMiniAOD(process,
+#                                isData=options.isData,
+#                                fixEE2017 = True if "2017" in options.dataEra else False,
+#                                fixEE2017Params = {'userawPt': True, 'ptThreshold':50.0, 'minEtaThreshold':2.65, 'maxEtaThreshold': 3.139} 
+#                                )
 #METCollection      = cms.InputTag("slimmedMETs", "", process.name_())
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------- #
