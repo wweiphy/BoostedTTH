@@ -16,7 +16,7 @@ config.JobType.pyCfgParams = ['isData=ISDATA','maxEvents=999999999','outName=OUT
 config.Data.inputDataset = 'THEINPUTDATASET'
 config.Data.inputDBS = 'DBSINSTANCE'
 # config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 15 # Trigger
+config.Data.unitsPerJob = 8 # Trigger
 config.Data.splitting = 'SPLITTING'
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
