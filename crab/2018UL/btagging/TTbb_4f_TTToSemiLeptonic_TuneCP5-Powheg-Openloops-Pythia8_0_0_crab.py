@@ -42,4 +42,5 @@ config.Data.outLFNDirBase = '/store/group/lpctthrun2/wwei/UL/2018/ntuple'
 
 
 config.Site.storageSite = 'T3_US_FNALLPC'
+config.Site.whitelist = ['T1_US_FNAL','T2_US_MIT','T2_US_Nebraska']
 
