@@ -326,7 +326,7 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
     bool inCrack = false;
     bool passesIPcuts = false;
     bool passesID = false;
-    bool passesIso = false;
+    // bool passesIso = false;
 
     double absSCeta = 999;
     if( iElectron.superCluster().isAvailable() ){
@@ -342,8 +342,8 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         IP_dZ = fabs(iElectron.gsfTrack()->dz(vertex.position()));
     }
 
-    if (iElectron.userFloat("relIso") < 0.06)
-        passesIso = true;
+    // if (iElectron.userFloat("relIso") < 0.06)
+    //     passesIso = true;
     // test
     // std::cout << "electron isolation: " << iElectron.userFloat("relIso") << std::endl;
 
@@ -374,7 +374,8 @@ SelectedLeptonProducer::isGoodElectron(const pat::Electron& iElectron, const dou
         throw std::exception();
     }
 
-    return passesKinematics and (not inCrack) and passesIPcuts and passesID and passesIso;
+    return passesKinematics and (not inCrack) and passesIPcuts and passesID;
+    // and passesIso;
 }
 // function to calculate electron relative isolation by hand. Mainly needed for sync purposes since isolations are part of other provided electron properties like ID
 double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& inputElectron, const IsoCorrType icorrType, const IsoConeSize iconeSize) const {
