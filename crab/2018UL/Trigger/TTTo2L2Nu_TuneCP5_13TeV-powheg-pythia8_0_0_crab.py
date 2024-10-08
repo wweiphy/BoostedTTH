@@ -13,7 +13,7 @@ config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutf
 
 config.JobType.maxJobRuntimeMin = 2000
 config.JobType.maxMemoryMB = 20000
-config.JobType.numCores = 8
+config.JobType.numCores = 4
 # config.JobType.maxMemoryMB = 4000
 
 
@@ -34,7 +34,7 @@ config.Data.inputDBS = 'global'
 
 # NJOB = 341 
 config.Data.splitting = 'FileBased'
-config.Data.unitsPerJob = 4
+config.Data.unitsPerJob = 8
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
