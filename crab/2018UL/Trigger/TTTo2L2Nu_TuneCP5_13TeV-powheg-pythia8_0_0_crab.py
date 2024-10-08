@@ -12,7 +12,7 @@ config.JobType.psetName = '/work/SM_TTHH/Summer20UL/EL8/Ntuple/CMSSW_10_6_29/src
 config.JobType.outputFiles = ["ntuples_nominal_Tree.root", "ntuples_nominal_Cutflow.txt"]
 
 config.JobType.maxJobRuntimeMin = 2000
-config.JobType.maxMemoryMB = 20000
+config.JobType.maxMemoryMB = 10000
 config.JobType.numCores = 4
 # config.JobType.maxMemoryMB = 4000
 
