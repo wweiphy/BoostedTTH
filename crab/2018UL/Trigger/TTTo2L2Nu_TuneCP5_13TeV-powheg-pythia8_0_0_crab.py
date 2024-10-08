@@ -34,7 +34,7 @@ config.Data.inputDBS = 'global'
 
 # NJOB = 341 
 config.Data.splitting = 'FileBased'
-config.Data.unitsPerJob = 8
+config.Data.unitsPerJob = 4
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
 config.Data.publication = False
