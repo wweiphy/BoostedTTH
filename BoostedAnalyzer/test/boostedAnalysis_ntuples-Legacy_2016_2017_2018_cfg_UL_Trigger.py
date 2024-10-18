@@ -5,7 +5,7 @@ import os
 
 # To execute test, run
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_Trigger.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/00000/04A0B676-D63A-6D41-B47F-F4CF8CBE7DB8.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_Trigger.py isData=False outName=ntuples maxEvents=2500 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/00000/04A0B676-D63A-6D41-B47F-F4CF8CBE7DB8.root
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=250 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
 
@@ -41,7 +41,7 @@ import os
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear  dataEra=2016postVFP ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL16MiniAODv2/TTHHTo4b_TuneCP5_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v2/2430000/046D1907-1CEE-C24E-92E8-56B7DA85C506.root
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ttsl maxEvents=40000 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/120000/006455CD-9CDB-B843-B50D-5721C39F30CE.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_Trigger.py isData=False outName=ttsl maxEvents=40000 systematicVariations=nominal dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/120000/006455CD-9CDB-B843-B50D-5721C39F30CE.root
 
 
 
@@ -739,9 +739,9 @@ if options.additionalSelection!="NONE":
 
 if options.isData:
   process.BoostedAnalyzer.processorNames=cms.vstring(
-  "WeightProcessor",
+#   "WeightProcessor",
   "essentialBasicVarProcessor",
-  "essentialMVAVarProcessor",
+#   "essentialMVAVarProcessor",
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
 #   "JABDTttbarProcessor",
@@ -750,10 +750,10 @@ if options.isData:
   )
 else:
   process.BoostedAnalyzer.processorNames=cms.vstring(
-  "WeightProcessor",
+#   "WeightProcessor",
   "MCMatchVarProcessor",
   "essentialBasicVarProcessor",
-  "essentialMVAVarProcessor",
+#   "essentialMVAVarProcessor",
   "essentialRecoVarProcessor",
   "TriggerVarProcessor",
 #   "JABDTttbarProcessor",
