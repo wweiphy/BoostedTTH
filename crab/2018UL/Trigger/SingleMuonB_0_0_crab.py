@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'SingleMuonB_2018B_ntuple_0_0_Trigger_2'
+config.General.requestName = 'SingleMuonB_2018B_ntuple_0_0_Trigger_3'
 config.General.workArea = 'crab_ntuple'
 
 config.JobType.pluginName = 'Analysis'
@@ -31,7 +31,7 @@ config.Data.inputDBS = 'global'
 # config.Data.splitting = 'LumiBased'
 # config.Data.unitsPerJob = 1000
 config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 200000
+config.Data.unitsPerJob = 100000
 # config.Data.unitsPerJob = 360
 # config.Data.totalUnits = config.Data.unitsPerJob * NJOB
 # config.Data.splitting = 'Automatic'
