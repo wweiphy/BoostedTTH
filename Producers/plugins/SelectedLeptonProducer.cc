@@ -478,6 +478,8 @@ std::vector<float> SelectedLeptonProducer::GetElectronIDSF(const pat::Electron& 
     // load the correct scale factor histogram
     switch(iElectronID){
         case ElectronID::None:
+            // for electron ID efficiency study, SF hist name is put there to avoid termination 
+            SF_hist = EleID_SF_Tight;
             break;
         case ElectronID::Veto:
             break;
