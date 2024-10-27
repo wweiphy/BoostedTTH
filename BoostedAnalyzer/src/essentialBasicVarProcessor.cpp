@@ -441,9 +441,9 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         if(itEle->hasUserFloat("relIso"))
             vars.FillVars( "LooseElectron_RelIso",iEle,itEle->userFloat("relIso") );
 
-        vars.FillVars( "LooseElectron_isMatched",iEle,itEle->userFloat("isMatched") )
-        vars.FillVars( "LooseElectron_isPrompt",iEle,itEle->userFloat("isPrompt") )
-        vars.FillVars( "LooseElectron_passedID",iEle,itEle->userFloat("passesID") )
+        vars.FillVars( "LooseElectron_isMatched",iEle,itEle->userFloat("isMatched") );
+        vars.FillVars( "LooseElectron_isPrompt",iEle,itEle->userFloat("isPrompt") );
+        vars.FillVars( "LooseElectron_passedID",iEle,itEle->userFloat("passesID") );
 
 
         vars.FillVars( "LooseElectron_Charge",iEle,itEle->charge() ); 
@@ -486,9 +486,9 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
             vars.FillVars( "Electron_RelIso",iEle,itEle->userFloat("relIso") );
 
 
-        vars.FillVars( "Electron_isMatched",iEle,itEle->userFloat("isMatched") )
-        vars.FillVars( "Electron_isPrompt",iEle,itEle->userFloat("isPrompt") )
-        vars.FillVars( "Electron_passedID",iEle,itEle->userFloat("passesID") )
+        vars.FillVars( "Electron_isMatched",iEle,itEle->userFloat("isMatched") );
+        vars.FillVars( "Electron_isPrompt",iEle,itEle->userFloat("isPrompt") );
+        vars.FillVars( "Electron_passedID",iEle,itEle->userFloat("passesID") );
 
 
         vars.FillVars( "Electron_Charge",iEle,itEle->charge() ); 

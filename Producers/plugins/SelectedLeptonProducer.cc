@@ -427,9 +427,9 @@ void SelectedLeptonProducer::AddElectronRelIsolation(std::vector<pat::Electron>&
         
         if (!ele.genParticleRef().isNonnull()) {
 
-            reco::GenParticle& genParticle = *(ele.genParticleRef());
+            const reco::GenParticle& genParticle = *(ele.genParticleRef());
             int pdgId = genParticle.pdgId();
-            isMatched = (abs(pdfId) == 11);
+            isMatched = (abs(pdgId) == 11);
             isPrompt = genParticle.statusFlags().isPrompt();
         }
         
