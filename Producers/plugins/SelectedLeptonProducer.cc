@@ -427,23 +427,23 @@ void SelectedLeptonProducer::AddElectronRelIsolation(std::vector<pat::Electron>&
         ele.addUserFloat("passesID",passesID);
 
 
-        if (ele.genParticleRef(11).isNonnull()) {
+        if (ele.genParticleById(11,0,true).isNonnull()) {
 
-            const reco::GenParticle& genParticle = *(ele.genParticle(11));
+            const reco::GenParticleRef& genParticle = *(ele.genParticleById(11,0,true));
             isMatched = 1.;
             if (genParticle.statusFlags().isPrompt()){
                 isPrompt = 1.;
             }
         }
 
-        if (ele.genParticleRef(-11).isNonnull()) {
+        // if (ele.genParticleRef(-11).isNonnull()) {
 
-            const reco::GenParticle& genParticle = *(ele.genParticle(-11));
-            isMatched = 1.;
-            if (genParticle.statusFlags().isPrompt()){
-                isPrompt = 1.;
-            }
-        }
+        //     const reco::GenParticle& genParticle = *(ele.genParticle(-11));
+        //     isMatched = 1.;
+        //     if (genParticle.statusFlags().isPrompt()){
+        //         isPrompt = 1.;
+        //     }
+        // }
         
         ele.addUserFloat("isMatched",isMatched);
         ele.addUserFloat("isPrompt",isPrompt);
