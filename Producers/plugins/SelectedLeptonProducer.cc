@@ -427,7 +427,7 @@ void SelectedLeptonProducer::AddElectronRelIsolation(std::vector<pat::Electron>&
         ele.addUserFloat("passesID",passesID);
 
 
-        if (!ele.genParticleRef(11).isNonnull()) {
+        if (ele.genParticleRef(11).isNonnull()) {
 
             const reco::GenParticle& genParticle = *(ele.genParticle(11));
             isMatched = 1.;
@@ -436,7 +436,7 @@ void SelectedLeptonProducer::AddElectronRelIsolation(std::vector<pat::Electron>&
             }
         }
 
-        if (!ele.genParticleRef(-11).isNonnull()) {
+        if (ele.genParticleRef(-11).isNonnull()) {
 
             const reco::GenParticle& genParticle = *(ele.genParticle(-11));
             isMatched = 1.;
