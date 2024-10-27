@@ -429,7 +429,8 @@ void SelectedLeptonProducer::AddElectronRelIsolation(std::vector<pat::Electron>&
 
         if (ele.genParticleById(11,0,true).isNonnull()) {
 
-            reco::GenParticleRef genParticle = ele.genParticleById(11,0,true);
+            reco::GenParticleRef ref = ele.genParticleById(11,0,true);
+            const reco::GenParticle& genParticle = ref.get();
             isMatched = 1.;
             if (genParticle.statusFlags().isPrompt()){
                 isPrompt = 1.;
