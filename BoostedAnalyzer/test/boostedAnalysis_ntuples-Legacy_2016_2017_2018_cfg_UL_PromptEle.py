@@ -680,7 +680,8 @@ else:
         # else:
         process.BoostedAnalyzer = BoostedAnalyzer2017
     elif "2018" in options.dataEra:
-        process.BoostedAnalyzer = BoostedAnalyzer2018
+        process.BoostedAnalyzer = BoostedAnalyzer2018EleVeto
+    
     
     if not options.isBoostedMiniAOD:
         # Supplies PDG ID to real name resolution of MC particles

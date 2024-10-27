@@ -142,6 +142,17 @@ BoostedAnalyzer2018Trigger = BoostedAnalyzer2017.clone(
 
     
 )
+BoostedAnalyzer2018EleVeto = BoostedAnalyzer2017.clone(
+    LeptonSelection = LeptonSelectionData2018EleVeto,
+    dataEra = cms.string("2018"),
+    bTagSFs = BTagSFs94XDeepJet2018,
+    leptonTriggerSFInfos = TriggerSFs2018,
+    nominalPUWeight = NominalPUWeight2018,
+    additionalPUWeights = AdditionalPUWeights2018,
+    JetAssignmentOptions = JetAssignment2018,   
+)
+
+
 
 BoostedAnalyzer2017Trigger = BoostedAnalyzer2017.clone(
     LeptonSelection = LeptonSelectionMC2017Trigger    

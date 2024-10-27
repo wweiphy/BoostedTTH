@@ -42,6 +42,12 @@ LeptonSelectionData2018Trigger = cms.PSet(
     channel = cms.string("el-TriggerEff")
 )
 
+LeptonSelectionData2018EleVeto = cms.PSet(
+    muonTriggers = cms.vstring("HLT_IsoMu24_v*"),
+    electronTriggers = cms.vstring("HLT_Ele32_WPTight_Gsf_v*","HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*"),
+    channel = cms.string("EleVeto")
+)
+
 
 LeptonSelectionMC2016 = cms.PSet(
     muonTriggers = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
