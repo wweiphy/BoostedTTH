@@ -416,7 +416,27 @@ double SelectedLeptonProducer::GetEletronRelIsolation(const pat::Electron& input
 // function to add the calculate electron relative isolation to the electron as a userfloat
 void SelectedLeptonProducer::AddElectronRelIsolation(std::vector<pat::Electron>& inputElectrons, const IsoCorrType icorrType, const IsoConeSize iconeSize) {
     for(auto& ele : inputElectrons){
+        bool passesID = false;
+        bool isMatched = false;
+        bool isPrompt = false;
+
         ele.addUserFloat("relIso",GetEletronRelIsolation(ele, icorrType, iconeSize));
+        passesID = ele.electronID("mvaEleID-Fall17-iso-V2-wp90");
+        ele.addUserFloat("passesID",passesID);
+
+        
+        if (!ele.genParticleRef().isNonnull()) {
+
+            reco::GenParticle& genParticle = *(ele.genParticleRef());
+            int pdgId = genParticle.pdgId();
+            isMatched = (abs(pdfId) == 11);
+            isPrompt = genParticle.statusFlags().isPrompt();
+        }
+        
+        ele.addUserFloat("isMatched",isMatched);
+        ele.addUserFloat("isPrompt",isPrompt);
+
+
     }
 }
 

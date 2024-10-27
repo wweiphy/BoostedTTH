@@ -173,6 +173,9 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVars( "LooseElectron_Eta","N_LooseElectrons" );
     vars.InitVars( "LooseElectron_Phi","N_LooseElectrons" );
     vars.InitVars( "LooseElectron_RelIso","N_LooseElectrons" );
+    vars.InitVars( "LooseElectron_passesID","N_LooseElectrons" );
+    vars.InitVars( "LooseElectron_isMatched","N_LooseElectrons" );
+    vars.InitVars( "LooseElectron_isPrompt","N_LooseElectrons" );
     vars.InitVars( "LooseElectron_Charge","N_LooseElectrons" );
     vars.InitVars( "LooseElectron_Pt_BeforeRun2Calibration","N_LooseElectrons" );
     vars.InitVars( "LooseElectron_Eta_Supercluster","N_LooseElectrons" );
@@ -195,6 +198,9 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVars( "Electron_Eta","N_TightElectrons" );
     vars.InitVars( "Electron_Phi","N_TightElectrons" );
     vars.InitVars( "Electron_RelIso","N_TightElectrons" );
+    vars.InitVars( "Electron_passesID","N_TightElectrons" );
+    vars.InitVars( "Electron_isMatched","N_TightElectrons" );
+    vars.InitVars( "Electron_isPrompt","N_TightElectrons" );
     vars.InitVars( "Electron_Charge","N_TightElectrons" );
     vars.InitVars( "Electron_Pt_BeforeRun2Calibration","N_TightElectrons" );
     vars.InitVars( "Electron_Eta_Supercluster","N_TightElectrons" );
@@ -435,6 +441,11 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         if(itEle->hasUserFloat("relIso"))
             vars.FillVars( "LooseElectron_RelIso",iEle,itEle->userFloat("relIso") );
 
+        vars.FillVars( "LooseElectron_isMatched",iEle,itEle->userFloat("isMatched") )
+        vars.FillVars( "LooseElectron_isPrompt",iEle,itEle->userFloat("isPrompt") )
+        vars.FillVars( "LooseElectron_passedID",iEle,itEle->userFloat("passesID") )
+
+
         vars.FillVars( "LooseElectron_Charge",iEle,itEle->charge() ); 
         if(itEle->hasUserFloat("ptBeforeRun2Calibration"))
             vars.FillVars("LooseElectron_Pt_BeforeRun2Calibration",iEle,itEle->userFloat("ptBeforeRun2Calibration"));
@@ -473,6 +484,12 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         vars.FillVars( "Electron_Phi",iEle,itEle->phi() ); 
         if(itEle->hasUserFloat("relIso"))
             vars.FillVars( "Electron_RelIso",iEle,itEle->userFloat("relIso") );
+
+
+        vars.FillVars( "Electron_isMatched",iEle,itEle->userFloat("isMatched") )
+        vars.FillVars( "Electron_isPrompt",iEle,itEle->userFloat("isPrompt") )
+        vars.FillVars( "Electron_passedID",iEle,itEle->userFloat("passesID") )
+
 
         vars.FillVars( "Electron_Charge",iEle,itEle->charge() ); 
         if(itEle->hasUserFloat("ptBeforeRun2Calibration"))
