@@ -479,7 +479,7 @@ elif "2018" in options.dataEra:
 
 process.SelectedElectronProducer.leptons=electronCollection
 process.SelectedElectronProducer.etaMaxs=[2.5,2.5,2.5]
-process.SelectedElectronProducer.leptonIDs=["None","None","None"]
+process.SelectedElectronProducer.leptonIDs=["none","none","none"]
 process.SelectedElectronProducer.isoConeSizes=[""]*3
 process.SelectedElectronProducer.isoCorrTypes=["rhoEA"]*3
 process.SelectedElectronProducer.collectionNames=["selectedElectronsLoose","selectedElectronsDL","selectedElectrons"]
