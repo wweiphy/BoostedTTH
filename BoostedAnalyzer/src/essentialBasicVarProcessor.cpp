@@ -530,7 +530,7 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         }
     }
 
-    int N_promptELectrons = 0;
+    int N_promptElectrons = 0;
     for (std::vector<pat::Electron>::const_iterator itEle = input.selectedElectronsDL.begin(); itEle != input.selectedElectronsDL.end(); ++itEle)
     {
         int iEle = itEle - input.selectedElectronsDL.begin();
@@ -551,7 +551,7 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
 
         vars.FillVars("ElectronDL_Eta_Supercluster", iEle, itEle->superCluster()->eta());
     }
-    vars.FillVar("N_promptElectrons", N_promptELectrons);
+    vars.FillVar("N_promptElectrons", N_promptElectrons);
 
     for(std::vector<pat::Muon>::const_iterator itMu = input.selectedMuonsLoose.begin(); itMu != input.selectedMuonsLoose.end(); ++itMu)
     {
