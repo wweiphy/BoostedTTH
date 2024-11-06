@@ -24,7 +24,7 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVar( "N_LooseLeptons" ,"I");
     vars.InitVar( "N_TightElectrons" ,"I");
     vars.InitVar( "N_LooseElectrons","I" );
-    vars.InitVar("N_slimmedElectrons", "I");
+    vars.InitVar("N_selectedElectronsDL", "I");
     vars.InitVar( "N_TightMuons" ,"I");
     vars.InitVar( "N_LooseMuons" ,"I");
     vars.InitVar( "N_BTagsL" ,"I");
@@ -218,18 +218,18 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVars( "Electron_ReconstructionSFUp","N_TightElectrons");
     vars.InitVars( "Electron_ReconstructionSFDown","N_TightElectrons");
 
-    vars.InitVars("slimmedElectron_E", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_M", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_Pt", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_Eta", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_Phi", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_RelIso", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_passesID", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_isMatched", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_isPrompt", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_Charge", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_Pt_BeforeRun2Calibration", "N_slimmedElectrons");
-    vars.InitVars("slimmedElectron_Eta_Supercluster", "N_slimmedElectrons");
+    vars.InitVars("ElectronDL_E", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_M", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_Pt", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_Eta", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_Phi", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_RelIso", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_passesID", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_isMatched", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_isPrompt", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_Charge", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_Pt_BeforeRun2Calibration", "N_selectedElectronsDL");
+    vars.InitVars("ElectronDL_Eta_Supercluster", "N_selectedElectronsDL");
 
     vars.InitVar( "Evt_MET_Pt" );
     vars.InitVar( "Evt_MET_Phi" );
@@ -296,7 +296,7 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
     vars.FillVar( "N_Jets",input.selectedJets.size());
     vars.FillVar( "N_LooseJets",input.selectedJetsLoose.size());
     vars.FillVar( "N_TightLeptons",input.selectedElectrons.size()+ input.selectedMuons.size());
-    vars.FillVar("N_slimmedElectrons", input.slimmedElectrons.size());
+    vars.FillVar("N_selectedElectronsDL", input.selectedElectronsDL.size());
     vars.FillVar( "N_LooseLeptons",input.selectedElectronsLoose.size()+ input.selectedMuonsLoose.size());    
     vars.FillVar( "N_TightElectrons",input.selectedElectrons.size());    
     vars.FillVar( "N_LooseElectrons",input.selectedElectronsLoose.size());    
@@ -529,24 +529,24 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         }
     }
 
-    for (std::vector<pat::Electron>::const_iterator itEle = input.slimmedElectrons.begin(); itEle != input.slimmedElectrons.end(); ++itEle)
+    for (std::vector<pat::Electron>::const_iterator itEle = input.selectedElectronsDL.begin(); itEle != input.selectedElectronsDL.end(); ++itEle)
     {
-        int iEle = itEle - input.slimmedElectrons.begin();
-        vars.FillVars("slimmedElectron_E", iEle, itEle->energy());
-        vars.FillVars("slimmedElectron_M", iEle, itEle->mass());
-        vars.FillVars("slimmedElectron_Pt", iEle, itEle->pt());
-        vars.FillVars("slimmedElectron_Eta", iEle, itEle->eta());
-        vars.FillVars("slimmedElectron_Phi", iEle, itEle->phi());
+        int iEle = itEle - input.selectedElectronsDL.begin();
+        vars.FillVars("ElectronDL_E", iEle, itEle->energy());
+        vars.FillVars("ElectronDL_M", iEle, itEle->mass());
+        vars.FillVars("ElectronDL_Pt", iEle, itEle->pt());
+        vars.FillVars("ElectronDL_Eta", iEle, itEle->eta());
+        vars.FillVars("ElectronDL_Phi", iEle, itEle->phi());
         if (itEle->hasUserFloat("relIso"))
-            vars.FillVars("slimmedElectron_RelIso", iEle, itEle->userFloat("relIso"));
+            vars.FillVars("ElectronDL_RelIso", iEle, itEle->userFloat("relIso"));
 
-        vars.FillVars("slimmedElectron_isMatched", iEle, itEle->userFloat("isMatched"));
-        vars.FillVars("slimmedElectron_isPrompt", iEle, itEle->userFloat("isPrompt"));
-        vars.FillVars("slimmedElectron_passesID", iEle, itEle->userFloat("passesID"));
+        vars.FillVars("ElectronDL_isMatched", iEle, itEle->userFloat("isMatched"));
+        vars.FillVars("ElectronDL_isPrompt", iEle, itEle->userFloat("isPrompt"));
+        vars.FillVars("ElectronDL_passesID", iEle, itEle->userFloat("passesID"));
 
-        vars.FillVars("slimmedElectron_Charge", iEle, itEle->charge());
+        vars.FillVars("ElectronDL_Charge", iEle, itEle->charge());
 
-        vars.FillVars("slimmedElectron_Eta_Supercluster", iEle, itEle->superCluster()->eta());
+        vars.FillVars("ElectronDL_Eta_Supercluster", iEle, itEle->superCluster()->eta());
     }
 
 

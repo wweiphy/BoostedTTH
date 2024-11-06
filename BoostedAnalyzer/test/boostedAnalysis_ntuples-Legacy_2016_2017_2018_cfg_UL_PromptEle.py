@@ -27,7 +27,7 @@ import os
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=200 systematicVariations=nominal,JES,JER,JESFlavorQCD,JESRelativeBal,JESHF,JESBBEC1,JESEC2,JESAbsolute,JESBBEC1year,JESRelativeSampleyear,JESEC2year,JESHFyear,JESAbsoluteyear  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
 
-# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=False outName=ntuples maxEvents=2000 systematicVariations=nominal,JES  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
+# cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL_PromptEle.py isData=False outName=ntuples maxEvents=10000 systematicVariations=nominal  dataEra=2018 ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/mc/RunIISummer20UL18MiniAODv2/TT4b_TuneCP5_13TeV_madgraph_pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/2530000/0189C669-2FC2-5B4D-9255-EE5F824802FE.root
 
 
 # cmsRun boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_UL.py isData=True outName=data maxEvents=40000 systematicVariations=nominal dataEra=2018A ProduceMemNtuples=False deterministicSeeds=False inputFiles=/store/data/Run2018A/SingleMuon/MINIAOD/UL2018_MiniAODv2-v3/2530000/002A113D-FB15-1341-A170-638E53A7261F.root
@@ -471,7 +471,7 @@ elif "2017" in options.dataEra:
     process.SelectedMuonProducer.ptMins=[15.,15.,29.]
 elif "2018" in options.dataEra:
     process.SelectedElectronProducer = SelectedElectronProducer2018
-    process.SelectedElectronProducer.ptMins=[15.,15.,30.]
+    process.SelectedElectronProducer.ptMins=[15.,0.,30.]
     ###
     process.SelectedMuonProducer = SelectedMuonProducer2018
     process.SelectedMuonProducer.ptMins=[15.,15.,26.]
@@ -483,6 +483,7 @@ process.SelectedElectronProducer.leptonIDs=["none","none","none"]
 process.SelectedElectronProducer.isoConeSizes=[""]*3
 process.SelectedElectronProducer.isoCorrTypes=["rhoEA"]*3
 process.SelectedElectronProducer.collectionNames=["selectedElectronsLoose","selectedElectronsDL","selectedElectrons"]
+
 process.SelectedElectronProducer.isData=options.isData
 process.SelectedElectronProducer.era=options.dataEra
 
@@ -682,7 +683,7 @@ else:
     elif "2018" in options.dataEra:
         process.BoostedAnalyzer = BoostedAnalyzer2018EleVeto
     
-    
+
     if not options.isBoostedMiniAOD:
         # Supplies PDG ID to real name resolution of MC particles
         process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
