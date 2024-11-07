@@ -26,6 +26,7 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVar( "N_LooseElectrons","I" );
     vars.InitVar("N_selectedElectronsDL", "I");
     vars.InitVar("N_promptElectrons", "I");
+    vars.InitVar("N_passesIDElectrons", "I");
     vars.InitVar( "N_TightMuons" ,"I");
     vars.InitVar( "N_LooseMuons" ,"I");
     vars.InitVar( "N_BTagsL" ,"I");
@@ -531,6 +532,7 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
     }
 
     int N_promptElectrons = 0;
+    int N_passesIDElectrons = 0;
     for (std::vector<pat::Electron>::const_iterator itEle = input.selectedElectronsDL.begin(); itEle != input.selectedElectronsDL.end(); ++itEle)
     {
         int iEle = itEle - input.selectedElectronsDL.begin();
@@ -542,6 +544,8 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         if (itEle->hasUserFloat("relIso"))
             vars.FillVars("ElectronDL_RelIso", iEle, itEle->userFloat("relIso"));
         if (itEle->userFloat("isPrompt") == 1.) N_promptElectrons += 1;
+        if (itEle->userFloat("passesID") == 1.) N_passesIDElectrons += 1;
+        
 
         vars.FillVars("ElectronDL_isMatched", iEle, itEle->userFloat("isMatched"));
         vars.FillVars("ElectronDL_isPrompt", iEle, itEle->userFloat("isPrompt"));
@@ -552,6 +556,7 @@ void essentialBasicVarProcessor::Process(const InputCollections& input,VariableC
         vars.FillVars("ElectronDL_Eta_Supercluster", iEle, itEle->superCluster()->eta());
     }
     vars.FillVar("N_promptElectrons", N_promptElectrons);
+    vars.FillVar("N_passesIDElectrons", N_passesIDElectrons);
 
     for(std::vector<pat::Muon>::const_iterator itMu = input.selectedMuonsLoose.begin(); itMu != input.selectedMuonsLoose.end(); ++itMu)
     {
