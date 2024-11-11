@@ -479,7 +479,7 @@ elif "2018" in options.dataEra:
 
 process.SelectedElectronProducer.leptons=electronCollection
 process.SelectedElectronProducer.etaMaxs=[2.5,2.5,2.5]
-process.SelectedElectronProducer.leptonIDs=["tight","none","tight"]
+process.SelectedElectronProducer.leptonIDs=["none","none","none"]
 process.SelectedElectronProducer.isoConeSizes=[""]*3
 process.SelectedElectronProducer.isoCorrTypes=["rhoEA"]*3
 process.SelectedElectronProducer.collectionNames=["selectedElectronsLoose","selectedElectronsDL","selectedElectrons"]
@@ -490,7 +490,7 @@ process.SelectedElectronProducer.era=options.dataEra
 
 process.SelectedMuonProducer.leptons=muonCollection
 process.SelectedMuonProducer.etaMaxs=[2.4,2.4,2.4]
-process.SelectedMuonProducer.leptonIDs=["none","none","none"]
+process.SelectedMuonProducer.leptonIDs=["tight","tight","tight"]
 # change the muon isolation cut to miniPF relative isolation 
 process.SelectedMuonProducer.isoConeSizes=[""]*3
 process.SelectedMuonProducer.isoCorrTypes=["rhoEA"]*3
