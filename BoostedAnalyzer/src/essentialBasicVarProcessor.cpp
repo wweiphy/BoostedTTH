@@ -27,10 +27,13 @@ void essentialBasicVarProcessor::Init(const InputCollections& input,VariableCont
     vars.InitVar("N_selectedElectronsDL", "I");
     vars.InitVar("N_promptElectrons", "I");
     vars.InitVar("N_passesIDElectrons", "I");
+    vars.InitVar("N_prompt_passesID_Electrons", "I");
     vars.InitVar("N_promptLooseElectrons", "I");
     vars.InitVar("N_passesIDLooseElectrons", "I");
+    vars.InitVar("N_prompt_passesID_LooseElectrons", "I");
     vars.InitVar("N_promptElectronsDL", "I");
     vars.InitVar("N_passesIDElectronsDL", "I");
+    vars.InitVar("N_prompt_passesID_ElectronsDL", "I");
     vars.InitVar( "N_TightMuons" ,"I");
     vars.InitVar( "N_LooseMuons" ,"I");
     vars.InitVar( "N_BTagsL" ,"I");
