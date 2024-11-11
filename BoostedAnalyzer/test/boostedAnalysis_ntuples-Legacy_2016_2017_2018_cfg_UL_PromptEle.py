@@ -490,7 +490,7 @@ process.SelectedElectronProducer.era=options.dataEra
 
 process.SelectedMuonProducer.leptons=muonCollection
 process.SelectedMuonProducer.etaMaxs=[2.4,2.4,2.4]
-process.SelectedMuonProducer.leptonIDs=["tight","tight","tight"]
+process.SelectedMuonProducer.leptonIDs=["none","none","none"]
 # change the muon isolation cut to miniPF relative isolation 
 process.SelectedMuonProducer.isoConeSizes=[""]*3
 process.SelectedMuonProducer.isoCorrTypes=["rhoEA"]*3
