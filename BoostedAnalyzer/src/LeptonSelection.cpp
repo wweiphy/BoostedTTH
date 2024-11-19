@@ -142,11 +142,11 @@ bool LeptonSelection::IsSelected(const InputCollections& input,Cutflow& cutflow)
       else cutflow.EventSurvivedStep("== 1 loose lepton same flavor",input.weights.at("Weight"));
     }
     if(step<0||step==3){
-      if(!( (muonTriggered&&nmuonsloose==1&&nmuons==1) || (electronTriggered&&nelectrons==1) ) ) return false;
+      if(!( (muonTriggered&&nmuonsloose==1&&nmuons==1) || (electronTriggered&&nelectrons>=1) ) ) return false;
       else cutflow.EventSurvivedStep("== 1 tight lepton same flavor",input.weights.at("Weight"));
     }
     if(step<0||step==4){
-      if(!( (muonTriggered&&nmuonsloose==1&&nmuons==1&&nelectronsloose==0) || (electronTriggered&&nelectrons==1&&nmuonsloose==0) ) ) return false;
+      if(!( (muonTriggered&&nmuonsloose==1&&nmuons==1) || (electronTriggered&&nelectrons>=1&&nmuonsloose==0) ) ) return false;
       else cutflow.EventSurvivedStep("== 0 loose leptons different flavor",input.weights.at("Weight"));
     }
   }
